@@ -1,0 +1,3930 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CIPS.Express.ConvertDat</name>
+    </assembly>
+    <members>
+        <member name="T:CIPS.Express.ConvertDat.ExpressDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.ExpressDataSet.DM_CC_CARSDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.ExpressDataSet.DM_CC_CARSRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.ExpressDataSet.DM_CC_CARSRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:CIPS.ConfigurationManager">
+            <summary>
+            应用程序配置管理
+            </summary>
+        </member>
+        <member name="M:CIPS.ConfigurationManager.#ctor(System.Data.DataTable)">
+            <summary>
+            应用程序配置管理
+            </summary>
+            <param name="dt">DC_RA_CONFIG表</param>
+        </member>
+        <member name="P:CIPS.ConfigurationManager.Item(System.String,System.String)">
+            <summary>
+            获取配置内容
+            </summary>
+            <param name="Namespace">命名空间</param>
+            <param name="Key">键</param>
+            <returns>值</returns>
+        </member>
+        <member name="P:CIPS.ConfigurationManager.Item(System.String)">
+            <summary>
+            获取配置内容
+            </summary>
+            <param name="Key">键</param>
+            <returns>值</returns>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.Analyze">
+            <summary>
+            统计分析
+            统计分析及预警
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_CurrentCars">
+            <summary>
+            ID_结存车保有量
+            1
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_OldCars">
+            <summary>
+            停留超时车辆
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_EmphasesCars">
+            <summary>
+            重点车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_ExchangeCars">
+            <summary>
+            交流车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_ClassiCars">
+            <summary>
+            集结车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_SplittingTracks">
+            <summary>
+            待解占线
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_DeparttingTracks">
+            <summary>
+            待发占线
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_RateOfYardArr">
+            <summary>
+            到达场占用率
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_RateOfYardSwit">
+            <summary>
+            编组场占用率
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_RateOfYardDep">
+            <summary>
+            出发场占用率
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_UnloaddedCars">
+            <summary>
+            装车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_LoaddedCars">
+            <summary>
+            卸车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_TimeForSwit">
+            <summary>
+            有调中时
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_TimeForUnswit">
+            <summary>
+            无调中时
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_TimeForStay">
+            <summary>
+            停时
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_CarsProcess">
+            <summary>
+            办理辆数
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_TrainsProcess">
+            <summary>
+            办理列数
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_TrainsSplit">
+            <summary>
+            解体列数
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_TrainsClassi">
+            <summary>
+            编组列数
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_TrainsIntime">
+            <summary>
+            正点率
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_SplitCapability">
+            <summary>
+            解体能力
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_SwitCapability">
+            <summary>
+            编组能力
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_ArrDepCapability_Up">
+            <summary>
+            上行到发能力
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_YardCapability_Arr">
+            <summary>
+            到达场能力
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_ArrDepCapability_Down">
+            <summary>
+            下行到发能力
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_YardCapability_Dep">
+            <summary>
+            出发场能力
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_TimeForSynthesis">
+            <summary>
+            综合中时
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_SwitchCapability_Up">
+            <summary>
+            上行咽喉通过能力
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_SwitchCapability_Down">
+            <summary>
+            下行咽喉能力
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_SwitchCapability_Arr">
+            <summary>
+            到达场咽喉能力
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_SwitchCapability_Dep">
+            <summary>
+            出发咽喉能力
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_RateOfYardGoods">
+            <summary>
+            货场占用率
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_RepairCars">
+            <summary>
+            扣修车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_ReloadCars">
+            <summary>
+            倒装车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_LocomInfo">
+            <summary>
+            机车倣
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_Wegh_Empty">
+            <summary>
+            空重
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ID_TrainSum">
+            <summary>
+            列车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ParamID_ValueMin">
+            <summary>
+            参数
+            最小值
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ParamID_ValueMid">
+            <summary>
+            参数
+            中间值
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ParamID_ValueMax">
+            <summary>
+            参数
+            最大值
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ParamID_ColorMin">
+            <summary>
+            参数
+            最小值颜色
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ParamID_ColorMid">
+            <summary>
+            参数
+            中间值颜色
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ParamID_ColorMax">
+            <summary>
+            参数
+            最大值颜色
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ParamID_ColorCurve">
+            <summary>
+            参数
+            曲线颜色
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ParamID_Display">
+            <summary>
+            参数
+            是否显示
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Analyze.ParamID_User">
+            <summary>
+            参数
+            自定义
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.PLANINDEX">
+            <summary>
+            Plan 的摘要说明。
+            </summary>
+            
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_NormalPlan">
+            <summary>
+            流程类型!
+            普通勾计划!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_Split">
+            <summary>
+            流程类型
+            解体
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_Classi">
+            <summary>
+            流程类型
+            编组
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_GetPut">
+            <summary>
+            流程类型
+            取送
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_ToCons">
+            <summary>
+            流程类型!
+            现车转确报!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_FromCons">
+            <summary>
+            流程类型!
+            确报转现车!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_ModifyCars">
+            <summary>
+            流程类型!
+            修改现车!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_ExistCars">
+            <summary>
+            流程类型!
+            存在!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_加冰">
+            <summary>
+            流程类型!
+            加冰!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_洗刷">
+            <summary>
+            流程类型!
+            洗刷!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_过磅">
+            <summary>
+            流程类型!
+            过磅!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_消毒">
+            <summary>
+            流程类型!
+            消毒!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_扣修装">
+            <summary>
+            流程类型!
+            扣修装!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_扣待处">
+            <summary>
+            流程类型!
+            扣待处!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_扣倒装">
+            <summary>
+            流程类型!
+            扣倒装!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_置关门">
+            <summary>
+            流程类型!
+            扣关门!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_加冰毕">
+            <summary>
+            流程类型!
+            加冰毕!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_洗刷毕">
+            <summary>
+            流程类型!
+            洗刷毕!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_过磅毕">
+            <summary>
+            流程类型!
+            过磅毕!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_消毒毕">
+            <summary>
+            流程类型!
+            消毒毕!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_修装毕">
+            <summary>
+            流程类型!
+            修峻!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_解除待处">
+            <summary>
+            流程类型!
+            解除待处!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_扣车">
+            <summary>
+            流程类型!
+            解除待处!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_解除扣车">
+            <summary>
+            流程类型!
+            解除待处!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_清关门">
+            <summary>
+            流程类型!
+            解除待处!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_运非_转备用">
+            <summary>
+            流程类型!
+            运转非-转备用!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_运非_转军用">
+            <summary>
+            流程类型!
+            运转非-转军用!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_运非_扣站修">
+            <summary>
+            流程类型!
+            运转非-扣站修!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_运非_扣段修">
+            <summary>
+            流程类型!
+            运转非-扣段修!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_运非_扣厂修">
+            <summary>
+            流程类型!
+            运转非-扣厂修!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_运非_扣集结">
+            <summary>
+            流程类型!
+            运转非-扣集结!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_非运_解除备用">
+            <summary>
+            流程类型!
+            非转运-解除备用!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_非运_解除军用">
+            <summary>
+            流程类型!
+            非转运-解除军用!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_非运_修峻">
+            <summary>
+            流程类型!
+            非转运-修峻!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_装交">
+            <summary>
+            流程类型!
+            装车交班!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_装交取消">
+            <summary>
+            流程类型!
+            取消装车交班!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_卸交">
+            <summary>
+            流程类型!
+            卸车交班!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_卸交取消">
+            <summary>
+            流程类型!
+            取消卸车交班!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_非运_取消集结">
+            <summary>
+            流程类型!
+            非转运-取消集结!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_装车">
+            <summary>
+            流程类型!
+            装车!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_卸车">
+            <summary>
+            流程类型!
+            卸车!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_修改现车">
+            <summary>
+            流程类型!
+            修改现车!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_移动现车">
+            <summary>
+            流程类型!
+            移动现车!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_添加现车">
+            <summary>
+            流程类型!
+            添加现车!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_删除现车">
+            <summary>
+            流程类型!
+            删除现车!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_修改车号">
+            <summary>
+            流程类型!
+            修改车号!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_修改装车">
+            <summary>
+            流程类型!
+            修改装车!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_取消装车">
+            <summary>
+            流程类型!
+            取消装车!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_取消卸车">
+            <summary>
+            流程类型!
+            取消卸车!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_运非_过轨">
+            <summary>
+            流程类型!
+            过轨运转非!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_非运_过轨">
+            <summary>
+            流程类型!
+            过轨非转运!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_报废">
+            <summary>
+            流程类型!
+            报废运转非!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_取消报废">
+            <summary>
+            流程类型!
+            报废运转非!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_扣蘑">
+            <summary>
+            流程类型!
+            报废运转非!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_扣封存">
+            <summary>
+            流程类型!
+            扣封存!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_取消封存">
+            <summary>
+            流程类型!
+            取消封存!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_自定义车辆特征">
+            <summary>
+            流程类型!
+            自定义车辆特征!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_验配">
+            <summary>
+            验配
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_卸车开始">
+            <summary>
+            卸车开始
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_装车开始">
+            <summary>
+            装车开始
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_批卸车线">
+            <summary>
+            批卸车线
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_批装车线">
+            <summary>
+            批装车线
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_货位">
+            <summary>
+            流程类型!
+            货位!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Type_Unknow">
+            <summary>
+            流程类型!
+            未知!
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.id">
+            <summary>
+            计划ID
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.subid">
+            <summary>
+            岗位ID
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.startTime_plan">
+            <summary>
+            计划开始时间
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.endTime_plan">
+            <summary>
+            计划结束时间
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.startTime_real">
+            <summary>
+            实际开始时间
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.endTime_real">
+            <summary>
+            实际结束时间
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.state">
+            <summary>
+            流程状态
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.plannum">
+            <summary>
+            计划号
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.trainnum">
+            <summary>
+            车次
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.locom">
+            <summary>
+            调机
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.maker">
+            <summary>
+            编制人
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.StartNum">
+            <summary>
+            第一勾序号
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.consid">
+            <summary>
+            对应确报
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.flowtype">
+            <summary>
+            流程类型
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLANINDEX.Tag">
+            <summary>
+            相关对象
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.PLANINDEX.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.PLANINDEX.GetFlowTypeList">
+            <summary>
+            攻取流程类型集合
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.PLANINDEX.CopyFrom(CIPS.Express.ConvertDat.PLANINDEX)">
+            <summary>
+            复制
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.dir">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.isPlan">
+            <summary>
+            是否为普通勾计划
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.WorkStation">
+            <summary>
+            岗位
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.Type">
+            <summary>
+            流程类型
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.isOver">
+            <summary>
+            已报点
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.Pushed">
+            <summary>
+            已推入现车
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.AEI_Right">
+            <summary>
+            AEI检查通过
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.Error">
+            <summary>
+            有错
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.HandOver">
+            <summary>
+            已交班
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.LastClass">
+            <summary>
+            已交班
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.FromLink">
+            <summary>
+            由工步链接执行
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.AEI_Err">
+            <summary>
+            AEI检查未通过
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.ChartPlan">
+            <summary>
+            是否为技术作业图表添加的流程
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.HeadMode">
+            <summary>
+            头部计划
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.TailMode">
+            <summary>
+            编组计划
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.PlanNum">
+            <summary>
+            计划号
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLANINDEX.SubNum">
+            <summary>
+            拆分后计划子号
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.PLAN">
+            <summary>
+            流程
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLAN.cuts">
+            <summary>
+            工步
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.PLAN.Classi">
+            <summary>
+            
+            </summary>
+            
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.PLAN.#ctor">
+            <summary>
+            流程
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.PLAN.CopyFrom(CIPS.Express.ConvertDat.PLAN)">
+            <summary>
+            复制
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.PLAN.Like(CIPS.Express.ConvertDat.PLAN)">
+            <summary>
+            比较两个流程是否相似
+            </summary>
+            <param name="p">对比流程</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.PLAN.RemoveCut(CIPS.Express.ConvertDat.CUT)">
+            <summary>
+            删除工步
+            </summary>
+            <param name="c">工步</param>
+            <returns></returns>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLAN.isOver">
+            <summary>
+            是否已报点
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.PLAN.Pushed">
+            <summary>
+            是否已推入
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.CUT">
+            <summary>
+            工步
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.SUBCT_BOOTH_IN">
+            <summary>
+            货位工步子类型
+            进货
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.SUBCT_BOOTH_OUT">
+            <summary>
+            货位工步子类型
+            出货
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.SUBCT_BOOTH_FINISH">
+            <summary>
+            货位工步子类型
+            交付
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_NULL">
+            <summary>
+            工步类型
+            无
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_TNAME">
+            <summary>
+            换车次
+            note:原车次，新车次
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_LOCKHUMP">
+            <summary>
+            封锁股道
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_DRAGOUT">
+            <summary>
+            集结牵出
+            集结主/辅/单独
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_FIX">
+            <summary>
+            对位
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_THROUGH">
+            <summary>
+            经由
+            track:经由线
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_MOVECAR">
+            <summary>
+            移动车辆
+            track=源线,trackzero=源停车器位置
+            carlist0=被移车号,carlist1=源线参考车号,carlist2=目的参考车号
+            note:目的线,目的线新停车器位置,目的线原停车器位置
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_UPDATECAR">
+            <summary>
+            修改车辆,版本升级
+            track=源线,trackzero=源停车器位置
+            carlist[2n]=源车号,carlist[2n+1]=目的车号
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_BOOTH">
+            <summary>
+            货位
+            trackzero=子类型,track=boothid,note:booth内容
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_REORDER">
+            <summary>
+            调整顺序
+            carlist=移到最前方的车辆
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_MOVECARSARRAY">
+            <summary>
+            移动一组车辆至目的线路的最后
+            track=源线,trackzero=源停车器位置
+            note:目的线,目的线新停车器位置,目的线旧停车器位置
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_NEWCLASSI">
+            <summary>
+            新集结
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_LINK2FLOW">
+            <summary>
+            链接到其它流程
+            note:flowID
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_GET">
+            <summary>
+            挂车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_GET_YH">
+            <summary>
+            迂回线取车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_GET_JL">
+            <summary>
+            禁溜线取车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_GET_DISORDER">
+            <summary>
+            无序线取车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_PUT">
+            <summary>
+            送车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_PUT_YH">
+            <summary>
+            迂回线送车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_PUT_JL">
+            <summary>
+            禁溜线送车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_PUT_DL">
+            <summary>
+            单溜
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_PUT_LL">
+            <summary>
+            连溜
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CT_PUT_DISORDER">
+            <summary>
+            无序线送车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.track">
+            <summary>
+            股道
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.F_LEN_LOCOM">
+            <summary>
+            在途换长
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.F_WEGH_LOCOM">
+            <summary>
+            在途重量
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.CAR_PROPERTY">
+            <summary>
+            车辆属性
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.coupFlag">
+            <summary>
+            工步类型
+            0x40:port,0x80:stopcut,0x20:finished
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.count">
+            <summary>
+            辆数
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.note">
+            <summary>
+            注释
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.usernote">
+            <summary>
+            用户注释
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.carnumlist">
+            <summary>
+            车号LIST
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.trackzero">
+            <summary>
+            该勾执行前的停车器位置
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.correlate">
+            <summary>
+            相关勾的信息,如推峰,停车器制动,缓解,股道封锁等
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.endTime">
+            <summary>
+            报点时间
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.startTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.Tag">
+            <summary>
+            相关对象
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.CUT.CopyFrom(CIPS.Express.ConvertDat.CUT)">
+            <summary>
+            复制
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.coupSymbol_GET_YH">
+            <summary>
+            迂回取车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.coupSymbol_PUT_YH">
+            <summary>
+            迂回送车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.coupSymbol_GET">
+            <summary>
+            取车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.coupSymbol_PUT">
+            <summary>
+            送车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.coupSymbol_PUT_LL">
+            <summary>
+            连溜
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.coupSymbol_PUT_DL">
+            <summary>
+            单溜
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.coupSymbol_THROUGH">
+            <summary>
+            通过
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CUT.coupSymbol_FIX">
+            <summary>
+            对位
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.CUT.SetSymbol(System.Data.DataTable)">
+            <summary>
+            加载勾计划调车符号
+            </summary>
+            <param name="dt">DC_RA_MIXCO表</param>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.HaveEmptyCar">
+            <summary>
+            是否有空车
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.HaveLoadCar">
+            <summary>
+            是否有重车
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.Wegh">
+            <summary>
+            平均重量
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.Note">
+            <summary>
+            注释
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.Finished">
+            <summary>
+            已结束
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.LockTN_Before">
+            <summary>
+            锁定车次（过期）
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.LockTN_After">
+            <summary>
+            锁定车次（过期）
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.AutoTN">
+            <summary>
+            是否为自动添加的车次（过期）
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.OldTN">
+            <summary>
+            原车次
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.NewTN">
+            <summary>
+            新车次
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.doorway">
+            <summary>
+            线路出口
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.MultiWay">
+            <summary>
+            是否为多出口调车工步
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.LockHump_Before">
+            <summary>
+            封锁股道（过期）
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.LockHump_After">
+            <summary>
+            封锁股道（过期）
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.type">
+            <summary>
+            工步类型
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.port">
+            <summary>
+            端口
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.throughTCQ">
+            <summary>
+            是否越过停车器
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.Visible">
+            <summary>
+            是否为可见工步
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.add_del">
+            <summary>
+            +/-
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CUT.coupSymbol">
+            <summary>
+            工步类型的文字表达方式
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.ConvertPlanDat">
+            <summary>
+            序列化计划数据
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertPlanDat.Plans2ClSet(CIPS.Express.ConvertDat.PLAN[])">
+            <summary>
+            计划转换为CL数据集
+            </summary>
+            <param name="ps">流程数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertPlanDat.ClSet2Plans(CIPS.ClSet)">
+            <summary>
+            CL数据集转为计划
+            </summary>
+            <param name="cs">CL数据集</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertPlanDat.PlanIndex2ClSet(CIPS.Express.ConvertDat.PLAN[])">
+            <summary>
+            流程索引转为数据集
+            </summary>
+            <param name="ps">流程索引数组</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertPlanDat.ClSet2PlanIndex(CIPS.ClSet)">
+            <summary>
+            数据集转为流程索引
+            </summary>
+            <param name="cs"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertPlanDat.Buf2Plan(System.Byte[])">
+            <summary>
+            反序列化
+            </summary>
+            <param name="buf">字节流</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertPlanDat.PlanIndex2Buf(CIPS.Express.ConvertDat.PLAN[])">
+            <summary>
+            序列化
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertPlanDat.Plan2Buf(CIPS.Express.ConvertDat.PLAN[])">
+            <summary>
+            序列化
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertPlanDat.Plan2CutsInfo(CIPS.Express.ConvertDat.PLAN)">
+            <summary>
+            转换为CIPS计划系统的流程结构
+            </summary>
+            <param name="p"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertPlanDat.ToCutType(System.Int32,System.Int32)">
+            <summary>
+            由CIPS计划系统方式工步类型转换
+            </summary>
+            <param name="coupflag">+/-</param>
+            <param name="cartype">CIPS工步类型</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertPlanDat.CutsInfo2Plan(CIPS.Connect.CutsInfo)">
+            <summary>
+            由CIPS计划系统流程结构转化
+            </summary>
+            <param name="ci"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertPlanDat.Ass2Buf(CIPS.Connect.MassInfo)">
+            <summary>
+            CIPS系统编组计划序列化
+            </summary>
+            <param name="mi"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.ConditionTranslate">
+            <summary>
+            条件分析
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConditionTranslate.#ctor(System.String)">
+            <summary>
+            条件分析
+            </summary>
+            <param name="txt">条件字符串</param>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConditionTranslate.ToString">
+            <summary>
+            条件描述
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ConditionTranslate.Value">
+            <summary>
+            逻辑值
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ConditionTranslate.Error">
+            <summary>
+            表达式错误
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ConditionTranslate.AllConditions">
+            <summary>
+            运算表达式集合
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.ConditionTranslate.Condition">
+            <summary>
+            运算表达式
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConditionTranslate.Condition.Value">
+            <summary>
+            表达式结果
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConditionTranslate.Condition.ToString">
+            <summary>
+            名称
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ConditionTranslate.Condition.ConditionField">
+            <summary>
+            条件变量
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ConditionTranslate.Condition.ConditionMethod">
+            <summary>
+            运算方法
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ConditionTranslate.Condition.ConditionValue">
+            <summary>
+            期望结果
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.MainInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.MainInfo.ToBytes(CIPS.Express.ConvertDat.MainInfo.Infomation)">
+            <summary>
+            
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.MainInfo.ToStruct(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.MainInfo.Infomation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.MainInfo.Infomation.timeCIPSRC">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.MainInfo.Infomation.timeCIPSPC">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.MainInfo.Infomation.timeCIPSPL">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.MainInfo.Infomation.toChart">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.MainInfo.Infomation.running">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.MainInfo.Infomation.plansum">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.MainInfo.Infomation.pushedPlan">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.MainInfo.Infomation.finishedPlan">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.MainInfo.Infomation.draftPlan">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CIPS.ClientCommand">
+            <summary>
+            客户端命令
+            </summary>
+        </member>
+        <member name="F:CIPS.ClientCommand.Cmd">
+            <summary>
+            命令
+            </summary>
+        </member>
+        <member name="F:CIPS.ClientCommand.StationCode">
+            <summary>
+            站码
+            </summary>
+        </member>
+        <member name="F:CIPS.ClientCommand.PostName">
+            <summary>
+            岗位
+            </summary>
+        </member>
+        <member name="F:CIPS.ClientCommand.Operator">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="F:CIPS.ClientCommand.Ip">
+            <summary>
+            客户端IP
+            </summary>
+        </member>
+        <member name="F:CIPS.ClientCommand.Note">
+            <summary>
+            注释
+            </summary>
+        </member>
+        <member name="F:CIPS.ClientCommand.CmdType">
+            <summary>
+            命令类型
+            </summary>
+        </member>
+        <member name="F:CIPS.ClientCommand.PackageID">
+            <summary>
+            包ID
+            </summary>
+        </member>
+        <member name="M:CIPS.ClientCommand.GetCommandType(System.Byte[])">
+            <summary>
+            获取字节流的对象名
+            </summary>
+            <param name="buf">字节流</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.ClientCommand.Serialize(CIPS.ClSet)">
+            <summary>
+            序列化
+            </summary>
+            <param name="cs">数据集</param>
+            <returns>字节流</returns>
+        </member>
+        <member name="M:CIPS.ClientCommand.Deserialize(System.Byte[])">
+            <summary>
+            反序列化
+            </summary>
+            <param name="b">字节流</param>
+            <returns>数据集</returns>
+        </member>
+        <member name="M:CIPS.ClientCommand.#ctor(System.Byte[])">
+            <summary>
+            构造函数
+            </summary>
+            <param name="buf"></param>
+        </member>
+        <member name="M:CIPS.ClientCommand.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.ConsList">
+            <summary>
+            确报目录集合
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.TdcsMode">
+            <summary>
+            TDCS模式
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.cons">
+            <summary>
+            确报目录数组
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ConsList.Item(System.Int32)">
+            <summary>
+            确报集合元素
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ConsList.Length">
+            <summary>
+            元素数
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.ConsList.Cons">
+            <summary>
+            确报目录
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.Cons.trainnum">
+            <summary>
+            车次
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.Cons.consid">
+            <summary>
+            确报ID
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.Cons.no">
+            <summary>
+            顺序
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.Cons.state">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.Cons.tid">
+            <summary>
+            线路
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.Cons.time">
+            <summary>
+            时刻
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.Cons.carcount">
+            <summary>
+            辆数
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.Cons.length">
+            <summary>
+            换长
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.Cons.weight">
+            <summary>
+            总重
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.Cons.locom">
+            <summary>
+            机车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.Cons.b_state">
+            <summary>
+            B_CONS_STATE
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.Cons.station">
+            <summary>
+            到站
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ConsList.Cons.stationID">
+            <summary>
+            到站ID
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ConsList.Cons.NonTrain">
+            <summary>
+            非列车
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.ConvertConsListDat">
+            <summary>
+            确报目录序列化
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertConsListDat.Struct2Buf(System.Collections.Generic.List{CIPS.Express.ConvertDat.ConsList.Cons},System.Int32,System.Byte)">
+            <summary>
+            序列化（过期）
+            </summary>
+            <param name="cons"></param>
+            <param name="datatype"></param>
+            <param name="TdcsMode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertConsListDat.Table2Buf(System.Data.DataRow[],System.Int32,System.Byte,System.Data.DataSet)">
+            <summary>
+            表序列化（过期）
+            </summary>
+            <param name="drs"></param>
+            <param name="datatype"></param>
+            <param name="TdcsMode"></param>
+            <param name="ds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertConsListDat.Table2Struct(System.Data.DataRow[],System.Int32,System.Data.DataSet)">
+            <summary>
+            表-结构（过期）
+            </summary>
+            <param name="drs"></param>
+            <param name="datatype"></param>
+            <param name="ds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertConsListDat.Buf2Struct(System.Byte[])">
+            <summary>
+            反序列化（过期）
+            </summary>
+            <param name="buf"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertConsListDat.ClTable2ConsList(CIPS.ClTable,CIPS.ClTable)">
+            <summary>
+            表-》结构
+            </summary>
+            <param name="ct">确报目录表</param>
+            <param name="ctinfo">含有TDCSMODE等内容的表</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertConsListDat.TrainTable2ClSet(System.Data.DataTable)">
+            <summary>
+            列车表-》确报目录表
+            </summary>
+            <param name="dt">列车表</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertConsListDat.ConsTable2ClSet(System.Data.DataSet,System.Byte,System.Data.DataSet)">
+            <summary>
+            到发确报目录表-》CLTABLE
+            </summary>
+            <param name="ds"></param>
+            <param name="tdcsmode"></param>
+            <param name="dsdict"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.Prompt">
+            <summary>
+            CIPS用户界面提示管理
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Prompt.#ctor(System.Data.DataTable)">
+            <summary>
+            初始化
+            </summary>
+            <param name="dt">DC_RA_PROMPT表</param>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Prompt.#ctor(CIPS.ClTable)">
+            <summary>
+            初始化
+            </summary>
+            <param name="ct">DC_RA_PROMPT表</param>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Prompt.Init(System.Data.DataTable)">
+            <summary>
+            重新初始化
+            </summary>
+            <param name="dt">DC_RA_PROMPT表</param>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Prompt.GetPrompt(System.String)">
+            <summary>
+            获取提示内容
+            </summary>
+            <param name="Note">模板字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Prompt.GetPrompt(System.String,System.Object[])">
+            <summary>
+            获取提示内容
+            </summary>
+            <param name="Note">模板字符串</param>
+            <param name="Param">参数</param>
+            <returns>返回对应的提示字符串</returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Prompt.GetPrompt(System.String,System.String,System.Object[])">
+            <summary>
+            获取提示内容
+            </summary>
+            <param name="Namespace">命名空间</param>
+            <param name="Note">模板字符串</param>
+            <param name="Param">参数</param>
+            <returns>返回对应的提示字符串</returns>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.Prompt.Version">
+            <summary>
+            版本
+            0:按顺序填参数
+            1:按%后的数值选择参数
+            </summary>
+        </member>
+        <member name="E:CIPS.Express.ConvertDat.Prompt.CannotFind">
+            <summary>
+            未找到
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.Prompt.OnePrompt">
+            <summary>
+            Prompt实例
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Prompt.OnePrompt.Namespace">
+            <summary>
+            命名空间
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Prompt.OnePrompt.accessname">
+            <summary>
+            索引名
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Prompt.OnePrompt.displayname">
+            <summary>
+            显示名
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Prompt.OnePrompt.chinesename">
+            <summary>
+            中文名
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.Prompt.PromptCannotFind">
+            <summary>
+            表中未找到
+            </summary>
+            <param name="prompt"></param>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.Command">
+            <summary>
+            Command 的摘要说明。
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_Car1">
+            <summary>
+            数据类型
+            现车1
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_Car2">
+            <summary>
+            数据类型
+            现车2
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_Car3">
+            <summary>
+            数据类型
+            现车3
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_MainTable">
+            <summary>
+            数据类型
+            总表
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_Plan">
+            <summary>
+            数据类型
+            流程内容
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_PlanIndex">
+            <summary>
+            数据类型
+            流程索引
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_Ass">
+            <summary>
+            数据类型
+            编组计划
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_ArrConsList">
+            <summary>
+            数据类型
+            到报目录
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_DepConsList">
+            <summary>
+            数据类型
+            发报目录
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_RealCar">
+            <summary>
+            数据类型
+            实时现车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_PlanCar">
+            <summary>
+            数据类型
+            计划现车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_PlanCarAndPlan">
+            <summary>
+            数据类型
+            计划现车及计划
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_AutoPrint">
+            <summary>
+            数据类型
+            自动打印
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_Ask4Print">
+            <summary>
+            数据类型
+            请求打印
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_YH5_1">
+            <summary>
+            数据类型
+            运货5-1
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_YH5_2">
+            <summary>
+            数据类型
+            运货5-2
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_CipsForceSave">
+            <summary>
+            数据类型
+            强制保存
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_CipsRepairPlan">
+            <summary>
+            数据类型
+            修补计划
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_CipsRestorePast">
+            <summary>
+            数据类型
+            故障恢复
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_BoothCmd_GoodsIn">
+            <summary>
+            数据类型-货位
+            进货
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_BoothCmd_GoodsOut">
+            <summary>
+            数据类型-货位
+            出货
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_BoothCmd_Finish">
+            <summary>
+            数据类型-货位
+            完结
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_BoothCmd_GoodsInStart">
+            <summary>
+            数据类型-货位
+            开始进货
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_BoothCmd_GoodsOutStart">
+            <summary>
+            数据类型-货位
+            开始出货
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_BoothCmd_LoadStart">
+            <summary>
+            数据类型-货位
+            开始装车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_BoothCmd_UnloadStart">
+            <summary>
+            数据类型-货位
+            开始卸车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_TranslateCarGroup">
+            <summary>
+            重新翻译组号
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.DataType_TranslateCarChara">
+            <summary>
+            重新翻译特征
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_Null">
+            <summary>
+            命令类型
+            无
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_CmdResponse">
+            <summary>
+            命令类型
+            命令返回状态
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_DeviceMan">
+            <summary>
+            命令类型
+            设备停用管理
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_SendCar">
+            <summary>
+            命令类型
+            后备系统广播现车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_SendPlanIndex">
+            <summary>
+            命令类型
+            后备系统广播计划头
+            过期
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_FindCar">
+            <summary>
+            命令类型
+            后备系统查找车辆命令
+            （过期）
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_SendRealCar">
+            <summary>
+            命令类型
+            CIPS系统广播实时现车
+            过期
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_SendPlanCar">
+            <summary>
+            CIPS系统广播计划现车
+            过期
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_SendAss">
+            <summary>
+            命令类型
+            发送集结的车次信息
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_MainInfo">
+            <summary>
+            命令类型
+            请求/发送后备系统总表
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_CarsWork_Update">
+            <summary>
+            命令类型
+            作业车相关命令-配合Datatype使用
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_CancelCarsWork_Update">
+            <summary>
+            命令类型
+            取消作业车相关命令
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_AskCars4Load">
+            <summary>
+            命令类型
+            申请现车（用于修改现车）
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_SendCars4Load">
+            <summary>
+            命令类型
+            发送现车（用于修改现车）
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_CarsLoaded">
+            <summary>
+            命令类型
+            装车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_MoveCars">
+            <summary>
+            命令类型
+            移动车辆
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_Ask1Plan">
+            <summary>
+            申请一个完整计划（为取消操作用）
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_PreLoad">
+            <summary>
+            预装车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_HoldupCars">
+            <summary>
+            命令类型
+            车辆拦截命令
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_AddCar">
+            <summary>
+            命令类型
+            添加一辆车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_DelCar">
+            <summary>
+            命令类型
+            删除一辆车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_AskCarsDetail">
+            <summary>
+            命令类型
+            申请现车详细
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_ReloadDictionary">
+            <summary>
+            命令类型
+            重新装入字典数据
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_GetAnalyzeDetail">
+            <summary>
+            命令类型
+            取实时分析详细
+            过期
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_NewPlan">
+            <summary>
+            命令类型
+            新建计划命令
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_LoadPlan">
+            <summary>
+            命令类型
+            发送计划正文
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_PrintPlan">
+            <summary>
+            命令类型
+            打印计划
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_AskPlans">
+            <summary>
+            命令类型
+            申请计划正文
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_SendPlans">
+            <summary>
+            命令类型
+            申请计划正文
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_AskTracksBeforePlan">
+            <summary>
+            命令类型
+            申请计划执行前的现车切面
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_AskFlowID">
+            <summary>
+            命令类型
+            申请流程ID
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_SplitPlan">
+            <summary>
+            命令类型
+            拆分勾计划
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_EditPlan">
+            <summary>
+            命令类型
+            请求编辑计划
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_PlanEnter">
+            <summary>
+            命令类型
+            报点
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_PlanPartEnter">
+            <summary>
+            命令类型
+            分步报点
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_PlanExit">
+            <summary>
+            命令类型
+            取消报点
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_PushPlan">
+            <summary>
+            命令类型
+            推入现车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_PopPlan">
+            <summary>
+            命令类型
+            取消推入
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_AskPlan">
+            <summary>
+            命令类型
+            申请计划
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_MovePlan">
+            <summary>
+            命令类型
+            移动计划
+            DataType==0:intdata[0]=被移流程，intdata[1]=参考流程
+            DataType==1:intdata=要调整的新的流程顺序
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_DeletePlan">
+            <summary>
+            命令类型
+            删除计划
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_ModifyFlowHead">
+            <summary>
+            命令类型
+            修改勾计划表头
+            time1=计划开始,time2=计划结束,time3=实际开始,time4=实际结束;
+            int1=FLOWID,int2=LOCOMID;string1=车次,string2=编制人
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_Send2Hump">
+            <summary>
+            命令类型
+            发送勾计划至驼峰
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_AskAllPlan4Hump">
+            <summary>
+            命令类型
+            驼峰申请全部计划
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_SplitStart">
+            <summary>
+            命令类型
+            溜放开始
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_SplitOver">
+            <summary>
+            命令类型
+            溜放结束
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_HumpLink">
+            <summary>
+            命令类型
+            驼峰连接报IP
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_SubmitPlan">
+            <summary>
+            命令类型
+            提交计划并推入现车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_SavePlan">
+            <summary>
+            命令类型
+            保存计划草稿
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_ModifyPlan">
+            <summary>
+            命令类型
+            修改计划
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_TrackToCons">
+            <summary>
+            命令类型
+            现车转确报
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_ConsToTrack">
+            <summary>
+            命令类型
+            确报转现车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_TrainDepart">
+            <summary>
+            命令类型
+            出发报点
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_TrainArrive">
+            <summary>
+            命令类型
+            到达报点
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_SendCons">
+            <summary>
+            命令类型
+            发报
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_ConsToTrackSuccess">
+            <summary>
+            命令类型
+            确报转现车成功回执
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_ApproveCons">
+            <summary>
+            命令类型
+            确报核准
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_DelConsArr">
+            <summary>
+            命令类型
+            删到报
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_DelConsDep">
+            <summary>
+            命令类型
+            删发报
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_NewConsArr">
+            <summary>
+            命令类型
+            新建到报
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_NewConsDep">
+            <summary>
+            命令类型
+            新建发报
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_UpdateCars">
+            <summary>
+            命令类型
+            修改现车
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_ModifyCarNum">
+            <summary>
+            命令类型
+            修改车号
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_CarsDetail">
+            <summary>
+            命令类型
+            申请/发送现车详细至毛玻璃
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_BoothCommand">
+            <summary>
+            命令类型
+            货位命令
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_HandOver">
+            <summary>
+            命令类型
+            交接班
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_ToOnLine">
+            <summary>
+            命令类型
+            转入在线
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_ToBackup">
+            <summary>
+            命令类型
+            转入值班
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_ToOnLineFromCIPS">
+            <summary>
+            命令类型
+            接管CIPS
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_TdcsMode">
+            <summary>
+            命令类型
+            选择是否使用TDCS操作
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_ToOnLineFromPast">
+            <summary>
+            命令类型
+            从原备份中接管
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_CipsRepair">
+            <summary>
+            命令类型
+            CIPS系统修复
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_ToChart">
+            <summary>
+            命令类型
+            后备系统数据技术作业图表写实
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.Cmd_PlanFromChart">
+            <summary>
+            命令类型
+            阶段计划流程
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Command.#ctor">
+            <summary>
+            命令
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Command.Serialize(CIPS.Express.ConvertDat.Command.ExpressCommand)">
+            <summary>
+            序列化
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Command.Deserialize(System.Byte[])">
+            <summary>
+            反序列化
+            </summary>
+            <param name="b"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.Command.ExpressCommand">
+            <summary>
+            后备系统操作命令
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.ExpressCommand.Cmd">
+            <summary>
+            命令类型
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.ExpressCommand.Datatype">
+            <summary>
+            数据类型
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.ExpressCommand.Workstation">
+            <summary>
+            工作区域
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.ExpressCommand.byteData">
+            <summary>
+            字节数据
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.ExpressCommand.intData">
+            <summary>
+            整数数据
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.ExpressCommand.strData">
+            <summary>
+            字符串数据
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.ExpressCommand.timeData">
+            <summary>
+            时间数据
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.ExpressCommand.postid">
+            <summary>
+            岗位
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.ExpressCommand.strs">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Command.ExpressCommand.note">
+            <summary>
+            注释
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Command.ExpressCommand.Serialize">
+            <summary>
+            序列化
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.Command.ExpressCommand.maker">
+            <summary>
+            操作人
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.Command.ExpressCommand.ip">
+            <summary>
+            IP
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.Command.ExpressCommand.trackname">
+            <summary>
+            线路
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.Command.ExpressCommand.carnum">
+            <summary>
+            车号
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.Command.ExpressCommand.trainnum">
+            <summary>
+            车次
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.Command.ExpressCommand.flowtype">
+            <summary>
+            操作类型
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.Command.ExpressCommand.postname">
+            <summary>
+            岗位
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.Command.ExpressCommand.stationcode">
+            <summary>
+            站码
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.TrainWnd">
+            <summary>
+            站场表示车次窗
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TrainWnd.infomations">
+            <summary>
+            车流信息
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TrainWnd.lineID">
+            <summary>
+            线路
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TrainWnd.linename">
+            <summary>
+            线路名
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TrainWnd.trainnum">
+            <summary>
+            车次
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TrainWnd.infomation">
+            <summary>
+            信息
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TrainWnd.weight">
+            <summary>
+            总重
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TrainWnd.length">
+            <summary>
+            换长
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TrainWnd.cnt">
+            <summary>
+            辆数
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TrainWnd.flag">
+            <summary>
+            标置
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.TrainWnd.Serialize(CIPS.Express.ConvertDat.TrainWnd[])">
+            <summary>
+            序列化
+            </summary>
+            <param name="wnds">车次窗</param>
+            <returns>字节流</returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.TrainWnd.Serialize(CIPS.Express.ConvertDat.TrainWnd[],System.Byte)">
+            <summary>
+            序列化
+            </summary>
+            <param name="wnds">车次窗</param>
+            <param name="color">颜色</param>
+            <returns>字节流</returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.TrainWnd.SerializeFromStruct(CIPS.Express.ConvertDat.TrainWnd[])">
+            <summary>
+            序列化（过期）
+            </summary>
+            <param name="wnds">车次窗</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.TrainWnd.Deserialize(System.Byte[])">
+            <summary>
+            反序列化
+            </summary>
+            <param name="b">字节流</param>
+            <returns>车次窗</returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.TrainWnd.Deserialize(System.Byte[],System.Byte@)">
+            <summary>
+            反序列化
+            </summary>
+            <param name="b">字节流</param>
+            <param name="color">报警颜色</param>
+            <returns>车次窗</returns>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.TrainWnd.Count">
+            <summary>
+            辆数
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.TrainWnd.Set_Clear">
+            <summary>
+            设置/清除
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.TrainWnd.Lock">
+            <summary>
+            锁定
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.TrainWnd.EnableTrainDir">
+            <summary>
+            有列车方向
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.TrainWnd.TrainDir">
+            <summary>
+            列车方向
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.TrainWnd.CarInfomation">
+            <summary>
+            车流信息
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TrainWnd.CarInfomation.dir">
+            <summary>
+            方向
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TrainWnd.CarInfomation.cnt">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.CAR">
+            <summary>
+            车辆
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CAR.CarNum">
+            <summary>
+            整数位表示的车号
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.CAR.CarCoFromCarNum(System.UInt32)">
+            <summary>
+            根据车号编码获取车号
+            </summary>
+            <param name="_CarNum">车号编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.CAR.CarNumFromCarCo(System.String)">
+            <summary>
+            根据车号获取车号编码
+            </summary>
+            <param name="_CarCo">车号</param>
+            <returns></returns>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CAR.inhere">
+            <summary>
+            存在本线
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CAR.car_attr">
+            <summary>
+            其它属性
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CAR.cddnote">
+            <summary>
+            文本内容
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.CAR.carRow">
+            <summary>
+            车辆表的行
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.CAR.CopyFrom(CIPS.Express.ConvertDat.CAR)">
+            <summary>
+            复制
+            </summary>
+            <param name="c"></param>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.CAR.GetDescFromCode(System.Int32)">
+            <summary>
+            根据编码获取车号字符表示
+            </summary>
+            <param name="code">编码</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.CAR.GetCodeFromDesc(System.String)">
+            <summary>
+            根据车号字符表示获取编码
+            </summary>
+            <param name="desc">字符表示</param>
+            <returns></returns>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.oriid">
+            <summary>
+            原始ID
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.id">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.CarCo">
+            <summary>
+            车号,
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.ver">
+            <summary>
+            版本号
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.dir">
+            <summary>
+            组号
+            </summary>      
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.station">
+            <summary>
+            到站
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.goods">
+            <summary>
+            品名
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.length">
+            <summary>
+            换长
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.feature_enum">
+            <summary>
+            特征枚举
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.feature_bit">
+            <summary>
+            BIT特征
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.feature_state">
+            <summary>
+            特征状态
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.weight">
+            <summary>
+            总重
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.oiltype">
+            <summary>
+            油种
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.sender">
+            <summary>
+            发货人
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.receiver">
+            <summary>
+            收货人
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.cartype">
+            <summary>
+            车种
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.Ecartype">
+            <summary>
+            杂类码定义的车种类别
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.note">
+            <summary>
+            记事栏
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.cover1">
+            <summary>
+            棚布1
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.cover2">
+            <summary>
+            棚布2
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.cover3">
+            <summary>
+            棚布3
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.trainnumarr">
+            <summary>
+            到达车次
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.stationdep">
+            <summary>
+            发站
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.limitspeed">
+            <summary>
+            限速
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.arrtime">
+            <summary>
+            到达时刻
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.real">
+            <summary>
+            原有的
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.Empty">
+            <summary>
+            是否为空车
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.Enterprise">
+            <summary>
+            是否为自备车
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.Factory">
+            <summary>
+            是否为厂内车
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.CAR.removed">
+            <summary>
+            已删除（过期）
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.TRACK">
+            <summary>
+            线路
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TRACK.Buildup_Sig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TRACK.Buildup_Pri">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TRACK.Buildup_Ass">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TRACK.VirtualLocomCount">
+            <summary>
+            虚拟机车数
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TRACK.id">
+            <summary>
+            线路ID
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TRACK.trainnum">
+            <summary>
+            车次
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TRACK.cars">
+            <summary>
+            车辆集合
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TRACK.zero">
+            <summary>
+            停车器位置
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.TRACK.stat">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.TRACK.#ctor">
+            <summary>
+            线路
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.TRACK.CopyFrom(CIPS.Express.ConvertDat.TRACK)">
+            <summary>
+            复制
+            </summary>
+            <param name="t"></param>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.TRACK.Clear">
+            <summary>
+            清除车辆
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.TRACK.IsStream">
+            <summary>
+            是否为车流（过期）
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.TRACK.LockHump">
+            <summary>
+            封锁
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.TRACK.LockTN">
+            <summary>
+            锁定车次
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.TRACK.DisableTN">
+            <summary>
+            车次无效（过期）
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.TRACK.canPush">
+            <summary>
+            过期
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.ConvertTrackDat">
+            <summary>
+            序列化线路数据
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.Buf2Struct(System.Byte[])">
+            <summary>
+            反序列化（过期）
+            </summary>
+            <param name="buf"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.Struct2Buf(CIPS.Express.ConvertDat.TRACK[],System.Int32)">
+            <summary>
+            序列化（过期）
+            </summary>
+            <param name="t"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.DataTable2Buf(System.Data.DataTable,System.Data.DataTable)">
+            <summary>
+            序列化
+            </summary>
+            <param name="dtLine">DM_RA_LINE</param>
+            <param name="dtCars">DM_CC_RCARS</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.DataTable2Buf(System.Data.DataTable,System.Data.DataTable,System.Int32[])">
+            <summary>
+            序列化
+            </summary>
+            <param name="dtLine">DM_RA_LINE</param>
+            <param name="dtCars">DM_CC_RCARS</param>
+            <param name="tsorg">排序顺序</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.DataTable2Buf(System.Data.DataTable,System.Data.DataTable,System.Int32[],System.Boolean)">
+            <summary>
+            序列化
+            </summary>
+            <param name="dtLine">DM_RA_LINE</param>
+            <param name="dtCars">DM_CC_RCARS</param>
+            <param name="tsorg">排序顺序</param>
+            <param name="all">包括无车线</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.PlanLine2Buf(CIPS.Connect.CarProfile)">
+            <summary>
+            CIPS计划系统结构序列化
+            </summary>
+            <param name="line"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.PlanLine2Buf(CIPS.Connect.CarProfile,System.Int32,CIPS.Connect.MassInfo,System.Int32[])">
+            <summary>
+            CIPS计划系统结构序列化
+            </summary>
+            <param name="line"></param>
+            <param name="datatype"></param>
+            <param name="mi"></param>
+            <param name="tsorg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.PlanLine2ClSet(CIPS.Connect.CarProfile,System.Int32,CIPS.Connect.MassInfo,System.Int32[])">
+            <summary>
+            CIPS计划系统计划场结构转为CL数据集
+            </summary>
+            <param name="line"></param>
+            <param name="datatype"></param>
+            <param name="mi"></param>
+            <param name="tsorg"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.DataTable2ClSet(System.Data.DataTable,System.Data.DataTable,System.Int32[],System.Boolean)">
+            <summary>
+            CIPS计划系统实际场表转为CL数据集
+            </summary>
+            <param name="dtLine"></param>
+            <param name="dtCars"></param>
+            <param name="tsorg"></param>
+            <param name="all"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.Tracks2ClSet(CIPS.Express.ConvertDat.TRACK[])">
+            <summary>
+            结构转为CL数据集
+            </summary>
+            <param name="ts">线路集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.Tracks2ClSet(CIPS.Express.ConvertDat.TRACK[],System.Int32)">
+            <summary>
+            结构转为CL数据集
+            </summary>
+            <param name="ts">线路集合</param>
+            <param name="mode">方式</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.ClSet2Track(CIPS.ClSet)">
+            <summary>
+            CL数据集转为结构
+            </summary>
+            <param name="cs">CL数据集</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.#ctor(CIPS.Express.ConvertDat.TRACK[])">
+            <summary>
+            线路结构转换
+            </summary>
+            <param name="ts">线路顺序</param>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.AdjustTrackOrder(CIPS.Express.ConvertDat.TRACK[])">
+            <summary>
+            调整顺序
+            </summary>
+            <param name="ts0">原线路集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.AdjustTrackOrder(CIPS.Express.ConvertDat.TRACK[],System.Int32[])">
+            <summary>
+            调整顺序
+            </summary>
+            <param name="ts0">原线路集合</param>
+            <param name="lineid">新顺序</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ConvertTrackDat.AdjustTrackOrder(CIPS.Express.ConvertDat.TRACK[],CIPS.Express.ConvertDat.TRACK[])">
+            <summary>
+            调整顺序
+            </summary>
+            <param name="ts0">原线路集合</param>
+            <param name="tsorg">新顺序</param>
+            <returns></returns>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.BackupCar">
+            <summary>
+            备用车
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.BackupCar.Name(System.Int32)">
+            <summary>
+            获取名称
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.BackupCar.Content(System.Int32)">
+            <summary>
+            获取内容
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.BackupCar.Count">
+            <summary>
+            数量
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.BackupCar.Item">
+            <summary>
+            内容
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.BackupCar.Item.name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.BackupCar.Item.bit">
+            <summary>
+            是否为BIT
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.BackupCar.Item.value">
+            <summary>
+            值
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.BackupCar.Item.#ctor(System.String,System.Boolean,System.UInt32)">
+            <summary>
+            
+            </summary>
+            <param name="na"></param>
+            <param name="b"></param>
+            <param name="v"></param>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.ClassiTrack">
+            <summary>
+            编组计划
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ClassiTrack.track">
+            <summary>
+            线路
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ClassiTrack.classiid">
+            <summary>
+            编组计划ID
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ClassiTrack.trainnum">
+            <summary>
+            车次
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ClassiTrack.classiname">
+            <summary>
+            编组计划名
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ClassiTrack.state">
+            <summary>
+            状态
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ClassiTrack.stationCode">
+            <summary>
+            站码
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ClassiTrack.type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ClassiTrack.carcount">
+            <summary>
+            辆数上下限
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ClassiTrack.weight">
+            <summary>
+            总重上下限
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ClassiTrack.length">
+            <summary>
+            换长上下限
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.ClassiTrack.groups">
+            <summary>
+            组号
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.ClassiTrack.ToString">
+            <summary>
+            说明
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ClassiTrack.Empty">
+            <summary>
+            是否为空
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ClassiTrack.Part">
+            <summary>
+            是否为部分
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ClassiTrack.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ClassiTrack.Manual">
+            <summary>
+            人工标置
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ClassiTrack.Exchange">
+            <summary>
+            交流车
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.ClassiTrack.Confusion">
+            <summary>
+            乱车
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.LocomInfoList">
+            <summary>
+            调车位置集合
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.LocomInfoList.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.LocomInfoList.#ctor(CIPS.ClSet)">
+            <summary>
+            
+            </summary>
+            <param name="cs"></param>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.LocomInfoList.#ctor(System.Byte[])">
+            <summary>
+            
+            </summary>
+            <param name="buf"></param>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.LocomInfoList.Serialize">
+            <summary>
+            序列化
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.LocomInfoList.SystemState">
+            <summary>
+            调机自动化系统状态
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.LocomInfoList.Item(System.String)">
+            <summary>
+            机车元素
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.LocomInfoList.Locom">
+            <summary>
+            调机
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.LocomInfoList.Locom.LocomName">
+            <summary>
+            调机名
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.LocomInfoList.Locom.SectionName">
+            <summary>
+            所在区段名
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.LocomInfoList.Locom.Speed">
+            <summary>
+            速度
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.LocomInfoList.Locom.Location">
+            <summary>
+            位置
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.LocomInfoList.Locom.Auto">
+            <summary>
+            是否为自动驾驶
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.LocomInfoList.Locom.Error">
+            <summary>
+            故障
+            </summary>
+        </member>
+        <member name="P:CIPS.Express.ConvertDat.LocomInfoList.Locom.Direction">
+            <summary>
+            方向
+            </summary>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.Tools">
+            <summary>
+            Tools 的摘要说明。
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.GetUnicodeString(System.Byte[],System.Int32@)">
+            <summary>
+            将字节流以Unicode方式转为字符串
+            </summary>
+            <param name="buf">数据块</param>
+            <param name="off">偏移量</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.GetUnicodeString(System.Byte[],System.Int32)">
+            <summary>
+            将字节流以Unicode方式转为字符串
+            </summary>
+            <param name="buf">数据块</param>
+            <param name="off">偏移量</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.FillUnicodeString(System.String,System.Byte[],System.Int32@)">
+            <summary>
+            将字符串以Unicode方式填入字节块
+            </summary>
+            <param name="s">字符串</param>
+            <param name="buf">数据块</param>
+            <param name="off">偏移量</param>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.Byte2String(System.Byte[],System.Int32@)">
+            <summary>
+            以0结尾的字符串
+            </summary>
+            <param name="buf">字节流</param>
+            <param name="off">偏移量</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.GetByteCountFromString(System.String)">
+            <summary>
+            获取字符串的实际占位长度
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.String2Byte(System.String,System.Byte[],System.Int32@)">
+            <summary>
+            将字符串转为以0结束的字节流
+            </summary>
+            <param name="s"></param>
+            <param name="buf"></param>
+            <param name="off"></param>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.String2Byte(System.String,System.Int32)">
+            <summary>
+            字符串约定最大长度
+            </summary>
+            <param name="s"></param>
+            <param name="maxlen"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.Byte2Time(System.Byte[],System.Int32)">
+            <summary>
+            字节流-》时间
+            </summary>
+            <param name="buf"></param>
+            <param name="off"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.Time2Byte(System.DateTime)">
+            <summary>
+            时间-》字节流
+            </summary>
+            <param name="t"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.BufferEquals(System.Byte[],System.Byte[])">
+            <summary>
+            比较两内存块是否相等
+            </summary>
+            <param name="buffer1"></param>
+            <param name="buffer2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.MemCmp(System.Byte[],System.Int32,System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            内存比较
+            </summary>
+            <param name="src"></param>
+            <param name="srcOffset"></param>
+            <param name="dst"></param>
+            <param name="dstOffset"></param>
+            <param name="count"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.GetCRC16(System.Byte[],System.UInt16)">
+            <summary>
+            获取16位CRC校验码
+            </summary>
+            <param name="data">数据流</param>
+            <param name="vcode">CRC多项式</param>
+            <returns></returns>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.Tools.ID_NAME">
+            <summary>
+            ID-》名称
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Tools.ID_NAME.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Tools.ID_NAME.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.ID_NAME.#ctor(System.Int32,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+        </member>
+        <member name="T:CIPS.Express.ConvertDat.Tools.ID2NAME">
+            <summary>
+            ID-》名称
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Tools.ID2NAME.type_线路">
+            <summary>
+            类型
+            线路
+            </summary>
+        </member>
+        <member name="F:CIPS.Express.ConvertDat.Tools.ID2NAME.type_组号">
+            <summary>
+            类型
+            组号
+            </summary>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.ID2NAME.AddItem(System.Int32,System.String,System.String,System.Byte)">
+            <summary>
+            添加内容
+            </summary>
+            <param name="id"></param>
+            <param name="name"></param>
+            <param name="fullname"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.ID2NAME.GetName(System.Int32)">
+            <summary>
+            获取名称
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.ID2NAME.GetName(System.Int32,System.Byte)">
+            <summary>
+            跟据类型获取名称
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.ID2NAME.GetFullname(System.Int32)">
+            <summary>
+            获取全名
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Express.ConvertDat.Tools.ID2NAME.GetFullname(System.Int32,System.Byte)">
+            <summary>
+            跟据类型获取全名
+            </summary>
+            <param name="id"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CIPS.ClRow">
+            <summary>
+            CL行!
+            </summary>
+        </member>
+        <member name="F:CIPS.ClRow.Tag">
+            <summary>
+            相关对象
+            </summary>
+        </member>
+        <member name="M:CIPS.ClRow.#ctor(System.Data.DataRow,CIPS.ClTable)">
+            <summary>
+            构造ClRow!
+            无!
+            DataRow dr = 行原形,table = 所属表
+            </summary>
+        </member>
+        <member name="M:CIPS.ClRow.#ctor(System.Data.DataRowView,CIPS.ClTable)">
+            <summary>
+            构造ClRow!
+            </summary>
+            <param name="dr">行</param>
+            <param name="table">表</param>
+        </member>
+        <member name="M:CIPS.ClRow.#ctor(CIPS.ClTable)">
+            <summary>
+            构造ClRow!
+            无!
+            table = 所属表
+            </summary>
+        </member>
+        <member name="F:CIPS.ClRow.Table">
+            <summary>
+            所属表
+            </summary>
+        </member>
+        <member name="M:CIPS.ClRow.RemoveColumn(System.Int32)">
+            <summary>
+            删除列
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="P:CIPS.ClRow.Item(System.Int32)">
+            <summary>
+            返回行中对应的字段!
+            无!
+            i = 字段索引
+            </summary>
+        </member>
+        <member name="P:CIPS.ClRow.Item(System.String)">
+            <summary>
+            返回行中对应的字段!
+            无!
+            field = 字段名
+            </summary>
+        </member>
+        <member name="T:CIPS.ClTable">
+            <summary>
+            CL表!
+            </summary>
+        </member>
+        <member name="F:CIPS.ClTable.Rows">
+            <summary>
+            表中行的集合!
+            无!
+            无
+            </summary>
+        </member>
+        <member name="F:CIPS.ClTable.Tag">
+            <summary>
+            相关对象
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.GetDataTable">
+            <summary>
+            返回原形表
+            无!
+            无
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.isClTable(System.Byte[],System.Int32)">
+            <summary>
+            字节流是否为ClTable
+            </summary>
+            <param name="buf">字节流</param>
+            <param name="offset">偏移量</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.ClTable.#ctor(System.Data.DataRow[])">
+            <summary>
+            CL表!
+            drs = 行数组
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.#ctor(System.Data.DataTable)">
+            <summary>
+            CL表!
+            dt = 原形表
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.#ctor(System.Data.DataTable,System.Boolean)">
+            <summary>
+            CL表!
+            dt = 原形表
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.#ctor(System.Data.DataTable,System.Boolean,System.Boolean)">
+            <summary>
+            表
+            </summary>
+            <param name="dt">DataTable</param>
+            <param name="fillrows">是否添加记录</param>
+            <param name="rowstatus">是否包括记录状态</param>
+        </member>
+        <member name="M:CIPS.ClTable.#ctor(System.Byte[])">
+            <summary>
+            CL表!
+            buf = 字节流
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.#ctor(System.Byte[],System.Int32@)">
+            <summary>
+            CL表!
+            buf = 字节流, offset = 偏移值
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.#ctor(System.String)">
+            <summary>
+            CL表!
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.Clone">
+            <summary>
+            Clone表结构
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.ClTable.GetColumnIndex(System.String)">
+            <summary>
+            获取列索引
+            </summary>
+            <param name="columnname">列名</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.ClTable.AddColumn(System.String,System.Type)">
+            <summary>
+            添加列
+            columnname:列名,type:数据类型
+            行数为0时才能添加列
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.RemoveColumn(System.String)">
+            <summary>
+            删除列
+            </summary>
+            <param name="column">列名</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.ClTable.RemoveColumn(System.Int32)">
+            <summary>
+            删除列
+            </summary>
+            <param name="index">索引</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.ClTable.NewRow">
+            <summary>
+            返回属于该表的新行!
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.Select(System.String,System.String,System.Object)">
+            <summary>
+            返回符合条件的行!
+            无!
+            field = 字段名, filterExpression = ">,>= ... ",value = 值
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.Select(System.String,System.String,System.Object,System.String)">
+            <summary>
+            返回符合条件的行!
+            无!
+            field = 字段名, filterExpression = ">,>= ... ",value = 值, sort = 排序
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.Select(System.String,System.String)">
+            <summary>
+            返回符合条件的行!
+            同 DataTable
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.Select(System.String)">
+            <summary>
+            返回符合条件的行!
+            同 DataTable
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.Select(CIPS.ClRow[],System.String,System.String,System.Object)">
+            <summary>
+            在行数组中返回符合条件的行!
+            无!
+            field = 字段名, filterExpression = ">,>=...",value = 值
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.Select(CIPS.ClRow[],System.String,System.String,System.Object,System.String)">
+            <summary>
+            在行数组中返回符合条件的行!
+            无!
+            field = 字段名, filterExpression = ">,>=,IN,...",value = 值, orderby = 按照此字段排序
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.Sort(CIPS.ClRow[],System.String)">
+            <summary>
+            排序
+            无!
+            rows = 行数组, orderby = 按照此字段排序
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.SortBy(System.String)">
+            <summary>
+            表重新排序
+            无!
+            orderby = 按照此字段排序
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.Serialize">
+            <summary>
+            序列化本表
+            无!
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.ClTable.CopyFrom(CIPS.ClTable)">
+            <summary>
+            复制表
+            无!
+            cltable = 原表
+            </summary>
+        </member>
+        <member name="P:CIPS.ClTable.TableName">
+            <summary>
+            表名!
+            无!
+            无
+            </summary>
+        </member>
+        <member name="P:CIPS.ClTable.Columns">
+            <summary>
+            表列集合
+            无!
+            无
+            </summary>
+        </member>
+        <member name="P:CIPS.ClTable.PrimaryKey">
+            <summary>
+            主键
+            </summary>
+        </member>
+        <member name="P:CIPS.ClTable.Item(System.String,System.String,System.Object)">
+            <summary>
+            返回符合条件的行!
+            无!
+            field = 字段名, filterExpression = ">,>= ... ",value = 值
+            </summary>
+        </member>
+        <member name="P:CIPS.ClTable.Orderby">
+            <summary>
+            orderby = 按照此字段排序
+            无!
+            orderby = 按照此字段排序
+            </summary>
+        </member>
+        <member name="T:CIPS.ClSet">
+            <summary>
+            CL数据集
+            </summary>
+        </member>
+        <member name="F:CIPS.ClSet.ClSetVersion">
+            <summary>
+            CL数据集版本
+            </summary>
+        </member>
+        <member name="F:CIPS.ClSet.Tag">
+            <summary>
+            相关对象
+            </summary>
+        </member>
+        <member name="M:CIPS.ClSet.#ctor">
+            <summary>
+            CL数据集
+            </summary>
+        </member>
+        <member name="M:CIPS.ClSet.#ctor(System.Data.DataSet)">
+            <summary>
+            CL数据集
+            </summary>
+            <param name="ds">数据集</param>
+        </member>
+        <member name="M:CIPS.ClSet.#ctor(System.Byte[])">
+            <summary>
+            CL数据集
+            </summary>
+            <param name="buf">字节流</param>
+        </member>
+        <member name="M:CIPS.ClSet.#ctor(System.Byte[],System.Int32)">
+            <summary>
+            CL数据集
+            </summary>
+            <param name="buf">字节流</param>
+            <param name="offset">偏移量</param>
+        </member>
+        <member name="M:CIPS.ClSet.isClSet(System.Byte[],System.Int32)">
+            <summary>
+            是否为CL数据集
+            </summary>
+            <param name="buf">字节流</param>
+            <param name="offset">偏移量</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.ClSet.GetID(System.Byte[])">
+            <summary>
+            获取CL数据集ID
+            </summary>
+            <param name="buf">字节流</param>
+            <returns></returns>
+        </member>
+        <member name="F:CIPS.ClSet.ID">
+            <summary>
+            数据集标识
+            </summary>
+        </member>
+        <member name="M:CIPS.ClSet.Serialize">
+            <summary>
+            序列化本数据集
+            无!
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.ClSet.Serialize(System.Int32)">
+            <summary>
+            序列化
+            </summary>
+            <param name="offset">偏移量</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.ClSet.CopyFrom(CIPS.ClSet)">
+            <summary>
+            完全复制
+            </summary>
+            <param name="cs">源CL数据集</param>
+        </member>
+        <member name="M:CIPS.ClSet.GetDataSet">
+            <summary>
+            攻取DataSet数据集
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.ClSet.WriteToFile(System.String)">
+            <summary>
+            写入文件
+            </summary>
+            <param name="filename">文件名</param>
+            <returns>成功返回TRUE</returns>
+        </member>
+        <member name="P:CIPS.ClSet.Tables">
+            <summary>
+            表的集合
+            </summary>
+        </member>
+        <member name="T:CIPS.ClSet.TableCollection">
+            <summary>
+            表的集合
+            </summary>
+        </member>
+        <member name="P:CIPS.ClSet.TableCollection.Item(System.String)">
+            <summary>
+            表
+            </summary>
+            <param name="TableName">表名</param>
+            <returns>表</returns>
+        </member>
+    </members>
+</doc>

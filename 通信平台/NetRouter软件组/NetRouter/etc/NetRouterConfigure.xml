@@ -1,0 +1,32 @@
+<NetRouter>
+	<LocalAddr>
+		<bureau_code>8</bureau_code>
+		<unit_type>center</unit_type>
+		<unit_id>0</unit_id>
+		<!--dev_type> 0 </dev_type-->
+		<!--dev_id> 0 </dev_id-->
+	</LocalAddr>
+	<InNeT>
+		<NetAddr>
+			<ip1>191.168.99.98</ip1>
+			<port1>9003</port1>
+			<ip2>10.2.48.123</ip2>
+			<port2>9005</port2>
+		</NetAddr>
+		<Config>
+			<receive_thread_num>8</receive_thread_num>
+			<send_thread_num>4</send_thread_num>
+			<client_links>100</client_links>
+			<patrol_duration>3</patrol_duration>
+		</Config>
+	</InNeT>
+	<OutNet>
+		<svrIP>191.168.99.98</svrIP>
+		<svrPort>9001</svrPort>
+		<remote>
+			<!--必须配置，所需连入的服务器ip和端口号 -->
+			<server_ip> 191.168.99.98  </server_ip>
+			<server_port> 9002 </server_port>
+		</remote>
+	</OutNet>
+</NetRouter>

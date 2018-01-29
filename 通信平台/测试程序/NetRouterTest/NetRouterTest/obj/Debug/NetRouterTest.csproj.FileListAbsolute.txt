@@ -1,0 +1,14 @@
+E:\test\NetRouterTest\NetRouterTest\bin\Debug\NetRouterTest.exe.config
+E:\test\NetRouterTest\NetRouterTest\bin\Debug\NetRouterTest.exe
+E:\test\NetRouterTest\NetRouterTest\bin\Debug\NetRouterTest.pdb
+E:\test\NetRouterTest\NetRouterTest\bin\Debug\NetRouterClient.dll
+E:\test\NetRouterTest\NetRouterTest\obj\Debug\NetRouterTest.exe
+E:\test\NetRouterTest\NetRouterTest\obj\Debug\NetRouterTest.pdb
+E:\test\NetRouterTest\NetRouterTest\obj\Debug\NetRouterTest.csprojResolveAssemblyReference.cache
+E:\成都封闭开发\程序\通信平台\测试程序\NetRouterTest\NetRouterTest\bin\Debug\NetRouterTest.exe.config
+E:\成都封闭开发\程序\通信平台\测试程序\NetRouterTest\NetRouterTest\obj\Debug\NetRouterTest.exe
+E:\成都封闭开发\程序\通信平台\测试程序\NetRouterTest\NetRouterTest\obj\Debug\NetRouterTest.pdb
+E:\成都封闭开发\程序\通信平台\测试程序\NetRouterTest\NetRouterTest\bin\Debug\NetRouterTest.exe
+E:\成都封闭开发\程序\通信平台\测试程序\NetRouterTest\NetRouterTest\bin\Debug\NetRouterTest.pdb
+E:\成都封闭开发\程序\通信平台\测试程序\NetRouterTest\NetRouterTest\bin\Debug\NetRouterClient.dll
+E:\成都封闭开发\程序\通信平台\测试程序\NetRouterTest\NetRouterTest\obj\Debug\NetRouterTest.csprojResolveAssemblyReference.cache

@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetClTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tablename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="param" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dbindex" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClTableResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tablename" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="param" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dbindex" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTableResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTables">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tablenames1" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="tablenames2" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTablesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTablesResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastModifyTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tablename" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dbindex" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLastModifyTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetLastModifyTimeResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteSqlCommand">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cmdstr" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dbindex" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteSqlCommandResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExecuteSqlCommandResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteStoredProcedure">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cmdstr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="param" type="tns:ArrayOfOleDbParameter" />
+            <s:element minOccurs="1" maxOccurs="1" name="dbindex" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOleDbParameter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OleDbParameter" nillable="true" type="tns:OleDbParameter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OleDbParameter">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:DbParameter">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="OleDbType" type="tns:OleDbType" />
+              <s:element minOccurs="0" maxOccurs="1" default="0" name="Precision" type="s:unsignedByte" />
+              <s:element minOccurs="0" maxOccurs="1" default="0" name="Scale" type="s:unsignedByte" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DbParameter" abstract="true">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:MarshalByRefObject">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="DbType" type="tns:DbType" />
+              <s:element minOccurs="0" maxOccurs="1" default="Input" name="Direction" type="tns:ParameterDirection" />
+              <s:element minOccurs="1" maxOccurs="1" name="IsNullable" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" default="" name="ParameterName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Size" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" default="" name="SourceColumn" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" default="false" name="SourceColumnNullMapping" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" default="Current" name="SourceVersion" type="tns:DataRowVersion" />
+              <s:element minOccurs="0" maxOccurs="1" name="Value" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MarshalByRefObject" abstract="true" />
+      <s:simpleType name="DbType">
+        <s:restriction base="s:string">
+          <s:enumeration value="AnsiString" />
+          <s:enumeration value="Binary" />
+          <s:enumeration value="Byte" />
+          <s:enumeration value="Boolean" />
+          <s:enumeration value="Currency" />
+          <s:enumeration value="Date" />
+          <s:enumeration value="DateTime" />
+          <s:enumeration value="Decimal" />
+          <s:enumeration value="Double" />
+          <s:enumeration value="Guid" />
+          <s:enumeration value="Int16" />
+          <s:enumeration value="Int32" />
+          <s:enumeration value="Int64" />
+          <s:enumeration value="Object" />
+          <s:enumeration value="SByte" />
+          <s:enumeration value="Single" />
+          <s:enumeration value="String" />
+          <s:enumeration value="Time" />
+          <s:enumeration value="UInt16" />
+          <s:enumeration value="UInt32" />
+          <s:enumeration value="UInt64" />
+          <s:enumeration value="VarNumeric" />
+          <s:enumeration value="AnsiStringFixedLength" />
+          <s:enumeration value="StringFixedLength" />
+          <s:enumeration value="Xml" />
+          <s:enumeration value="DateTime2" />
+          <s:enumeration value="DateTimeOffset" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ParameterDirection">
+        <s:restriction base="s:string">
+          <s:enumeration value="Input" />
+          <s:enumeration value="Output" />
+          <s:enumeration value="InputOutput" />
+          <s:enumeration value="ReturnValue" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="DataRowVersion">
+        <s:restriction base="s:string">
+          <s:enumeration value="Original" />
+          <s:enumeration value="Current" />
+          <s:enumeration value="Proposed" />
+          <s:enumeration value="Default" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="OleDbType">
+        <s:restriction base="s:string">
+          <s:enumeration value="BigInt" />
+          <s:enumeration value="Binary" />
+          <s:enumeration value="Boolean" />
+          <s:enumeration value="BSTR" />
+          <s:enumeration value="Char" />
+          <s:enumeration value="Currency" />
+          <s:enumeration value="Date" />
+          <s:enumeration value="DBDate" />
+          <s:enumeration value="DBTime" />
+          <s:enumeration value="DBTimeStamp" />
+          <s:enumeration value="Decimal" />
+          <s:enumeration value="Double" />
+          <s:enumeration value="Empty" />
+          <s:enumeration value="Error" />
+          <s:enumeration value="Filetime" />
+          <s:enumeration value="Guid" />
+          <s:enumeration value="IDispatch" />
+          <s:enumeration value="Integer" />
+          <s:enumeration value="IUnknown" />
+          <s:enumeration value="LongVarBinary" />
+          <s:enumeration value="LongVarChar" />
+          <s:enumeration value="LongVarWChar" />
+          <s:enumeration value="Numeric" />
+          <s:enumeration value="PropVariant" />
+          <s:enumeration value="Single" />
+          <s:enumeration value="SmallInt" />
+          <s:enumeration value="TinyInt" />
+          <s:enumeration value="UnsignedBigInt" />
+          <s:enumeration value="UnsignedInt" />
+          <s:enumeration value="UnsignedSmallInt" />
+          <s:enumeration value="UnsignedTinyInt" />
+          <s:enumeration value="VarBinary" />
+          <s:enumeration value="VarChar" />
+          <s:enumeration value="Variant" />
+          <s:enumeration value="VarNumeric" />
+          <s:enumeration value="VarWChar" />
+          <s:enumeration value="WChar" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ExecuteStoredProcedureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExecuteStoredProcedureResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataTableBySqlCommand">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cmdstr" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dbindex" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataTableBySqlCommandResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDataTableBySqlCommandResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClTableBySqlCommand">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cmdstr" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dbindex" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClTableBySqlCommandResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClTableBySqlCommandResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="b" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="dbindex" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateTableResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetClTableSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClTable" />
+  </wsdl:message>
+  <wsdl:message name="GetClTableSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTableSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTable" />
+  </wsdl:message>
+  <wsdl:message name="GetTableSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTableResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTablesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTables" />
+  </wsdl:message>
+  <wsdl:message name="GetTablesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLastModifyTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLastModifyTime" />
+  </wsdl:message>
+  <wsdl:message name="GetLastModifyTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLastModifyTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteSqlCommandSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuteSqlCommand" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteSqlCommandSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuteSqlCommandResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteStoredProcedureSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuteStoredProcedure" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteStoredProcedureSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuteStoredProcedureResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDataTableBySqlCommandSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDataTableBySqlCommand" />
+  </wsdl:message>
+  <wsdl:message name="GetDataTableBySqlCommandSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDataTableBySqlCommandResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClTableBySqlCommandSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClTableBySqlCommand" />
+  </wsdl:message>
+  <wsdl:message name="GetClTableBySqlCommandSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClTableBySqlCommandResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTableSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateTable" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTableSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateTableResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="GetClTable">
+      <wsdl:input message="tns:GetClTableSoapIn" />
+      <wsdl:output message="tns:GetClTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTable">
+      <wsdl:input message="tns:GetTableSoapIn" />
+      <wsdl:output message="tns:GetTableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTables">
+      <wsdl:input message="tns:GetTablesSoapIn" />
+      <wsdl:output message="tns:GetTablesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLastModifyTime">
+      <wsdl:input message="tns:GetLastModifyTimeSoapIn" />
+      <wsdl:output message="tns:GetLastModifyTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteSqlCommand">
+      <wsdl:input message="tns:ExecuteSqlCommandSoapIn" />
+      <wsdl:output message="tns:ExecuteSqlCommandSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteStoredProcedure">
+      <wsdl:input message="tns:ExecuteStoredProcedureSoapIn" />
+      <wsdl:output message="tns:ExecuteStoredProcedureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataTableBySqlCommand">
+      <wsdl:input message="tns:GetDataTableBySqlCommandSoapIn" />
+      <wsdl:output message="tns:GetDataTableBySqlCommandSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClTableBySqlCommand">
+      <wsdl:input message="tns:GetClTableBySqlCommandSoapIn" />
+      <wsdl:output message="tns:GetClTableBySqlCommandSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTable">
+      <wsdl:input message="tns:UpdateTableSoapIn" />
+      <wsdl:output message="tns:UpdateTableSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetClTable">
+      <soap:operation soapAction="http://tempuri.org/GetClTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTable">
+      <soap:operation soapAction="http://tempuri.org/GetTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTables">
+      <soap:operation soapAction="http://tempuri.org/GetTables" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastModifyTime">
+      <soap:operation soapAction="http://tempuri.org/GetLastModifyTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteSqlCommand">
+      <soap:operation soapAction="http://tempuri.org/ExecuteSqlCommand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteStoredProcedure">
+      <soap:operation soapAction="http://tempuri.org/ExecuteStoredProcedure" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataTableBySqlCommand">
+      <soap:operation soapAction="http://tempuri.org/GetDataTableBySqlCommand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClTableBySqlCommand">
+      <soap:operation soapAction="http://tempuri.org/GetClTableBySqlCommand" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTable">
+      <soap:operation soapAction="http://tempuri.org/UpdateTable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetClTable">
+      <soap12:operation soapAction="http://tempuri.org/GetClTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTable">
+      <soap12:operation soapAction="http://tempuri.org/GetTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTables">
+      <soap12:operation soapAction="http://tempuri.org/GetTables" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLastModifyTime">
+      <soap12:operation soapAction="http://tempuri.org/GetLastModifyTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteSqlCommand">
+      <soap12:operation soapAction="http://tempuri.org/ExecuteSqlCommand" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteStoredProcedure">
+      <soap12:operation soapAction="http://tempuri.org/ExecuteStoredProcedure" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataTableBySqlCommand">
+      <soap12:operation soapAction="http://tempuri.org/GetDataTableBySqlCommand" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClTableBySqlCommand">
+      <soap12:operation soapAction="http://tempuri.org/GetClTableBySqlCommand" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTable">
+      <soap12:operation soapAction="http://tempuri.org/UpdateTable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://localhost:1279/CIPS.DataFromDB/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://localhost:1279/CIPS.DataFromDB/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

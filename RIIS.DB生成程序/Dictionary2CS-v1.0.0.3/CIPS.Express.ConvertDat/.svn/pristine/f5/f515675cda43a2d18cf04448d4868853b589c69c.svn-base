@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <configSections>
+    </configSections>
+    <connectionStrings>
+        <add name="CIPS.Express.ConvertDat.Properties.Settings.ConnectionString"
+            connectionString="Provider=SQLOLEDB;Data Source=172.16.137.198;Password=cips;User ID=sa;Initial Catalog=CIPS_BYQ"
+            providerName="System.Data.OleDb" />
+    </connectionStrings>
+</configuration>

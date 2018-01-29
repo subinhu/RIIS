@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RIIS.DB</name>
+    </assembly>
+    <members>
+        <member name="T:RIIS.DB.E_YARD_TYPE">
+            <summary>
+            车场表!
+            </summary>
+        </member>
+        <member name="F:RIIS.DB.E_YARD_TYPE.ARR">
+            <summary>
+            到达场!
+            </summary>
+        </member>
+        <member name="F:RIIS.DB.E_YARD_TYPE.DEP">
+            <summary>
+            出发场!
+            </summary>
+        </member>
+    </members>
+</doc>

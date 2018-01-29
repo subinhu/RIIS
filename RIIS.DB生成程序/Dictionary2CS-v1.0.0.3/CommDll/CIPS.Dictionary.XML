@@ -1,0 +1,690 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CIPS.Dictionary</name>
+    </assembly>
+    <members>
+        <member name="T:CIPS.Dictionary.DictTables">
+            <summary>
+            CIPS系统管理字典数据
+            </summary>
+        </member>
+        <member name="F:CIPS.Dictionary.DictTables.KeepChecking">
+            <summary>
+            保持检查数据更新
+            </summary>
+        </member>
+        <member name="F:CIPS.Dictionary.DictTables.FirstRunning">
+            <summary>
+            首次运行
+            </summary>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.#ctor(System.String[],System.String[],System.String,System.Windows.Forms.Form)">
+            <summary>
+            字典管理
+            </summary>
+            <param name="conditions1">Index为1的表</param>
+            <param name="conditions2">Index为2的表</param>
+            <param name="webUrl">WEB地址</param>
+            <param name="wnd">接收通知窗口</param>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.#ctor(System.String[],System.String[],System.String,System.Windows.Forms.Form,System.String)">
+            <summary>
+            字典管理
+            </summary>
+            <param name="conditions1">Index为1的表</param>
+            <param name="conditions2">Index为2的表</param>
+            <param name="webUrl">WEB地址</param>
+            <param name="wnd">接收通知窗口</param>
+            <param name="description">数据来源描述</param>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.CheckModified(System.String[])">
+            <summary>
+            检查对应的表是否已更新
+            </summary>
+            <param name="tables">表名集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.StartCheckFromWeb">
+            <summary>
+            开始检查更新
+            </summary>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.ReloadTables(System.Boolean)">
+            <summary>
+            立即检查数据更新
+            </summary>
+            <param name="waiting">是否等待装入结束</param>
+        </member>
+        <member name="F:CIPS.Dictionary.DictTables.LoadingDelay">
+            <summary>
+            检查更新间隔（秒）
+            </summary>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.RemoveAllSaved">
+            <summary>
+            清除全部缓存文件
+            </summary>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.UpdateTable(System.String,System.Data.DataTable,System.Int32)">
+            <summary>
+            更新表
+            </summary>
+            <param name="weburl">WEB地址</param>
+            <param name="dt">表</param>
+            <param name="index">数据库</param>
+            <returns>成功返回TRUE</returns>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.LoadTable(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            读表
+            </summary>
+            <param name="weburl">WEB地址</param>
+            <param name="tablename">表名</param>
+            <param name="param">参数</param>
+            <param name="index">数据库</param>
+            <returns>成功返回表</returns>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.LoadClTable(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            以CLTABLE格式读表
+            </summary>
+            <param name="weburl">WEB地址</param>
+            <param name="tablename">表名</param>
+            <param name="param">参数</param>
+            <param name="index">数据库索引</param>
+            <returns>成功返回CLTABLE格式的表</returns>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.LoadClTable(CIPS.Dictionary.WebDict.Service,System.String,System.String,System.Int32)">
+            <summary>
+            以CLTABLE格式读表
+            </summary>
+            <param name="web">WEB地址</param>
+            <param name="tablename">表名</param>
+            <param name="param">参数</param>
+            <param name="index">数据库索引</param>
+            <returns>成功返回CLTABLE格式的表</returns>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.LoadTable(CIPS.Dictionary.WebDict.Service,System.String,System.String,System.Int32)">
+            <summary>
+            读表
+            </summary>
+            <param name="web">WEB地址</param>
+            <param name="tablename">表名</param>
+            <param name="param">参数</param>
+            <param name="index">数据库</param>
+            <returns>成功返回表</returns>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.ExecuteStoredProcedure(System.String,System.String,System.Collections.Generic.List{CIPS.Dictionary.WebDict.OleDbParameter},System.Int32)">
+            <summary>
+            执行存储过程命令
+            </summary>
+            <param name="weburl">WEB地址</param>
+            <param name="cmdstr">命令</param>
+            <param name="param">执行参数</param>
+            <param name="dbindex">数据库索引</param>
+            <returns>成功返回TRUE</returns>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.ExecuteStoredProcedure(System.String,System.String,System.Int32)">
+            <summary>
+            执行存储过程命令
+            </summary>
+            <param name="weburl">WEB地址</param>
+            <param name="cmdstr">命令</param>
+            <param name="dbindex">数据库索引</param>
+            <returns>成功返回TRUE</returns>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.ExecuteSqlCommand(System.String,System.String,System.Int32)">
+            <summary>
+            执行存Sql命令
+            </summary>
+            <param name="weburl">WEB地址</param>
+            <param name="cmdstr">命令</param>
+            <param name="dbindex">数据库索引</param>
+            <returns>成功返回TRUE</returns>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.GetLastModifyTime(System.String,System.String,System.Int32)">
+            <summary>
+            获取表的最近更新时间
+            </summary>
+            <param name="weburl">WEB地址</param>
+            <param name="tablename">表名</param>
+            <param name="dbindex">数据库索引</param>
+            <returns>返回最近更新时间</returns>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.GetDataTableBySqlCommand(System.String,System.String,System.Int32)">
+            <summary>
+            通过SQL命令获取表
+            </summary>
+            <param name="weburl">WEB地址</param>
+            <param name="sqlcmd">SQL命令</param>
+            <param name="dbindex">数据库索引</param>
+            <returns>成功返回表</returns>
+        </member>
+        <member name="M:CIPS.Dictionary.DictTables.GetClTableBySqlCommand(System.String,System.String,System.Int32)">
+            <summary>
+            通过SQL命令获取CLTABLE格式的表
+            </summary>
+            <param name="weburl">WEB地址</param>
+            <param name="sqlcmd">SQL命令</param>
+            <param name="dbindex">数据库索引</param>
+            <returns>成功返回表</returns>
+        </member>
+        <member name="P:CIPS.Dictionary.DictTables.dsDict">
+            <summary>
+            DataSet数据集
+            </summary>
+        </member>
+        <member name="P:CIPS.Dictionary.DictTables.csDict">
+            <summary>
+            ClSet数据集
+            </summary>
+        </member>
+        <member name="E:CIPS.Dictionary.DictTables.TableModified">
+            <summary>
+            表更新通知
+            </summary>
+        </member>
+        <member name="T:CIPS.Dictionary.DictTables.TableModifiedEvent">
+            <summary>
+            表更新通知
+            </summary>
+            <param name="sender">通知者</param>
+            <param name="clset">新的数据集</param>
+            <param name="tablenames">发生变化的表名</param>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.Service">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.#ctor(System.String)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetClTable(System.String,System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetClTableAsync(System.String,System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetClTableAsync(System.String,System.String,System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetTable(System.String,System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetTableAsync(System.String,System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetTableAsync(System.String,System.String,System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetTables(System.String[],System.String[])">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetTablesAsync(System.String[],System.String[])">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetTablesAsync(System.String[],System.String[],System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetLastModifyTime(System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetLastModifyTimeAsync(System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetLastModifyTimeAsync(System.String,System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.ExecuteSqlCommand(System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.ExecuteSqlCommandAsync(System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.ExecuteSqlCommandAsync(System.String,System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.ExecuteStoredProcedure(System.String,CIPS.Dictionary.WebDict.OleDbParameter[],System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.ExecuteStoredProcedureAsync(System.String,CIPS.Dictionary.WebDict.OleDbParameter[],System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.ExecuteStoredProcedureAsync(System.String,CIPS.Dictionary.WebDict.OleDbParameter[],System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetDataTableBySqlCommand(System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetDataTableBySqlCommandAsync(System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetDataTableBySqlCommandAsync(System.String,System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetClTableBySqlCommand(System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetClTableBySqlCommandAsync(System.String,System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.GetClTableBySqlCommandAsync(System.String,System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.UpdateTable(System.Byte[],System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.UpdateTableAsync(System.Byte[],System.Int32)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.UpdateTableAsync(System.Byte[],System.Int32,System.Object)">
+            <remarks/>
+        </member>
+        <member name="M:CIPS.Dictionary.WebDict.Service.CancelAsync(System.Object)">
+            <remarks/>
+        </member>
+        <member name="E:CIPS.Dictionary.WebDict.Service.GetClTableCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CIPS.Dictionary.WebDict.Service.GetTableCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CIPS.Dictionary.WebDict.Service.GetTablesCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CIPS.Dictionary.WebDict.Service.GetLastModifyTimeCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CIPS.Dictionary.WebDict.Service.ExecuteSqlCommandCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CIPS.Dictionary.WebDict.Service.ExecuteStoredProcedureCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CIPS.Dictionary.WebDict.Service.GetDataTableBySqlCommandCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CIPS.Dictionary.WebDict.Service.GetClTableBySqlCommandCompleted">
+            <remarks/>
+        </member>
+        <member name="E:CIPS.Dictionary.WebDict.Service.UpdateTableCompleted">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.OleDbParameter">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.DbParameter">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.MarshalByRefObject">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.DbParameter.DbType">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.DbParameter.Direction">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.DbParameter.IsNullable">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.DbParameter.ParameterName">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.DbParameter.Size">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.DbParameter.SourceColumn">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.DbParameter.SourceColumnNullMapping">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.DbParameter.SourceVersion">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.DbParameter.Value">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.OleDbParameter.OleDbType">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.OleDbParameter.Precision">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.OleDbParameter.Scale">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.OleDbType">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.BigInt">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Binary">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Boolean">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.BSTR">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Char">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Currency">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Date">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.DBDate">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.DBTime">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.DBTimeStamp">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Decimal">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Double">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Empty">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Error">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Filetime">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Guid">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.IDispatch">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Integer">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.IUnknown">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.LongVarBinary">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.LongVarChar">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.LongVarWChar">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Numeric">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.PropVariant">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Single">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.SmallInt">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.TinyInt">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.UnsignedBigInt">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.UnsignedInt">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.UnsignedSmallInt">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.UnsignedTinyInt">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.VarBinary">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.VarChar">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.Variant">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.VarNumeric">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.VarWChar">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.OleDbType.WChar">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.DbType">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.AnsiString">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Binary">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Byte">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Boolean">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Currency">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Date">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.DateTime">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Decimal">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Double">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Guid">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Int16">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Int32">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Int64">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Object">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.SByte">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Single">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.String">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Time">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.UInt16">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.UInt32">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.UInt64">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.VarNumeric">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.AnsiStringFixedLength">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.StringFixedLength">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.Xml">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.DateTime2">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DbType.DateTimeOffset">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.ParameterDirection">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.ParameterDirection.Input">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.ParameterDirection.Output">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.ParameterDirection.InputOutput">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.ParameterDirection.ReturnValue">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.DataRowVersion">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DataRowVersion.Original">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DataRowVersion.Current">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DataRowVersion.Proposed">
+            <remarks/>
+        </member>
+        <member name="F:CIPS.Dictionary.WebDict.DataRowVersion.Default">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.GetClTableCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.GetClTableCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.GetClTableCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.GetTableCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.GetTableCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.GetTableCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.GetTablesCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.GetTablesCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.GetTablesCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.GetLastModifyTimeCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.GetLastModifyTimeCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.GetLastModifyTimeCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.ExecuteSqlCommandCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.ExecuteSqlCommandCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.ExecuteSqlCommandCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.ExecuteStoredProcedureCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.ExecuteStoredProcedureCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.ExecuteStoredProcedureCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.GetDataTableBySqlCommandCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.GetDataTableBySqlCommandCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.GetDataTableBySqlCommandCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.GetClTableBySqlCommandCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.GetClTableBySqlCommandCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.GetClTableBySqlCommandCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.UpdateTableCompletedEventHandler">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.WebDict.UpdateTableCompletedEventArgs">
+            <remarks/>
+        </member>
+        <member name="P:CIPS.Dictionary.WebDict.UpdateTableCompletedEventArgs.Result">
+            <remarks/>
+        </member>
+        <member name="T:CIPS.Dictionary.Prompt">
+            <summary>
+            CIPS用户界面提示管理
+            </summary>
+        </member>
+        <member name="M:CIPS.Dictionary.Prompt.#ctor(System.Data.DataTable)">
+            <summary>
+            初始化
+            </summary>
+            <param name="dt">DC_RA_PROMPT表</param>
+        </member>
+        <member name="M:CIPS.Dictionary.Prompt.#ctor(CIPS.ClTable)">
+            <summary>
+            初始化
+            </summary>
+            <param name="ct">DC_RA_PROMPT表</param>
+        </member>
+        <member name="P:CIPS.Dictionary.Prompt.WebUrl">
+            <summary>
+            WEB地址
+            </summary>
+        </member>
+    </members>
+</doc>

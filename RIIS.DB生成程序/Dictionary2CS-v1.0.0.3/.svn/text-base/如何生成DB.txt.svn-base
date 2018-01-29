@@ -1,0 +1,3 @@
+打开Dictionary2CS项目，点击“转杂类”
+打开CIPS.DB项目，重新生成
+在上一级目录的CommDll文件夹里面找最新的CIPS.DB.Dll,CIPS.DB.XML

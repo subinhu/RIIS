@@ -1,0 +1,857 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Data;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System.Threading;
+using System.Windows.Forms;
+using System.Runtime.InteropServices;
+
+namespace CIPS.Dictionary
+{
+    /// <summary>
+    /// CIPS系统管理字典数据
+    /// </summary>
+    public class DictTables
+    {
+        class TableInfo
+        {
+            public string tablename = null;
+            public string param = null;
+            public byte[] buf = null;
+            //public CIPS.ClTable dt = null;
+            public bool key = true;
+            public int index = 0;
+            public bool modified = false;
+            public DateTime lastModifyTime = DateTime.MinValue;
+            public TableInfo(string info,int _index)
+            {
+                try
+                {
+                    index = _index;
+                    key = !info.StartsWith("*");
+                    string[] table = info.TrimStart('*').Split(',');
+                    if (table.Length > 1)
+                        param = table[1].Trim();
+                    else
+                        param = "";
+                    tablename = table[0].Trim();
+                }
+                catch{}
+            }
+        }
+        /// <summary>
+        /// 保持检查数据更新
+        /// </summary>
+        public bool KeepChecking = false;
+
+        /// <summary>
+        /// DataSet数据集
+        /// </summary>
+        public DataSet dsDict
+        {
+            get
+            {
+                return csDict.GetDataSet();
+            }
+        }
+        List<CIPS.ClTable> Tables
+        {
+            get
+            {
+                List<CIPS.ClTable> a = new List<CIPS.ClTable>();
+                bool whole = true;
+                foreach (TableInfo t in TableInfos)
+                {
+                    CIPS.ClTable ct = null;
+                    if (t.buf != null)
+                        ct = new ClTable(t.buf);
+                    if (ct != null)
+                        a.Add(ct);
+                    else if (t.key)
+                        whole = false;
+                }
+                if (whole)
+                    return a;
+                else
+                    return null;
+            }
+        }
+        /// <summary>
+        /// ClSet数据集
+        /// </summary>
+        public ClSet csDict
+        {
+            get
+            {
+                List<ClTable> tables = Tables;
+                ClSet cs = new ClSet();
+                foreach (ClTable t in tables)
+                    cs.Tables.Add(t);
+                return cs;
+            }
+        }
+        string weburl;
+        Form mForm = null;
+        List<TableInfo> TableInfos = new List<TableInfo>();
+        /// <summary>
+        /// 首次运行
+        /// </summary>
+        public bool FirstRunning = true;
+        /// <summary>
+        /// 字典管理
+        /// </summary>
+        /// <param name="conditions1">Index为1的表</param>
+        /// <param name="conditions2">Index为2的表</param>
+        /// <param name="webUrl">WEB地址</param>
+        /// <param name="wnd">接收通知窗口</param>
+        public DictTables(string[] conditions1, string[] conditions2, string webUrl, Form wnd)
+        {
+            Init(conditions1, conditions2, webUrl, wnd, "");
+        }
+        /// <summary>
+        /// 字典管理
+        /// </summary>
+        /// <param name="conditions1">Index为1的表</param>
+        /// <param name="conditions2">Index为2的表</param>
+        /// <param name="webUrl">WEB地址</param>
+        /// <param name="wnd">接收通知窗口</param>
+        /// <param name="description">数据来源描述</param>
+        public DictTables(string[] conditions1, string[] conditions2, string webUrl, Form wnd, string description)
+        {
+            Init(conditions1, conditions2, webUrl, wnd, description);
+        }
+        void Init(string[] conditions1, string[] conditions2, string webUrl, Form wnd, string description)
+        {
+            if (description == null)
+                description = "";
+            dictPath += description;
+            TableInfos.Add(new TableInfo("HostList", 0));
+            string[] str;
+            str = conditions1;
+            TableInfo ti;
+            for (int i = 0; i < 2; i++)
+            {
+                if (str != null)
+                {
+                    foreach (string s in str)
+                    {
+                        ti = new TableInfo(s, i + 1);
+                        if (ti.tablename != null)
+                        {
+                            bool found = false;
+                            foreach (TableInfo t in TableInfos)
+                            {
+                                if (t.tablename == ti.tablename)
+                                {
+                                    found = true;
+                                    break;
+                                }
+                            }
+                            if (!found)
+                                TableInfos.Add(ti);
+                        }
+                    }
+                }
+                str = conditions2;
+            }
+            mForm = wnd;
+            weburl = webUrl;
+            bool whole = true;
+            if (mForm != null)
+                whole = LoadFromFiles(TableInfos);
+            else
+                whole = false;
+            foreach (TableInfo t in TableInfos)
+            {
+                if (t.tablename == "HostList")
+                {
+                    CIPS.Dictionary.WebDict.Service web = new CIPS.Dictionary.WebDict.Service(weburl);
+                    LoadTableFromWeb(web, t);
+                    if (t.modified)
+                    {
+                        _Save2File(t);
+                        t.modified = false;
+                    }
+                    if (t.buf == null)
+                    {
+                        List<TableInfo> ifs = new List<TableInfo>();
+                        ifs.Add(t);
+                        LoadFromFiles(ifs);
+                    }
+                }
+            }
+
+            if (!whole)
+            {
+                whole = LoadFromWeb(TableInfos);
+                foreach (TableInfo t in TableInfos)
+                {
+                    if (t.buf != null)
+                    {
+                        byte[] b = LoadTableFromFile(t.tablename);
+                        if (!MemCmp(b, t.buf))
+                            _Save2File(t);
+                    }
+                }
+                //if (whole)
+                //    Save2File(TableInfos);
+            }
+            if (mForm == null && !whole)
+                LoadFromFiles(TableInfos);
+            //if (dsDict != null)
+            //    CheckFromWeb(Tables);
+        }
+        /// <summary>
+        /// 检查对应的表是否已更新
+        /// </summary>
+        /// <param name="tables">表名集合</param>
+        /// <returns></returns>
+        public bool CheckModified(string[] tables)
+        {
+            if (tables != null)
+            {
+                foreach (string s in tables)
+                {
+                    foreach (TableInfo t in TableInfos)
+                    {
+                        if (s.Trim() == t.tablename)
+                        {
+                            if (t.modified)
+                                return true;
+                            break;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+        /// <summary>
+        /// 开始检查更新
+        /// </summary>
+        public void StartCheckFromWeb()
+        {
+            if (KeepChecking)
+                return;
+            KeepChecking = true;
+            System.Threading.Thread thread;
+            thread = new Thread(new ParameterizedThreadStart(LoadingThread));
+            thread.IsBackground = true;
+            thread.Name = "LoadDataSetFromWeb";
+            thread.Priority = System.Threading.ThreadPriority.Lowest;
+            thread.Start(TableInfos);
+        }
+        bool Checking = false;
+        bool CheckNow = false;
+        /// <summary>
+        /// 立即检查数据更新
+        /// </summary>
+        /// <param name="waiting">是否等待装入结束</param>
+        public void ReloadTables(bool waiting)
+        {
+            if (!waiting)
+            {
+                CheckNow = true;
+                return;
+            }
+            if (!CheckNow)
+            {
+                while (Checking)
+                    Thread.Sleep(100);
+                CheckNow = true;
+            }
+            while (CheckNow)
+                Thread.Sleep(100);
+            while (Checking)
+                Thread.Sleep(100);
+        }
+        /// <summary>
+        /// 表更新通知
+        /// </summary>
+        /// <param name="sender">通知者</param>
+        /// <param name="clset">新的数据集</param>
+        /// <param name="tablenames">发生变化的表名</param>
+        public delegate void TableModifiedEvent(DictTables sender, ClSet clset, List<string> tablenames);
+        /// <summary>
+        /// 表更新通知
+        /// </summary>
+        public event TableModifiedEvent TableModified;
+        void MessageBox2Form()
+        {
+            try
+            {
+                if (mForm != null)
+                {
+                    if (MessageBox.Show(mForm, "程序已更新了数据字典,请重新启动本程序\n\n现在关闭?", "警告",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                        mForm.Close();
+                }
+            }
+            catch
+            {
+            }
+        }
+        delegate void InvokeNotifyProc();
+        void Notify2Form()
+        {
+            TableModifiedEvent evt=TableModified;
+            if (evt != null)
+            {
+                List<string> str = new List<string>();
+                foreach (TableInfo t in TableInfos)
+                {
+                    if (t.modified && t.buf != null)
+                    {
+                        str.Add(t.tablename);
+                    }
+                }
+                evt(this, csDict, str);
+            }
+        }
+        /// <summary>
+        /// 检查更新间隔（秒）
+        /// </summary>
+        public int LoadingDelay = 600;
+        void LoadingThread(object obj)
+        {
+            Thread.Sleep(3000);
+            List<TableInfo> tables = (List<TableInfo>)obj;
+            Save2File(tables);
+            bool modified;
+            object[] param = new object[2];
+            //if (mForm == null)
+            //{
+            //    Thread.Sleep(10 * 60 * 1000);
+            //    if (!KeepChecking)
+            //        return;
+            //}
+            while (true)
+            {
+                Checking = true;
+                CheckNow = false;
+                if (LoadFromWeb(tables))
+                {
+                    modified = false;
+                    foreach (TableInfo t in tables)
+                    {
+                        if (t.modified)
+                        {
+                            modified = true;
+                            break;
+                        }
+                    }
+                    if (modified)
+                    {
+                        Save2File(tables);
+                        try
+                        {
+                            if (TableModified != null)
+                            {
+                                if (mForm != null)
+                                {
+                                    mForm.Invoke(new InvokeNotifyProc(Notify2Form));
+                                }
+                                else
+                                    Notify2Form();
+                            }
+                            else
+                            {
+                                if (mForm != null)
+                                {
+                                    mForm.Invoke(new InvokeNotifyProc(MessageBox2Form));
+                                }
+                            }
+                        }
+                        catch { }
+                    }
+                }
+                foreach (TableInfo t in TableInfos)
+                {
+                    t.modified = false;
+                }
+                Checking = false;
+                GC.Collect();
+                FirstRunning = false;
+                for (int i = 0; i < LoadingDelay; i++)
+                {
+                    if (CheckNow)
+                        break;
+                    Thread.Sleep(1000);
+                }
+                if (!KeepChecking)
+                    return;
+            }
+        }
+        bool LoadFromFiles(List<TableInfo> tables)
+        {
+            foreach (TableInfo t in tables)
+            {
+                t.buf = LoadTableFromFile(t.tablename);
+                t.modified = false;
+                if (t.buf == null && t.key)
+                    return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// 清除全部缓存文件
+        /// </summary>
+        public void RemoveAllSaved()
+        {
+            string[] fs = Directory.GetFiles(dictPath);
+            foreach (string s in fs)
+                File.Delete(s);
+        }
+        byte[] LoadTableFromFile(string tablename)
+        {
+            byte[] b = null;
+            //DataTable dt = null;
+            //IFormatter formatter = new BinaryFormatter();
+            for (int i = 0; i < 10; i++)
+            {
+                try
+                {
+                    string fname = dictPath + "\\" + tablename + ".ct";
+                    if (!File.Exists(fname))
+                        break;
+                    Stream stream = new FileStream(fname, FileMode.Open, FileAccess.Read, FileShare.Read);
+                    b = new byte[stream.Length];
+                    stream.Read(b, 0, b.Length);
+                    //try
+                    //{
+                    //    dt = (DataTable)formatter.Deserialize(stream);
+                    //}
+                    //catch
+                    //{
+                    //}
+                    stream.Close();
+                    break;
+                }
+                catch
+                {
+                    b = null;
+                }
+                Thread.Sleep(2000);
+            }
+            return b;
+        }
+        void Save2File(List<TableInfo> tables)
+        {
+            foreach (TableInfo t in tables)
+            {
+                if (t.modified)
+                {
+                    _Save2File(t);
+                }
+            }
+        }
+        string dictPath = "Dictionary";
+        static byte[] DataTable2Bytes(DataTable dt)
+        {
+            if (dt == null)
+                return null;
+            BinaryFormatter formatter = new BinaryFormatter();
+            byte[] b;
+            MemoryStream stream = new MemoryStream();
+            BinaryReader reader = new BinaryReader(stream);
+            formatter.Serialize(stream, dt);
+            int i = (int)stream.Length;
+            b = new byte[i];
+            stream.Seek(0, SeekOrigin.Begin);
+            reader.Read(b, 0, i);
+            stream.Close();
+            return b;
+        }
+        void _Save2File(TableInfo table)
+        {
+            //byte[] buf = DataTable2Bytes(table.dt);
+            //if (buf == null)
+            //    return;
+            if (table.buf == null)
+                return;
+            for (int i = 0; i < 10; i++)
+            {
+                try
+                {
+                    string filename = dictPath + "\\" + table.tablename + ".ct";
+                    if (!System.IO.Directory.Exists(dictPath))
+                    {
+                        System.IO.Directory.CreateDirectory(dictPath);
+                    }
+                    Stream stream = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None);
+                    stream.Write(table.buf, 0, table.buf.Length);
+                    stream.Close();
+                    System.Console.WriteLine(table.tablename + "写文件成功");
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    System.Console.WriteLine(table.tablename + "写文件失败:\n" + ex.ToString());
+                }
+                Thread.Sleep(2000);
+            }
+            return;
+        }
+        bool LoadFromWeb(List<TableInfo> tables)
+        {
+            bool[] needload = new bool[3];
+            for (int i = 0; i < needload.Length; i++)
+                needload[i] = false;
+            foreach (TableInfo t in tables)
+            {
+                if (t.index > 0 && t.index < needload.Length)
+                    needload[t.index] = true;
+            }
+            ClTable[] cts = new ClTable[needload.Length];
+            CIPS.Dictionary.WebDict.Service web;
+            web = new CIPS.Dictionary.WebDict.Service(weburl);
+            for (int i = 0; i < cts.Length; i++)
+            {
+                if (!needload[i])
+                    continue;
+                try
+                {
+                    byte[] buf = web.GetClTable("DM_SA_DC_MODIFY", "", i);
+                    if (buf != null)
+                        cts[i] = new ClTable(buf);
+                }
+                catch { }
+            }
+            foreach (TableInfo t in tables)
+            {
+                t.modified = false;
+                //DateTime time = GetLastModifyTime(web, t.tablename, t.index);
+                if (t.index == 0)
+                    continue;
+                DateTime time = GetLastModifyTime(cts, t.tablename, t.index);
+                if (time > t.lastModifyTime)
+                {
+                    LoadTableFromWeb(web, t);
+                    if (t.key && t.buf == null)
+                        return false;
+                }
+            }
+            return true;
+            //return Tables2DataSet(tables);
+        }
+        [DllImport("User32.dll")]
+        static extern int SendMessage(IntPtr hWnd, int Cmd, int wParam, int lParam);
+        /// <summary>
+        /// 更新表
+        /// </summary>
+        /// <param name="weburl">WEB地址</param>
+        /// <param name="dt">表</param>
+        /// <param name="index">数据库</param>
+        /// <returns>成功返回TRUE</returns>
+        public static bool UpdateTable(string weburl, DataTable dt, int index)
+        {
+            bool ret = false;
+            try
+            {
+                CIPS.Dictionary.WebDict.Service web;
+                web = new CIPS.Dictionary.WebDict.Service(weburl);
+                BinaryFormatter formatter = new BinaryFormatter();
+                MemoryStream stream = new MemoryStream();
+                formatter.Serialize(stream, dt);
+                ret = web.UpdateTable(stream.GetBuffer(), index);
+                stream.Close();
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(dt.TableName + "保存表至WEB失败" + ex.ToString());
+            }
+            return ret;
+        }
+        /// <summary>
+        /// 读表
+        /// </summary>
+        /// <param name="weburl">WEB地址</param>
+        /// <param name="tablename">表名</param>
+        /// <param name="param">参数</param>
+        /// <param name="index">数据库</param>
+        /// <returns>成功返回表</returns>
+        public static DataTable LoadTable(string weburl, string tablename, string param, int index)
+        {
+            DataTable dt = null;
+            try
+            {
+                CIPS.Dictionary.WebDict.Service web;
+                web = new CIPS.Dictionary.WebDict.Service(weburl);
+                dt = LoadTable(web, tablename, param, index);
+            }
+            catch { }
+            return dt;
+        }
+        static bool MemCmp(byte[] b1, byte[] b2)
+        {
+            if (b1 == b2)
+                return true;
+            if (b1 == null || b2 == null)
+                return false;
+            if (b1.Length != b2.Length)
+                return false;
+            for (int i = 0; i < b1.Length; i++)
+            {
+                if (b1[i] != b2[i])
+                    return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// 以CLTABLE格式读表
+        /// </summary>
+        /// <param name="weburl">WEB地址</param>
+        /// <param name="tablename">表名</param>
+        /// <param name="param">参数</param>
+        /// <param name="index">数据库索引</param>
+        /// <returns>成功返回CLTABLE格式的表</returns>
+        public static CIPS.ClTable LoadClTable(string weburl, string tablename, string param, int index)
+        {
+            CIPS.Dictionary.WebDict.Service web;
+            web = new CIPS.Dictionary.WebDict.Service(weburl);
+            return LoadClTable(web, tablename, param, index);
+        }
+        /// <summary>
+        /// 以CLTABLE格式读表
+        /// </summary>
+        /// <param name="web">WEB地址</param>
+        /// <param name="tablename">表名</param>
+        /// <param name="param">参数</param>
+        /// <param name="index">数据库索引</param>
+        /// <returns>成功返回CLTABLE格式的表</returns>
+        public static CIPS.ClTable LoadClTable(CIPS.Dictionary.WebDict.Service web, string tablename, string param, int index)
+        {
+            CIPS.ClTable dt = null;
+            try
+            {
+                web.Timeout = 300000;
+                byte[] b = web.GetClTable(tablename, param, index);
+                dt = new ClTable(b);
+                System.Console.WriteLine(tablename + "读WEB:成功(CL)");
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(tablename + "读WEB失败(CL):" + ex.ToString());
+            }
+            return dt;
+        }
+        /// <summary>
+        /// 读表
+        /// </summary>
+        /// <param name="web">WEB地址</param>
+        /// <param name="tablename">表名</param>
+        /// <param name="param">参数</param>
+        /// <param name="index">数据库</param>
+        /// <returns>成功返回表</returns>
+        public static DataTable LoadTable(CIPS.Dictionary.WebDict.Service web, string tablename, string param, int index)
+        {
+            DataTable dt = null;
+            try
+            {
+                web.Timeout = 300000;
+                byte[] b = web.GetTable(tablename, param, index);
+                BinaryFormatter formatter = new BinaryFormatter();
+                MemoryStream stream = new MemoryStream(b, 0, b.Length);
+                try
+                {
+                    dt = (DataTable)formatter.Deserialize(stream);
+                    System.Console.WriteLine(tablename + "读WEB:成功");
+                }
+                catch (Exception ex)
+                {
+                    System.Console.WriteLine(tablename + "读WEB:反序列化失败" + ex.ToString());
+                }
+                stream.Close();
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(tablename + "读WEB失败:" + ex.ToString());
+            }
+            return dt;
+        }
+        void LoadTableFromWeb(CIPS.Dictionary.WebDict.Service web, TableInfo table)
+        {
+            try
+            {
+                table.modified = false;
+                byte[] buf = web.GetClTable(table.tablename, table.param, table.index);
+                if (buf != null)
+                {
+                    table.lastModifyTime = DateTime.Now;
+                    if (!MemCmp(buf, table.buf))
+                    {
+                        table.buf = buf;
+                        table.modified = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(table.tablename + "读WEB失败" + ex.ToString());
+            }
+        }
+        /// <summary>
+        /// 执行SQL命令
+        /// </summary>
+        /// <param name="weburl">WEB地址</param>
+        /// <param name="cmdstr">命令</param>
+        /// <param name="dbindex">数据库索引</param>
+        /// <returns>成功返回TRUE</returns>
+        public static bool ExecuteSqlCommand(string weburl, string cmdstr, int dbindex)
+        {
+            try
+            {
+                CIPS.Dictionary.WebDict.Service web;
+                web = new CIPS.Dictionary.WebDict.Service(weburl);
+                web.Timeout = 1200000;
+                return web.ExecuteSqlCommand(cmdstr, dbindex);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine("执行SQL失败" + ex.ToString());
+            }
+            return false;
+        }
+        /// <summary>
+        /// 执行存储过程命令
+        /// </summary>
+        /// <param name="weburl">WEB地址</param>
+        /// <param name="cmdstr">命令</param>
+        /// <param name="param">执行参数</param>
+        /// <param name="dbindex">数据库索引</param>
+        /// <returns>成功返回TRUE</returns>
+        public static bool ExecuteStoredProcedure(string weburl, string cmdstr, List<CIPS.Dictionary.WebDict.OleDbParameter> param, int dbindex)
+        {
+            try
+            {
+                CIPS.Dictionary.WebDict.Service web;
+                web = new CIPS.Dictionary.WebDict.Service(weburl);
+                web.Timeout = 1200000;
+                CIPS.Dictionary.WebDict.OleDbParameter[] ps = null;
+                if (param != null && param.Count > 0)
+                {
+                    ps = new CIPS.Dictionary.WebDict.OleDbParameter[param.Count];
+                    for (int i = 0; i < ps.Length; i++)
+                        ps[i] = param[i];
+                }
+                return web.ExecuteStoredProcedure(cmdstr, ps, dbindex);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine("执行SQL失败" + ex.ToString());
+            }
+            return false;
+        }
+        /// <summary>
+        /// 执行存储过程命令
+        /// </summary>
+        /// <param name="weburl">WEB地址</param>
+        /// <param name="cmdstr">命令</param>
+        /// <param name="dbindex">数据库索引</param>
+        /// <returns>成功返回TRUE</returns>
+        public static bool ExecuteStoredProcedure(string weburl, string cmdstr, int dbindex)
+        {
+            return ExecuteStoredProcedure(weburl, cmdstr, null, dbindex);
+        }
+        /// <summary>
+        /// 获取表的最近更新时间
+        /// </summary>
+        /// <param name="weburl">WEB地址</param>
+        /// <param name="tablename">表名</param>
+        /// <param name="dbindex">数据库索引</param>
+        /// <returns>返回最近更新时间</returns>
+        public static DateTime GetLastModifyTime(string weburl, string tablename, int dbindex)
+        {
+            return GetLastModifyTime(new CIPS.Dictionary.WebDict.Service(weburl), tablename, dbindex);
+        }
+        static DateTime GetLastModifyTime(CIPS.Dictionary.WebDict.Service web, string tablename, int dbindex)
+        {
+            try
+            {
+                return web.GetLastModifyTime(tablename, dbindex);
+            }
+            catch { }
+            return new DateTime(1900, 1, 1);
+        }
+        static DateTime GetLastModifyTime(ClTable[] cts, string tablename, int dbindex)
+        {
+            DateTime t = DateTime.Now;
+            if (dbindex < 0 || dbindex >= cts.Length)
+                return t;
+            if (cts[dbindex] == null)
+                return t;
+            try
+            {
+                ClRow[] crs = cts[dbindex]["C_TABLE_NAME", "=", tablename.Trim().ToUpper()];
+                if (crs.Length > 0)
+                {
+                    t = Convert.ToDateTime(crs[0]["D_LAST_MODIFY"]);
+                }
+            }
+            catch
+            {
+                t = DateTime.Now;
+            }
+            return t;
+        }
+        /// <summary>
+        /// 通过SQL命令获取表
+        /// </summary>
+        /// <param name="weburl">WEB地址</param>
+        /// <param name="sqlcmd">SQL命令</param>
+        /// <param name="dbindex">数据库索引</param>
+        /// <returns>成功返回表</returns>
+        public static DataTable GetDataTableBySqlCommand(string weburl, string sqlcmd, int dbindex)
+        {
+
+            DataTable dt = null;
+            try
+            {
+                CIPS.Dictionary.WebDict.Service web;
+                web = new CIPS.Dictionary.WebDict.Service(weburl);
+                byte[] b = web.GetDataTableBySqlCommand(sqlcmd, dbindex);
+                BinaryFormatter formatter = new BinaryFormatter();
+                MemoryStream stream = new MemoryStream(b, 0, b.Length);
+                try
+                {
+                    dt = (DataTable)formatter.Deserialize(stream);
+                }
+                catch (Exception ex)
+                {
+                    System.Console.WriteLine(sqlcmd + "反序列化失败" + ex.ToString());
+                }
+                stream.Close();
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(sqlcmd + "读WEB失败:" + ex.ToString());
+            }
+            return dt;
+        }
+        /// <summary>
+        /// 通过SQL命令获取CLTABLE格式的表
+        /// </summary>
+        /// <param name="weburl">WEB地址</param>
+        /// <param name="sqlcmd">SQL命令</param>
+        /// <param name="dbindex">数据库索引</param>
+        /// <returns>成功返回表</returns>
+        public static CIPS.ClTable GetClTableBySqlCommand(string weburl, string sqlcmd, int dbindex)
+        {
+            ClTable ct = null;
+            try
+            {
+                CIPS.Dictionary.WebDict.Service web;
+                web = new CIPS.Dictionary.WebDict.Service(weburl);
+                byte[] b = web.GetClTableBySqlCommand(sqlcmd, dbindex);
+                ct = new ClTable(b);
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(sqlcmd + "读WEB失败:" + ex.ToString());
+            }
+            return ct;
+        }
+    }
+}

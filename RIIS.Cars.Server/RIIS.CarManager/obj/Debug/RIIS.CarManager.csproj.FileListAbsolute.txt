@@ -1,0 +1,14 @@
+F:\test\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\RIIS.CarManager.dll
+F:\test\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\RIIS.CarManager.pdb
+F:\test\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.csprojResolveAssemblyReference.cache
+F:\test\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.csproj.CoreCompileInputs.cache
+F:\test\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.dll
+F:\test\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.pdb
+E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\RIIS.CarManager.dll
+E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\RIIS.CarManager.pdb
+E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.csprojResolveAssemblyReference.cache
+E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.csproj.CoreCompileInputs.cache
+E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.dll
+E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.pdb
+E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\RIIS.MsgQueue.dll
+E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\RIIS.MsgQueue.pdb

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetDataFromSql">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDataFromSqlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDataFromSqlResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteSql">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSql" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteSqlResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="InsertWithParam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tableName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ParameterBytes" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertWithParamResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateWithParam">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tableName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ParameterBytes" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWithParamResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="UpdateWithParam_2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tableName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ParameterBytes" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="keyNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateWithParam_2Response">
+        <s:complexType />
+      </s:element>
+      <s:element name="ExecuteStoredProcedure">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tableName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ParameterBytes" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteStoredProcedureResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDataTables">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tableNameList" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDataTablesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDataTablesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteBatchSQL">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sqlArr" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExecuteBatchSQLResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDataFromSqlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDataFromSql" />
+  </wsdl:message>
+  <wsdl:message name="GetDataFromSqlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDataFromSqlResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteSqlSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuteSql" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteSqlSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuteSqlResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertWithParamSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertWithParam" />
+  </wsdl:message>
+  <wsdl:message name="InsertWithParamSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertWithParamResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWithParamSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWithParam" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWithParamSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWithParamResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWithParam_2SoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateWithParam_2" />
+  </wsdl:message>
+  <wsdl:message name="UpdateWithParam_2SoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateWithParam_2Response" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteStoredProcedureSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuteStoredProcedure" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteStoredProcedureSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuteStoredProcedureResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDataTablesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDataTables" />
+  </wsdl:message>
+  <wsdl:message name="GetDataTablesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDataTablesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteBatchSQLSoapIn">
+    <wsdl:part name="parameters" element="tns:ExecuteBatchSQL" />
+  </wsdl:message>
+  <wsdl:message name="ExecuteBatchSQLSoapOut">
+    <wsdl:part name="parameters" element="tns:ExecuteBatchSQLResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DbWebSvcSoap">
+    <wsdl:operation name="GetDataFromSql">
+      <wsdl:input message="tns:GetDataFromSqlSoapIn" />
+      <wsdl:output message="tns:GetDataFromSqlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteSql">
+      <wsdl:input message="tns:ExecuteSqlSoapIn" />
+      <wsdl:output message="tns:ExecuteSqlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertWithParam">
+      <wsdl:input message="tns:InsertWithParamSoapIn" />
+      <wsdl:output message="tns:InsertWithParamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWithParam">
+      <wsdl:input message="tns:UpdateWithParamSoapIn" />
+      <wsdl:output message="tns:UpdateWithParamSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWithParam_2">
+      <wsdl:input message="tns:UpdateWithParam_2SoapIn" />
+      <wsdl:output message="tns:UpdateWithParam_2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteStoredProcedure">
+      <wsdl:input message="tns:ExecuteStoredProcedureSoapIn" />
+      <wsdl:output message="tns:ExecuteStoredProcedureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataTables">
+      <wsdl:input message="tns:GetDataTablesSoapIn" />
+      <wsdl:output message="tns:GetDataTablesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteBatchSQL">
+      <wsdl:input message="tns:ExecuteBatchSQLSoapIn" />
+      <wsdl:output message="tns:ExecuteBatchSQLSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DbWebSvcSoap" type="tns:DbWebSvcSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDataFromSql">
+      <soap:operation soapAction="http://tempuri.org/GetDataFromSql" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteSql">
+      <soap:operation soapAction="http://tempuri.org/ExecuteSql" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertWithParam">
+      <soap:operation soapAction="http://tempuri.org/InsertWithParam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWithParam">
+      <soap:operation soapAction="http://tempuri.org/UpdateWithParam" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWithParam_2">
+      <soap:operation soapAction="http://tempuri.org/UpdateWithParam_2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteStoredProcedure">
+      <soap:operation soapAction="http://tempuri.org/ExecuteStoredProcedure" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataTables">
+      <soap:operation soapAction="http://tempuri.org/GetDataTables" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteBatchSQL">
+      <soap:operation soapAction="http://tempuri.org/ExecuteBatchSQL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DbWebSvcSoap12" type="tns:DbWebSvcSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDataFromSql">
+      <soap12:operation soapAction="http://tempuri.org/GetDataFromSql" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteSql">
+      <soap12:operation soapAction="http://tempuri.org/ExecuteSql" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertWithParam">
+      <soap12:operation soapAction="http://tempuri.org/InsertWithParam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWithParam">
+      <soap12:operation soapAction="http://tempuri.org/UpdateWithParam" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateWithParam_2">
+      <soap12:operation soapAction="http://tempuri.org/UpdateWithParam_2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteStoredProcedure">
+      <soap12:operation soapAction="http://tempuri.org/ExecuteStoredProcedure" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataTables">
+      <soap12:operation soapAction="http://tempuri.org/GetDataTables" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteBatchSQL">
+      <soap12:operation soapAction="http://tempuri.org/ExecuteBatchSQL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DbWebSvc">
+    <wsdl:port name="DbWebSvcSoap" binding="tns:DbWebSvcSoap">
+      <soap:address location="http://172.168.0.224/ETH.Goods.WebSvc/DbWebSvc.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DbWebSvcSoap12" binding="tns:DbWebSvcSoap12">
+      <soap12:address location="http://172.168.0.224/ETH.Goods.WebSvc/DbWebSvc.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

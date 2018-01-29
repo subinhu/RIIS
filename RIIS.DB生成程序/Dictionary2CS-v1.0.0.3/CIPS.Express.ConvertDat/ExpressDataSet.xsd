@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ExpressDataSet" targetNamespace="http://tempuri.org/ExpressDataSet.xsd" xmlns:mstns="http://tempuri.org/ExpressDataSet.xsd" xmlns="http://tempuri.org/ExpressDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="ConnectionString (Settings)" PropertyReference="ApplicationSettings.CIPS.Express.ConvertDat.Properties.Settings.GlobalReference.Default.ConnectionString" Provider="System.Data.OleDb">
+          </Connection>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ExpressDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="ExpressDataSet" msprop:Generator_DataSetName="ExpressDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DM_CC_CARS" msprop:Generator_UserTableName="DM_CC_CARS" msprop:Generator_RowDeletedName="DM_CC_CARSRowDeleted" msprop:Generator_RowChangedName="DM_CC_CARSRowChanged" msprop:Generator_RowClassName="DM_CC_CARSRow" msprop:Generator_RowChangingName="DM_CC_CARSRowChanging" msprop:Generator_RowEvArgName="DM_CC_CARSRowChangeEvent" msprop:Generator_RowEvHandlerName="DM_CC_CARSRowChangeEventHandler" msprop:Generator_TableClassName="DM_CC_CARSDataTable" msprop:Generator_TableVarName="tableDM_CC_CARS" msprop:Generator_RowDeletingName="DM_CC_CARSRowDeleting" msprop:Generator_TablePropName="DM_CC_CARS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="I_CAR_ID" msprop:Generator_UserColumnName="I_CAR_ID" msprop:Generator_ColumnPropNameInRow="I_CAR_ID" msprop:Generator_ColumnVarNameInTable="columnI_CAR_ID" msprop:Generator_ColumnPropNameInTable="I_CAR_IDColumn" type="xs:long" />
+              <xs:element name="I_VERSION_NO" msprop:Generator_UserColumnName="I_VERSION_NO" msprop:Generator_ColumnPropNameInRow="I_VERSION_NO" msprop:Generator_ColumnVarNameInTable="columnI_VERSION_NO" msprop:Generator_ColumnPropNameInTable="I_VERSION_NOColumn" type="xs:int" />
+              <xs:element name="C_CAR_CO" msprop:Generator_UserColumnName="C_CAR_CO" msprop:Generator_ColumnPropNameInRow="C_CAR_CO" msprop:Generator_ColumnVarNameInTable="columnC_CAR_CO" msprop:Generator_ColumnPropNameInTable="C_CAR_COColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="I_CONS_ID_ARR" msprop:Generator_UserColumnName="I_CONS_ID_ARR" msprop:Generator_ColumnPropNameInRow="I_CONS_ID_ARR" msprop:Generator_ColumnVarNameInTable="columnI_CONS_ID_ARR" msprop:Generator_ColumnPropNameInTable="I_CONS_ID_ARRColumn" type="xs:long" />
+              <xs:element name="I_CONS_ID_DEP" msprop:Generator_UserColumnName="I_CONS_ID_DEP" msprop:Generator_ColumnPropNameInRow="I_CONS_ID_DEP" msprop:Generator_ColumnVarNameInTable="columnI_CONS_ID_DEP" msprop:Generator_ColumnPropNameInTable="I_CONS_ID_DEPColumn" type="xs:long" />
+              <xs:element name="I_CONS_NO_ARR" msprop:Generator_UserColumnName="I_CONS_NO_ARR" msprop:Generator_ColumnPropNameInRow="I_CONS_NO_ARR" msprop:Generator_ColumnVarNameInTable="columnI_CONS_NO_ARR" msprop:Generator_ColumnPropNameInTable="I_CONS_NO_ARRColumn" type="xs:int" />
+              <xs:element name="I_CONS_NO_DEP" msprop:Generator_UserColumnName="I_CONS_NO_DEP" msprop:Generator_ColumnPropNameInRow="I_CONS_NO_DEP" msprop:Generator_ColumnVarNameInTable="columnI_CONS_NO_DEP" msprop:Generator_ColumnPropNameInTable="I_CONS_NO_DEPColumn" type="xs:int" />
+              <xs:element name="C_SUIT_TYPE" msprop:Generator_UserColumnName="C_SUIT_TYPE" msprop:Generator_ColumnPropNameInRow="C_SUIT_TYPE" msprop:Generator_ColumnVarNameInTable="columnC_SUIT_TYPE" msprop:Generator_ColumnPropNameInTable="C_SUIT_TYPEColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_CAR_TYPE" msprop:Generator_UserColumnName="C_CAR_TYPE" msprop:Generator_ColumnPropNameInRow="C_CAR_TYPE" msprop:Generator_ColumnVarNameInTable="columnC_CAR_TYPE" msprop:Generator_ColumnPropNameInTable="C_CAR_TYPEColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_CAR_TYPE_FORSH" msprop:Generator_UserColumnName="C_CAR_TYPE_FORSH" msprop:Generator_ColumnPropNameInRow="C_CAR_TYPE_FORSH" msprop:Generator_ColumnVarNameInTable="columnC_CAR_TYPE_FORSH" msprop:Generator_ColumnPropNameInTable="C_CAR_TYPE_FORSHColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="E_CAR_TYPE" msprop:Generator_UserColumnName="E_CAR_TYPE" msprop:Generator_ColumnPropNameInRow="E_CAR_TYPE" msprop:Generator_ColumnVarNameInTable="columnE_CAR_TYPE" msprop:Generator_ColumnPropNameInTable="E_CAR_TYPEColumn" type="xs:int" />
+              <xs:element name="E_OIL_TYPE" msprop:Generator_UserColumnName="E_OIL_TYPE" msprop:Generator_ColumnPropNameInRow="E_OIL_TYPE" msprop:Generator_ColumnVarNameInTable="columnE_OIL_TYPE" msprop:Generator_ColumnPropNameInTable="E_OIL_TYPEColumn" type="xs:int" />
+              <xs:element name="F_WEGH_OWN" msprop:Generator_UserColumnName="F_WEGH_OWN" msprop:Generator_ColumnPropNameInRow="F_WEGH_OWN" msprop:Generator_ColumnVarNameInTable="columnF_WEGH_OWN" msprop:Generator_ColumnPropNameInTable="F_WEGH_OWNColumn" type="xs:decimal" />
+              <xs:element name="F_LEN" msprop:Generator_UserColumnName="F_LEN" msprop:Generator_ColumnPropNameInRow="F_LEN" msprop:Generator_ColumnVarNameInTable="columnF_LEN" msprop:Generator_ColumnPropNameInTable="F_LENColumn" type="xs:decimal" />
+              <xs:element name="F_WEGH_LOAD" msprop:Generator_UserColumnName="F_WEGH_LOAD" msprop:Generator_ColumnPropNameInRow="F_WEGH_LOAD" msprop:Generator_ColumnVarNameInTable="columnF_WEGH_LOAD" msprop:Generator_ColumnPropNameInTable="F_WEGH_LOADColumn" type="xs:decimal" />
+              <xs:element name="C_STA_CO_ARR" msprop:Generator_UserColumnName="C_STA_CO_ARR" msprop:Generator_ColumnPropNameInRow="C_STA_CO_ARR" msprop:Generator_ColumnVarNameInTable="columnC_STA_CO_ARR" msprop:Generator_ColumnPropNameInTable="C_STA_CO_ARRColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_STA_NA_ARR" msprop:Generator_UserColumnName="C_STA_NA_ARR" msprop:Generator_ColumnPropNameInRow="C_STA_NA_ARR" msprop:Generator_ColumnVarNameInTable="columnC_STA_NA_ARR" msprop:Generator_ColumnPropNameInTable="C_STA_NA_ARRColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_BUR_CO_ARR" msprop:Generator_UserColumnName="C_BUR_CO_ARR" msprop:Generator_ColumnPropNameInRow="C_BUR_CO_ARR" msprop:Generator_ColumnVarNameInTable="columnC_BUR_CO_ARR" msprop:Generator_ColumnPropNameInTable="C_BUR_CO_ARRColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="I_SBUR_CO_ARR" msprop:Generator_UserColumnName="I_SBUR_CO_ARR" msprop:Generator_ColumnPropNameInRow="I_SBUR_CO_ARR" msprop:Generator_ColumnVarNameInTable="columnI_SBUR_CO_ARR" msprop:Generator_ColumnPropNameInTable="I_SBUR_CO_ARRColumn" type="xs:int" />
+              <xs:element name="C_STA_CO_END" msprop:Generator_UserColumnName="C_STA_CO_END" msprop:Generator_ColumnPropNameInRow="C_STA_CO_END" msprop:Generator_ColumnVarNameInTable="columnC_STA_CO_END" msprop:Generator_ColumnPropNameInTable="C_STA_CO_ENDColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_STA_NA_END" msprop:Generator_UserColumnName="C_STA_NA_END" msprop:Generator_ColumnPropNameInRow="C_STA_NA_END" msprop:Generator_ColumnVarNameInTable="columnC_STA_NA_END" msprop:Generator_ColumnPropNameInTable="C_STA_NA_ENDColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_GOODS_NA" msprop:Generator_UserColumnName="C_GOODS_NA" msprop:Generator_ColumnPropNameInRow="C_GOODS_NA" msprop:Generator_ColumnVarNameInTable="columnC_GOODS_NA" msprop:Generator_ColumnPropNameInTable="C_GOODS_NAColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_CONSIGNEE" msprop:Generator_UserColumnName="C_CONSIGNEE" msprop:Generator_ColumnPropNameInRow="C_CONSIGNEE" msprop:Generator_ColumnVarNameInTable="columnC_CONSIGNEE" msprop:Generator_ColumnPropNameInTable="C_CONSIGNEEColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="400" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_STA_CO_DEP" msprop:Generator_UserColumnName="C_STA_CO_DEP" msprop:Generator_ColumnPropNameInRow="C_STA_CO_DEP" msprop:Generator_ColumnVarNameInTable="columnC_STA_CO_DEP" msprop:Generator_ColumnPropNameInTable="C_STA_CO_DEPColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="6" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_STA_NA_DEP" msprop:Generator_UserColumnName="C_STA_NA_DEP" msprop:Generator_ColumnPropNameInRow="C_STA_NA_DEP" msprop:Generator_ColumnVarNameInTable="columnC_STA_NA_DEP" msprop:Generator_ColumnPropNameInTable="C_STA_NA_DEPColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="I_CANVAS_NUM" msprop:Generator_UserColumnName="I_CANVAS_NUM" msprop:Generator_ColumnPropNameInRow="I_CANVAS_NUM" msprop:Generator_ColumnVarNameInTable="columnI_CANVAS_NUM" msprop:Generator_ColumnPropNameInTable="I_CANVAS_NUMColumn" type="xs:int" />
+              <xs:element name="E_SYM_BADCAR" msprop:Generator_UserColumnName="E_SYM_BADCAR" msprop:Generator_ColumnPropNameInRow="E_SYM_BADCAR" msprop:Generator_ColumnVarNameInTable="columnE_SYM_BADCAR" msprop:Generator_ColumnPropNameInTable="E_SYM_BADCARColumn" type="xs:int" />
+              <xs:element name="C_REMARK" msprop:Generator_UserColumnName="C_REMARK" msprop:Generator_ColumnPropNameInRow="C_REMARK" msprop:Generator_ColumnVarNameInTable="columnC_REMARK" msprop:Generator_ColumnPropNameInTable="C_REMARKColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="E_SYM_GRO" msprop:Generator_UserColumnName="E_SYM_GRO" msprop:Generator_ColumnPropNameInRow="E_SYM_GRO" msprop:Generator_ColumnVarNameInTable="columnE_SYM_GRO" msprop:Generator_ColumnPropNameInTable="E_SYM_GROColumn" type="xs:int" />
+              <xs:element name="E_SYM_WEGH" msprop:Generator_UserColumnName="E_SYM_WEGH" msprop:Generator_ColumnPropNameInRow="E_SYM_WEGH" msprop:Generator_ColumnVarNameInTable="columnE_SYM_WEGH" msprop:Generator_ColumnPropNameInTable="E_SYM_WEGHColumn" type="xs:int" />
+              <xs:element name="E_SYM_LCL" msprop:Generator_UserColumnName="E_SYM_LCL" msprop:Generator_ColumnPropNameInRow="E_SYM_LCL" msprop:Generator_ColumnVarNameInTable="columnE_SYM_LCL" msprop:Generator_ColumnPropNameInTable="E_SYM_LCLColumn" type="xs:int" />
+              <xs:element name="E_SYM_ARMY" msprop:Generator_UserColumnName="E_SYM_ARMY" msprop:Generator_ColumnPropNameInRow="E_SYM_ARMY" msprop:Generator_ColumnVarNameInTable="columnE_SYM_ARMY" msprop:Generator_ColumnPropNameInTable="E_SYM_ARMYColumn" type="xs:int" />
+              <xs:element name="E_SYM_ECHO" msprop:Generator_UserColumnName="E_SYM_ECHO" msprop:Generator_ColumnPropNameInRow="E_SYM_ECHO" msprop:Generator_ColumnVarNameInTable="columnE_SYM_ECHO" msprop:Generator_ColumnPropNameInTable="E_SYM_ECHOColumn" type="xs:int" />
+              <xs:element name="E_SYM_ENTERPRISE" msprop:Generator_UserColumnName="E_SYM_ENTERPRISE" msprop:Generator_ColumnPropNameInRow="E_SYM_ENTERPRISE" msprop:Generator_ColumnVarNameInTable="columnE_SYM_ENTERPRISE" msprop:Generator_ColumnPropNameInTable="E_SYM_ENTERPRISEColumn" type="xs:int" />
+              <xs:element name="E_SYM_OUTSERV" msprop:Generator_UserColumnName="E_SYM_OUTSERV" msprop:Generator_ColumnPropNameInRow="E_SYM_OUTSERV" msprop:Generator_ColumnVarNameInTable="columnE_SYM_OUTSERV" msprop:Generator_ColumnPropNameInTable="E_SYM_OUTSERVColumn" type="xs:int" />
+              <xs:element name="E_SYM_OTHER" msprop:Generator_UserColumnName="E_SYM_OTHER" msprop:Generator_ColumnPropNameInRow="E_SYM_OTHER" msprop:Generator_ColumnVarNameInTable="columnE_SYM_OTHER" msprop:Generator_ColumnPropNameInTable="E_SYM_OTHERColumn" type="xs:int" />
+              <xs:element name="E_OUTSERV_CO" msprop:Generator_UserColumnName="E_OUTSERV_CO" msprop:Generator_ColumnPropNameInRow="E_OUTSERV_CO" msprop:Generator_ColumnVarNameInTable="columnE_OUTSERV_CO" msprop:Generator_ColumnPropNameInTable="E_OUTSERV_COColumn" type="xs:int" />
+              <xs:element name="C_SEAL_ID" msprop:Generator_UserColumnName="C_SEAL_ID" msprop:Generator_ColumnPropNameInRow="C_SEAL_ID" msprop:Generator_ColumnVarNameInTable="columnC_SEAL_ID" msprop:Generator_ColumnPropNameInTable="C_SEAL_IDColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_CANVAS_ID" msprop:Generator_UserColumnName="C_CANVAS_ID" msprop:Generator_ColumnPropNameInRow="C_CANVAS_ID" msprop:Generator_ColumnVarNameInTable="columnC_CANVAS_ID" msprop:Generator_ColumnPropNameInTable="C_CANVAS_IDColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="I_GRO_ID" msprop:Generator_UserColumnName="I_GRO_ID" msprop:Generator_ColumnPropNameInRow="I_GRO_ID" msprop:Generator_ColumnVarNameInTable="columnI_GRO_ID" msprop:Generator_ColumnPropNameInTable="I_GRO_IDColumn" type="xs:int" />
+              <xs:element name="I_LINE_ID" msprop:Generator_UserColumnName="I_LINE_ID" msprop:Generator_ColumnPropNameInRow="I_LINE_ID" msprop:Generator_ColumnVarNameInTable="columnI_LINE_ID" msprop:Generator_ColumnPropNameInTable="I_LINE_IDColumn" type="xs:int" />
+              <xs:element name="C_LINE_NA" msprop:Generator_UserColumnName="C_LINE_NA" msprop:Generator_ColumnPropNameInRow="C_LINE_NA" msprop:Generator_ColumnVarNameInTable="columnC_LINE_NA" msprop:Generator_ColumnPropNameInTable="C_LINE_NAColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="120" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="B_CAR_CHARA" msprop:Generator_UserColumnName="B_CAR_CHARA" msprop:Generator_ColumnPropNameInRow="B_CAR_CHARA" msprop:Generator_ColumnVarNameInTable="columnB_CAR_CHARA" msprop:Generator_ColumnPropNameInTable="B_CAR_CHARAColumn" type="xs:long" />
+              <xs:element name="E_CAR_CHARA" msprop:Generator_UserColumnName="E_CAR_CHARA" msprop:Generator_ColumnPropNameInRow="E_CAR_CHARA" msprop:Generator_ColumnVarNameInTable="columnE_CAR_CHARA" msprop:Generator_ColumnPropNameInTable="E_CAR_CHARAColumn" type="xs:int" />
+              <xs:element name="C_TRA_NUM_ARR" msprop:Generator_UserColumnName="C_TRA_NUM_ARR" msprop:Generator_ColumnPropNameInRow="C_TRA_NUM_ARR" msprop:Generator_ColumnVarNameInTable="columnC_TRA_NUM_ARR" msprop:Generator_ColumnPropNameInTable="C_TRA_NUM_ARRColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="510" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="D_TRA_ARR" msprop:Generator_UserColumnName="D_TRA_ARR" msprop:Generator_ColumnPropNameInRow="D_TRA_ARR" msprop:Generator_ColumnVarNameInTable="columnD_TRA_ARR" msprop:Generator_ColumnPropNameInTable="D_TRA_ARRColumn" type="xs:dateTime" />
+              <xs:element name="C_INV_CO" msprop:Generator_UserColumnName="C_INV_CO" msprop:Generator_ColumnPropNameInRow="C_INV_CO" msprop:Generator_ColumnVarNameInTable="columnC_INV_CO" msprop:Generator_ColumnPropNameInTable="C_INV_COColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="64" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_CANVAS_ID1" msprop:Generator_UserColumnName="C_CANVAS_ID1" msprop:Generator_ColumnPropNameInRow="C_CANVAS_ID1" msprop:Generator_ColumnVarNameInTable="columnC_CANVAS_ID1" msprop:Generator_ColumnPropNameInTable="C_CANVAS_ID1Column">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_CANVAS_ID2" msprop:Generator_UserColumnName="C_CANVAS_ID2" msprop:Generator_ColumnPropNameInRow="C_CANVAS_ID2" msprop:Generator_ColumnVarNameInTable="columnC_CANVAS_ID2" msprop:Generator_ColumnPropNameInTable="C_CANVAS_ID2Column">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="I_GRO_ID_STAT" msprop:Generator_UserColumnName="I_GRO_ID_STAT" msprop:Generator_ColumnPropNameInRow="I_GRO_ID_STAT" msprop:Generator_ColumnVarNameInTable="columnI_GRO_ID_STAT" msprop:Generator_ColumnPropNameInTable="I_GRO_ID_STATColumn" type="xs:int" />
+              <xs:element name="C_CONSIGNOR" msprop:Generator_UserColumnName="C_CONSIGNOR" msprop:Generator_ColumnPropNameInRow="C_CONSIGNOR" msprop:Generator_ColumnVarNameInTable="columnC_CONSIGNOR" msprop:Generator_ColumnPropNameInTable="C_CONSIGNORColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="400" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="B_CAR_STATE" msprop:Generator_UserColumnName="B_CAR_STATE" msprop:Generator_ColumnPropNameInRow="B_CAR_STATE" msprop:Generator_ColumnVarNameInTable="columnB_CAR_STATE" msprop:Generator_ColumnPropNameInTable="B_CAR_STATEColumn" type="xs:long" />
+              <xs:element name="D_LINE_IN" msprop:Generator_UserColumnName="D_LINE_IN" msprop:Generator_ColumnPropNameInRow="D_LINE_IN" msprop:Generator_ColumnVarNameInTable="columnD_LINE_IN" msprop:Generator_ColumnPropNameInTable="D_LINE_INColumn" type="xs:dateTime" />
+              <xs:element name="I_GOODS_NUM" msprop:Generator_UserColumnName="I_GOODS_NUM" msprop:Generator_ColumnPropNameInRow="I_GOODS_NUM" msprop:Generator_ColumnVarNameInTable="columnI_GOODS_NUM" msprop:Generator_ColumnPropNameInTable="I_GOODS_NUMColumn" type="xs:int" />
+              <xs:element name="D_WORK" msprop:Generator_UserColumnName="D_WORK" msprop:Generator_ColumnPropNameInRow="D_WORK" msprop:Generator_ColumnVarNameInTable="columnD_WORK" msprop:Generator_ColumnPropNameInTable="D_WORKColumn" type="xs:dateTime" />
+              <xs:element name="D_WORK_BEGIN" msprop:Generator_UserColumnName="D_WORK_BEGIN" msprop:Generator_ColumnPropNameInRow="D_WORK_BEGIN" msprop:Generator_ColumnVarNameInTable="columnD_WORK_BEGIN" msprop:Generator_ColumnPropNameInTable="D_WORK_BEGINColumn" type="xs:dateTime" />
+              <xs:element name="D_LINE_OUT" msprop:Generator_UserColumnName="D_LINE_OUT" msprop:Generator_ColumnPropNameInRow="D_LINE_OUT" msprop:Generator_ColumnVarNameInTable="columnD_LINE_OUT" msprop:Generator_ColumnPropNameInTable="D_LINE_OUTColumn" type="xs:dateTime" />
+              <xs:element name="F_RATEKMS_UNLOAD" msprop:Generator_UserColumnName="F_RATEKMS_UNLOAD" msprop:Generator_ColumnPropNameInRow="F_RATEKMS_UNLOAD" msprop:Generator_ColumnVarNameInTable="columnF_RATEKMS_UNLOAD" msprop:Generator_ColumnPropNameInTable="F_RATEKMS_UNLOADColumn" type="xs:decimal" />
+              <xs:element name="I_CAR_NO" msprop:Generator_UserColumnName="I_CAR_NO" msprop:Generator_ColumnPropNameInRow="I_CAR_NO" msprop:Generator_ColumnVarNameInTable="columnI_CAR_NO" msprop:Generator_ColumnPropNameInTable="I_CAR_NOColumn" type="xs:int" />
+              <xs:element name="E_SYM_MINE" msprop:Generator_UserColumnName="E_SYM_MINE" msprop:Generator_ColumnPropNameInRow="E_SYM_MINE" msprop:Generator_ColumnVarNameInTable="columnE_SYM_MINE" msprop:Generator_ColumnPropNameInTable="E_SYM_MINEColumn" type="xs:int" />
+              <xs:element name="F_WEGH_STD" msprop:Generator_UserColumnName="F_WEGH_STD" msprop:Generator_ColumnPropNameInRow="F_WEGH_STD" msprop:Generator_ColumnVarNameInTable="columnF_WEGH_STD" msprop:Generator_ColumnPropNameInTable="F_WEGH_STDColumn" type="xs:decimal" />
+              <xs:element name="F_WEGH_BRG" msprop:Generator_UserColumnName="F_WEGH_BRG" msprop:Generator_ColumnPropNameInRow="F_WEGH_BRG" msprop:Generator_ColumnVarNameInTable="columnF_WEGH_BRG" msprop:Generator_ColumnPropNameInTable="F_WEGH_BRGColumn" type="xs:decimal" />
+              <xs:element name="I_WORKER_ID" msprop:Generator_UserColumnName="I_WORKER_ID" msprop:Generator_ColumnPropNameInRow="I_WORKER_ID" msprop:Generator_ColumnVarNameInTable="columnI_WORKER_ID" msprop:Generator_ColumnPropNameInTable="I_WORKER_IDColumn" type="xs:int" />
+              <xs:element name="C_BOOTH_ID" msprop:Generator_UserColumnName="C_BOOTH_ID" msprop:Generator_ColumnPropNameInRow="C_BOOTH_ID" msprop:Generator_ColumnVarNameInTable="columnC_BOOTH_ID" msprop:Generator_ColumnPropNameInTable="C_BOOTH_IDColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="E_DANGER_TYPE" msprop:Generator_UserColumnName="E_DANGER_TYPE" msprop:Generator_ColumnPropNameInRow="E_DANGER_TYPE" msprop:Generator_ColumnVarNameInTable="columnE_DANGER_TYPE" msprop:Generator_ColumnPropNameInTable="E_DANGER_TYPEColumn" type="xs:int" />
+              <xs:element name="E_SYM_COMMON" msprop:Generator_UserColumnName="E_SYM_COMMON" msprop:Generator_ColumnPropNameInRow="E_SYM_COMMON" msprop:Generator_ColumnVarNameInTable="columnE_SYM_COMMON" msprop:Generator_ColumnPropNameInTable="E_SYM_COMMONColumn" type="xs:int" />
+              <xs:element name="E_SYM_MANUAL" msprop:Generator_UserColumnName="E_SYM_MANUAL" msprop:Generator_ColumnPropNameInRow="E_SYM_MANUAL" msprop:Generator_ColumnVarNameInTable="columnE_SYM_MANUAL" msprop:Generator_ColumnPropNameInTable="E_SYM_MANUALColumn" type="xs:int" />
+              <xs:element name="I_WORK_NUM" msprop:Generator_UserColumnName="I_WORK_NUM" msprop:Generator_ColumnPropNameInRow="I_WORK_NUM" msprop:Generator_ColumnVarNameInTable="columnI_WORK_NUM" msprop:Generator_ColumnPropNameInTable="I_WORK_NUMColumn" type="xs:int" />
+              <xs:element name="I_CONTAINER_NUM" msprop:Generator_UserColumnName="I_CONTAINER_NUM" msprop:Generator_ColumnPropNameInRow="I_CONTAINER_NUM" msprop:Generator_ColumnVarNameInTable="columnI_CONTAINER_NUM" msprop:Generator_ColumnPropNameInTable="I_CONTAINER_NUMColumn" type="xs:int" />
+              <xs:element name="I_BATCH_NUM" msprop:Generator_UserColumnName="I_BATCH_NUM" msprop:Generator_ColumnPropNameInRow="I_BATCH_NUM" msprop:Generator_ColumnVarNameInTable="columnI_BATCH_NUM" msprop:Generator_ColumnPropNameInTable="I_BATCH_NUMColumn" type="xs:int" />
+              <xs:element name="E_GANG_CO" msprop:Generator_UserColumnName="E_GANG_CO" msprop:Generator_ColumnPropNameInRow="E_GANG_CO" msprop:Generator_ColumnVarNameInTable="columnE_GANG_CO" msprop:Generator_ColumnPropNameInTable="E_GANG_COColumn" type="xs:int" />
+              <xs:element name="C_OP_CONTRAL" msprop:Generator_UserColumnName="C_OP_CONTRAL" msprop:Generator_ColumnPropNameInRow="C_OP_CONTRAL" msprop:Generator_ColumnVarNameInTable="columnC_OP_CONTRAL" msprop:Generator_ColumnPropNameInTable="C_OP_CONTRALColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_OP_LOAD_CHECK" msprop:Generator_UserColumnName="C_OP_LOAD_CHECK" msprop:Generator_ColumnPropNameInRow="C_OP_LOAD_CHECK" msprop:Generator_ColumnVarNameInTable="columnC_OP_LOAD_CHECK" msprop:Generator_ColumnPropNameInTable="C_OP_LOAD_CHECKColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_PL_CO_RATIFY" msprop:Generator_UserColumnName="C_PL_CO_RATIFY" msprop:Generator_ColumnPropNameInRow="C_PL_CO_RATIFY" msprop:Generator_ColumnVarNameInTable="columnC_PL_CO_RATIFY" msprop:Generator_ColumnPropNameInTable="C_PL_CO_RATIFYColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="I_OTH_RECORD" msprop:Generator_UserColumnName="I_OTH_RECORD" msprop:Generator_ColumnPropNameInRow="I_OTH_RECORD" msprop:Generator_ColumnVarNameInTable="columnI_OTH_RECORD" msprop:Generator_ColumnPropNameInTable="I_OTH_RECORDColumn" type="xs:int" />
+              <xs:element name="I_OTH_TELEGRAM" msprop:Generator_UserColumnName="I_OTH_TELEGRAM" msprop:Generator_ColumnPropNameInRow="I_OTH_TELEGRAM" msprop:Generator_ColumnVarNameInTable="columnI_OTH_TELEGRAM" msprop:Generator_ColumnPropNameInTable="I_OTH_TELEGRAMColumn" type="xs:int" />
+              <xs:element name="I_OTH_ADDLOCK" msprop:Generator_UserColumnName="I_OTH_ADDLOCK" msprop:Generator_ColumnPropNameInRow="I_OTH_ADDLOCK" msprop:Generator_ColumnVarNameInTable="columnI_OTH_ADDLOCK" msprop:Generator_ColumnPropNameInTable="I_OTH_ADDLOCKColumn" type="xs:int" />
+              <xs:element name="I_BUR_ID_DEP" msprop:Generator_UserColumnName="I_BUR_ID_DEP" msprop:Generator_ColumnPropNameInRow="I_BUR_ID_DEP" msprop:Generator_ColumnVarNameInTable="columnI_BUR_ID_DEP" msprop:Generator_ColumnPropNameInTable="I_BUR_ID_DEPColumn" type="xs:int" />
+              <xs:element name="C_REMARK1" msdata:Caption="C_REMARK" msprop:Generator_UserColumnName="C_REMARK1" msprop:Generator_ColumnPropNameInRow="C_REMARK1" msprop:Generator_ColumnVarNameInTable="columnC_REMARK1" msprop:Generator_ColumnPropNameInTable="C_REMARK1Column">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_GOODS_CODE" msprop:Generator_UserColumnName="C_GOODS_CODE" msprop:Generator_ColumnPropNameInRow="C_GOODS_CODE" msprop:Generator_ColumnVarNameInTable="columnC_GOODS_CODE" msprop:Generator_ColumnPropNameInTable="C_GOODS_CODEColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_EXE_CODE" msprop:Generator_UserColumnName="C_EXE_CODE" msprop:Generator_ColumnPropNameInRow="C_EXE_CODE" msprop:Generator_ColumnVarNameInTable="columnC_EXE_CODE" msprop:Generator_ColumnPropNameInTable="C_EXE_CODEColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="F_OTH_IRON" msprop:Generator_UserColumnName="F_OTH_IRON" msprop:Generator_ColumnPropNameInRow="F_OTH_IRON" msprop:Generator_ColumnVarNameInTable="columnF_OTH_IRON" msprop:Generator_ColumnPropNameInTable="F_OTH_IRONColumn" type="xs:decimal" />
+              <xs:element name="I_OTH_ROLE_MID" msprop:Generator_UserColumnName="I_OTH_ROLE_MID" msprop:Generator_ColumnPropNameInRow="I_OTH_ROLE_MID" msprop:Generator_ColumnVarNameInTable="columnI_OTH_ROLE_MID" msprop:Generator_ColumnPropNameInTable="I_OTH_ROLE_MIDColumn" type="xs:int" />
+              <xs:element name="I_OTH_ROLE_SIDE" msprop:Generator_UserColumnName="I_OTH_ROLE_SIDE" msprop:Generator_ColumnPropNameInRow="I_OTH_ROLE_SIDE" msprop:Generator_ColumnVarNameInTable="columnI_OTH_ROLE_SIDE" msprop:Generator_ColumnPropNameInTable="I_OTH_ROLE_SIDEColumn" type="xs:int" />
+              <xs:element name="B_OTHER_CAR" msprop:Generator_UserColumnName="B_OTHER_CAR" msprop:Generator_ColumnPropNameInRow="B_OTHER_CAR" msprop:Generator_ColumnVarNameInTable="columnB_OTHER_CAR" msprop:Generator_ColumnPropNameInTable="B_OTHER_CARColumn" type="xs:int" />
+              <xs:element name="B_EXE_CAR" msprop:Generator_UserColumnName="B_EXE_CAR" msprop:Generator_ColumnPropNameInRow="B_EXE_CAR" msprop:Generator_ColumnVarNameInTable="columnB_EXE_CAR" msprop:Generator_ColumnPropNameInTable="B_EXE_CARColumn" type="xs:int" />
+              <xs:element name="B_VIP_CAR" msprop:Generator_UserColumnName="B_VIP_CAR" msprop:Generator_ColumnPropNameInRow="B_VIP_CAR" msprop:Generator_ColumnVarNameInTable="columnB_VIP_CAR" msprop:Generator_ColumnPropNameInTable="B_VIP_CARColumn" type="xs:int" />
+              <xs:element name="C_ADDLOCK_RIGHT" msprop:Generator_UserColumnName="C_ADDLOCK_RIGHT" msprop:Generator_ColumnPropNameInRow="C_ADDLOCK_RIGHT" msprop:Generator_ColumnVarNameInTable="columnC_ADDLOCK_RIGHT" msprop:Generator_ColumnPropNameInTable="C_ADDLOCK_RIGHTColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_ADDLOCK_LEFT" msprop:Generator_UserColumnName="C_ADDLOCK_LEFT" msprop:Generator_ColumnPropNameInRow="C_ADDLOCK_LEFT" msprop:Generator_ColumnVarNameInTable="columnC_ADDLOCK_LEFT" msprop:Generator_ColumnPropNameInTable="C_ADDLOCK_LEFTColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_ADDLOCK_STA_RIGHT" msprop:Generator_UserColumnName="C_ADDLOCK_STA_RIGHT" msprop:Generator_ColumnPropNameInRow="C_ADDLOCK_STA_RIGHT" msprop:Generator_ColumnVarNameInTable="columnC_ADDLOCK_STA_RIGHT" msprop:Generator_ColumnPropNameInTable="C_ADDLOCK_STA_RIGHTColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_ADDLOCK_STA_LEFT" msprop:Generator_UserColumnName="C_ADDLOCK_STA_LEFT" msprop:Generator_ColumnPropNameInRow="C_ADDLOCK_STA_LEFT" msprop:Generator_ColumnVarNameInTable="columnC_ADDLOCK_STA_LEFT" msprop:Generator_ColumnPropNameInTable="C_ADDLOCK_STA_LEFTColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_LOCK_RIGHT" msprop:Generator_UserColumnName="C_LOCK_RIGHT" msprop:Generator_ColumnPropNameInRow="C_LOCK_RIGHT" msprop:Generator_ColumnVarNameInTable="columnC_LOCK_RIGHT" msprop:Generator_ColumnPropNameInTable="C_LOCK_RIGHTColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="C_LOCK_LEFT" msprop:Generator_UserColumnName="C_LOCK_LEFT" msprop:Generator_ColumnPropNameInRow="C_LOCK_LEFT" msprop:Generator_ColumnVarNameInTable="columnC_LOCK_LEFT" msprop:Generator_ColumnPropNameInTable="C_LOCK_LEFTColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="40" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="F_RATEKMS_LOAD" msprop:Generator_UserColumnName="F_RATEKMS_LOAD" msprop:Generator_ColumnPropNameInRow="F_RATEKMS_LOAD" msprop:Generator_ColumnVarNameInTable="columnF_RATEKMS_LOAD" msprop:Generator_ColumnPropNameInTable="F_RATEKMS_LOADColumn" type="xs:decimal" />
+              <xs:element name="I_LIMIT_SPEED" msprop:Generator_UserColumnName="I_LIMIT_SPEED" msprop:Generator_ColumnVarNameInTable="columnI_LIMIT_SPEED" msprop:Generator_ColumnPropNameInRow="I_LIMIT_SPEED" msprop:Generator_ColumnPropNameInTable="I_LIMIT_SPEEDColumn" type="xs:short" minOccurs="0" />
+              <xs:element name="I_ENVELOPE_ID" msprop:Generator_UserColumnName="I_ENVELOPE_ID" msprop:Generator_ColumnPropNameInRow="I_ENVELOPE_ID" msprop:Generator_ColumnVarNameInTable="columnI_ENVELOPE_ID" msprop:Generator_ColumnPropNameInTable="I_ENVELOPE_IDColumn" type="xs:long" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DM_CC_CARS" />
+      <xs:field xpath="mstns:I_CAR_ID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

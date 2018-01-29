@@ -1,0 +1,81 @@
+﻿<Window x:Class="TestCSCommPlatform.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="通信协议栈测试V0.3.2" Height="200" Width="700">
+	<Window.Resources>
+		<ContextMenu x:Key="ContextMenu">
+			<MenuItem Name="mnuClearReceive" Header="清除接收文本" Click="mnuClearReceive_Click"/>
+		</ContextMenu>
+	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30" />
+			<RowDefinition />
+			<RowDefinition Height="30" />
+			<RowDefinition Height="30" />
+		</Grid.RowDefinitions>
+		<Grid Grid.Row="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="50" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="40" />
+				<ColumnDefinition Width="60" />
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="40" />
+				<ColumnDefinition Width="60" />
+			</Grid.ColumnDefinitions>
+			<TextBlock Text="本机地址" VerticalAlignment="Center"/>
+            <TextBox Name="txtLocalAddr" Height="21" Grid.Column="1" Text="1,1,3,1,1002"/>
+			<Button Name="btConnect" Content="连接" Height="23" Grid.Column="2" Click="btConnect_Click" />
+			<TextBlock Text="远端地址" VerticalAlignment="Center" Grid.Column="3" Margin="10 0 0 0"/>
+			<TextBox Name="txtRemoteAddr" Height="21" Grid.Column="4" Text="1,1,3,1,1001"/>
+			<Button Name="btSend" Content="发送" Height="23" Grid.Column="5" Click="btSend_Click" />
+			<Button Name="btSwap" Content="交换地址" Height="23" Grid.Column="6" Margin="5 0 0 0" Click="btSwap_Click" />
+		</Grid>
+		
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="20" />
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<TextBlock Text="发送：" />
+			<TextBox Name="txtSend" Grid.Row="1" Text="abc"/>
+			<TextBlock Text="接收：" Grid.Column="1" />
+            <ScrollViewer Grid.Row="1" Grid.Column="1" >
+                <TextBlock Name="txtReceive" TextWrapping="Wrap" ContextMenu="{StaticResource ContextMenu}" 
+					   FontFamily="Courier New" Text="">
+				
+			</TextBlock>
+            </ScrollViewer>
+			
+		</Grid>
+		<Grid Grid.Row="2">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+			<TextBlock Name="lblStatus1" VerticalAlignment="Center" Margin="2" />
+			<TextBlock Name="lblStatus2" VerticalAlignment="Center" Margin="2" Grid.Column="1"/>
+			<TextBlock Name="lblStatus3" VerticalAlignment="Center" Margin="2" Grid.Column="2"/>
+		</Grid>
+		<Grid Grid.Row="3" >
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="70" />
+				<ColumnDefinition Width="70" />
+				<ColumnDefinition />
+				<ColumnDefinition Width="100" />
+				<ColumnDefinition Width="100" />
+			</Grid.ColumnDefinitions>
+			<RadioButton Content="客户端" Name="radioClient" Grid.Column="0" VerticalAlignment="Center" IsChecked="True"/>
+			<RadioButton Content="服务端" Name="radioServer" Grid.Column="1" VerticalAlignment="Center"/>
+			<TextBlock Name="lblStatus0" VerticalAlignment="Center" Margin="2" Grid.Column="2"/>
+			<CheckBox Content="十六进制发送" Name="chkBinarySend" VerticalAlignment="Center" Grid.Column="3"/>
+			<CheckBox Content="十六进制显示" Name="chkHEXDisplay" VerticalAlignment="Center" Grid.Column="4"/>
+		</Grid>
+    </Grid>
+</Window>

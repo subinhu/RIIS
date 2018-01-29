@@ -1,0 +1,511 @@
+using System;
+
+namespace CIPS.Express.ConvertDat
+{
+    /// <summary>
+    /// Tools 的摘要说明。
+    /// </summary>
+    public class Tools
+    {
+        /// <summary>
+        /// 将字节流以Unicode方式转为字符串
+        /// </summary>
+        /// <param name="buf">数据块</param>
+        /// <param name="off">偏移量</param>
+        /// <returns></returns>
+        public static string GetUnicodeString(byte[] buf, ref int off)
+        {
+            if (buf == null || off >= buf.Length)
+                return "";
+            int i;
+            for (i = off; i < buf.Length - 1; i += 2)
+            {
+                if (buf[i] == 0 && buf[i + 1] == 0)
+                    break;
+            }
+            string s = System.Text.Encoding.Unicode.GetString(buf, off, i - off);
+            off = i + 2;
+            return s;
+        }
+
+        /// <summary>
+        /// 将decimal类型数值转换为byte数组
+        /// 每一个byte记录一个十进制数
+        /// byte[0]记录decimal类型数值转换为byte数组的有效长度
+        /// </summary>
+        /// <param name="d">decimal类型数值</param>
+        /// <returns></returns>
+        //public static byte[] SerializeDecimal(decimal d)
+        //{
+        //    byte[] data = System.Text.ASCIIEncoding.ASCII.GetBytes(d.ToString());
+        //    byte[] result = new byte[data.Length + 1];
+        //    result[0] = (byte)data.Length;
+        //    Array.Copy(data, 0, result, 1, data.Length);
+        //    return result;
+        //}
+
+        /// <summary>
+        /// 将decimal类型数值转换为byte数组
+        /// 每一个byte记录一个十进制数
+        /// byte[0]记录decimal类型数值转换为byte数组的有效长度
+        /// </summary>
+        /// <param name="d">Object类型数值</param>
+        /// <returns></returns>
+        public static byte[] SerializeDecimal(object o)
+        {
+            if (o is DBNull)
+            {
+                byte[] result = new byte[1];
+                result[0] = 0;
+                return result;
+            }
+            else
+            {
+                decimal d = Convert.ToDecimal(o);
+                byte[] data = System.Text.ASCIIEncoding.ASCII.GetBytes(d.ToString());
+                byte[] result = new byte[data.Length + 1];
+                result[0] = (byte)data.Length;
+                Array.Copy(data, 0, result, 1, data.Length);
+                return result;
+            } 
+        }
+
+        /// <summary>
+        /// byte数组转换为decimal类型数值
+        /// byte[0]记录后续byte数组的有效长度
+        /// </summary>
+        /// <param name="bs"></param>
+        /// <returns></returns>
+        //public static decimal DeSerializeDecimal(byte[] bs)
+        //{
+        //    if (bs.Length < 2 || bs.Length < bs[0] + 1)
+        //        return 0;
+        //    byte[] data = new byte[bs[0]];
+        //    Array.Copy(bs, 1, data, 0, data.Length);
+        //    return decimal.Parse(System.Text.ASCIIEncoding.ASCII.GetString(data));
+        //}
+
+        /// <summary>
+        /// byte数组转换为Object类型
+        /// byte[0]记录后续byte数组的有效长度
+        /// </summary>
+        /// <param name="bs"></param>
+        /// <returns></returns>
+        public static object DeSerializeDecimal(byte[] bs)
+        {
+            if (bs.Length < 2 || bs.Length < bs[0] + 1)
+                return DBNull.Value;
+            byte[] data = new byte[bs[0]];
+            Array.Copy(bs, 1, data, 0, data.Length);
+            return decimal.Parse(System.Text.ASCIIEncoding.ASCII.GetString(data));
+        }
+
+
+
+
+
+        /// <summary>
+        /// 将字节流以Unicode方式转为字符串
+        /// </summary>
+        /// <param name="buf">数据块</param>
+        /// <param name="off">偏移量</param>
+        /// <returns></returns>
+        public static string GetUnicodeString(byte[] buf, int off)
+        {
+            return GetUnicodeString(buf, ref off);
+        }
+        /// <summary>
+        /// 将字符串以Unicode方式填入字节块
+        /// </summary>
+        /// <param name="s">字符串</param>
+        /// <param name="buf">数据块</param>
+        /// <param name="off">偏移量</param>
+        public static void FillUnicodeString(string s, byte[] buf, ref int off)
+        {
+            if (buf == null)
+                return;
+            if (s == null)
+                s = "";
+            if (off + s.Length * 2 + 2 > buf.Length)
+                return;
+            System.Text.Encoding.Unicode.GetBytes(s).CopyTo(buf, off);
+            off += s.Length * 2;
+            buf[off] = 0;
+            buf[off + 1] = 0;
+            off += 2;
+        }
+        /// <summary>
+        /// 以0结尾的字符串
+        /// </summary>
+        /// <param name="buf">字节流</param>
+        /// <param name="off">偏移量</param>
+        /// <returns></returns>
+        public static string Byte2String(byte[] buf, ref int off)
+        {
+            if (buf == null || off >= buf.Length)
+                return "";
+            int i;
+            for (i = off; i < buf.Length; i++)
+            {
+                if (buf[i] == 0)
+                    break;
+            }
+            string s = System.Text.Encoding.Default.GetString(buf, off, i - off);
+            off = i + 1;
+            return s;
+            //int l0 = off;
+            //int l=0;
+            //int i=0;
+            //for(i=0;i<buf.Length;i++)
+            //{
+            //    l++;
+            //    if(buf[i+l0]==0)
+            //        break;
+            //}
+            //off+=l;
+            //if(l<=1)
+            //    return "";
+            //byte []b=new byte[l-1];
+            //Buffer.BlockCopy(buf,l0,b,0,l-1);
+            //return System.Text.Encoding.Default.GetString(b);
+        }
+        /// <summary>
+        /// 获取字符串的实际占位长度
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static int GetByteCountFromString(string s)
+        {
+            if (s == null)
+                s = "";
+            s = s.Replace("\0", "");
+            return System.Text.Encoding.Default.GetByteCount(s) + 1;
+        }
+        /// <summary>
+        /// 将字符串转为以0结束的字节流
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="buf"></param>
+        /// <param name="off"></param>
+        public static void String2Byte(string s, byte[] buf, ref int off)
+        {
+            if (s == null)
+                s = "";
+            s = s.Replace("\0", "");
+            byte[] b = System.Text.Encoding.Default.GetBytes(s);
+            b.CopyTo(buf, off);
+            off += b.Length;
+            buf[off] = 0;
+            off++;
+        }
+        /// <summary>
+        /// 字符串约定最大长度
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="maxlen"></param>
+        /// <returns></returns>
+        public static byte[] String2Byte(string s, int maxlen)
+        {
+            if (s == null)
+                return new byte[0];
+            byte[] b = System.Text.Encoding.Default.GetBytes(s);
+            if (b.Length > maxlen)
+            {
+                byte[] _b = new byte[maxlen];
+                Buffer.BlockCopy(b, 0, _b, 0, maxlen);
+                return _b;
+            }
+            else
+                return b;
+        }
+        /// <summary>
+        /// 字节流-》时间
+        /// </summary>
+        /// <param name="buf"></param>
+        /// <param name="off"></param>
+        /// <returns></returns>
+        public static DateTime Byte2Time(byte[] buf, int off)
+        {
+            DateTime time;
+            if ((buf[off + 5] & 0x80) == 0)
+            {
+                try
+                {
+                    int year, month;
+                    byte[] b = new byte[6];
+                    Buffer.BlockCopy(buf, off, b, 0, 6);
+                    month = (b[1] >> 4) & 0x0f;
+                    b[1] &= 0x0f;
+                    year = BitConverter.ToInt16(b, 0);
+                    time = new DateTime(year, month, b[2], b[3], b[4], b[5]);
+                }
+                catch
+                {
+                    time = DateTime.MinValue;
+                }
+            }
+            else
+            {
+                UInt64 a;
+                byte[] b = new byte[8];
+                Buffer.BlockCopy(buf, off, b, 0, 6);
+                b[5] &= 0x7f;
+                a = BitConverter.ToUInt64(b, 0);
+                try
+                {
+                    time = DateTime.MinValue.AddMilliseconds(a);
+                }
+                catch
+                {
+                    time = DateTime.MinValue;
+                }
+            }
+            return time;
+
+        }
+        /// <summary>
+        /// 时间-》字节流
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public static byte[] Time2Byte(DateTime t)
+        {
+            //byte[] b = new byte[6];
+            //BitConverter.GetBytes((short)t.Year).CopyTo(b, 0);
+            //b[1] |= (byte)(t.Month << 4);
+            //b[2] = (byte)t.Day;
+            //b[3] = (byte)t.Hour;
+            //b[4] = (byte)t.Minute;
+            //b[5] = (byte)t.Second;
+            //return b;
+            TimeSpan ts = t - DateTime.MinValue;
+            UInt64 a = (UInt64)ts.TotalMilliseconds;
+            byte[] b = new byte[6];
+            Buffer.BlockCopy(BitConverter.GetBytes(a), 0, b, 0, 6);
+            b[5] |= 0x80;
+            return b;
+        }
+        /// <summary>
+        /// 比较两内存块是否相等
+        /// </summary>
+        /// <param name="buffer1"></param>
+        /// <param name="buffer2"></param>
+        /// <returns></returns>
+        public static bool BufferEquals(byte[] buffer1, byte[] buffer2)
+        {
+            if (buffer1 == buffer2)
+                return true;
+            if (buffer1 == null || buffer2 == null)
+                return false;
+            if (buffer1.Length != buffer2.Length)
+                return false;
+            for (int i = 0; i < buffer1.Length; i++)
+            {
+                if (buffer1[i] != buffer2[i])
+                    return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// 内存比较
+        /// </summary>
+        /// <param name="src"></param>
+        /// <param name="srcOffset"></param>
+        /// <param name="dst"></param>
+        /// <param name="dstOffset"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        public static bool MemCmp(byte[] src, int srcOffset, byte[] dst, int dstOffset, int count)
+        {
+            if (src == dst && srcOffset == dstOffset)
+                return true;
+            if (count <= 0)
+                return true;
+            if (src == null || dst == null)
+                return false;
+            int cnt1 = count, cnt2 = count;
+            if (srcOffset + count > src.Length)
+                cnt1 = src.Length - srcOffset;
+            if (dstOffset + count > dst.Length)
+                cnt2 = dst.Length - dstOffset;
+            if (cnt1 != cnt2)
+                return false;
+            int i;
+            for (i = 0; i < cnt1; i++)
+            {
+                if (src[i + srcOffset] != dst[i + dstOffset])
+                    return false;
+            }
+            return true;
+
+        }
+        /// <summary>
+        /// ID-》名称
+        /// </summary>
+        public class ID_NAME
+        {
+            /// <summary>
+            /// ID
+            /// </summary>
+            public int ID;
+            /// <summary>
+            /// Name
+            /// </summary>
+            public string Name = "";
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="id"></param>
+            /// <param name="name"></param>
+            public ID_NAME(int id, string name)
+            {
+                ID = id;
+                Name = name;
+            }
+        }
+        /// <summary>
+        /// ID-》名称
+        /// </summary>
+        public class ID2NAME
+        {
+            /// <summary>
+            /// 类型
+            /// 线路
+            /// </summary>
+            public const byte type_线路 = 1;
+            /// <summary>
+            /// 类型
+            /// 组号
+            /// </summary>
+            public const byte type_组号 = 2;
+            byte[] types = new byte[0];
+            int[] ids = new int[0];
+            string[] names = new string[0];
+            string[] fullnames = new string[0];
+            /// <summary>
+            /// 添加内容
+            /// </summary>
+            /// <param name="id"></param>
+            /// <param name="name"></param>
+            /// <param name="fullname"></param>
+            /// <param name="type"></param>
+            public void AddItem(int id, string name, string fullname, byte type)
+            {
+                int i;
+                int[] _ids = new int[ids.Length + 1];
+                string[] _names = new string[_ids.Length];
+                string[] _fullnames = new string[_ids.Length];
+                byte[] _tp = new byte[_ids.Length];
+                for (i = 0; i < ids.Length; i++)
+                {
+                    _ids[i] = ids[i];
+                    _names[i] = names[i];
+                    _fullnames[i] = fullnames[i];
+                    _tp[i] = types[i];
+                }
+                _ids[i] = id;
+                _names[i] = name;
+                _fullnames[i] = fullname;
+                _tp[i] = type;
+                ids = _ids;
+                names = _names;
+                fullnames = _fullnames;
+                types = _tp;
+            }
+            /// <summary>
+            /// 获取名称
+            /// </summary>
+            /// <param name="id"></param>
+            /// <returns></returns>
+            public string GetName(int id)
+            {
+                return GetName(id, 0);
+            }
+            /// <summary>
+            /// 跟据类型获取名称
+            /// </summary>
+            /// <param name="id"></param>
+            /// <param name="type"></param>
+            /// <returns></returns>
+            public string GetName(int id, byte type)
+            {
+                int i;
+                for (i = 0; i < ids.Length; i++)
+                {
+                    if (ids[i] == id && (type == types[i] || type == 0))
+                        return names[i];
+                }
+                return "";
+            }
+            /// <summary>
+            /// 获取全名
+            /// </summary>
+            /// <param name="id"></param>
+            /// <returns></returns>
+            public string GetFullname(int id)
+            {
+                return GetFullname(id, 0);
+            }
+            /// <summary>
+            /// 跟据类型获取全名
+            /// </summary>
+            /// <param name="id"></param>
+            /// <param name="type"></param>
+            /// <returns></returns>
+            public string GetFullname(int id, byte type)
+            {
+                int i;
+                for (i = 0; i < ids.Length; i++)
+                {
+                    if (ids[i] == id && (type == types[i] || type == 0))
+                        return fullnames[i];
+                }
+                return "";
+            }
+        }
+        /// <summary>
+        /// 获取16位CRC校验码
+        /// </summary>
+        /// <param name="data">数据流</param>
+        /// <param name="vcode">CRC多项式</param>
+        /// <returns></returns>
+        public static ushort GetCRC16(byte[] data, ushort vcode)
+        {
+
+            ushort crc_temp = Convert.ToUInt16((data[data.Length - 1] << 8) + data[data.Length - 2]);
+
+            int totalBit = (data.Length - 2) * 8;
+
+            for (int i = totalBit - 1; i >= 0; i--)
+            {
+
+                ushort a = Convert.ToUInt16(i / 8);
+
+                ushort b = Convert.ToUInt16(i % 8);
+
+                ushort nextBit = Convert.ToUInt16((data[a] >> b) & 0x01);
+
+                if (crc_temp >= 32768)
+                {
+
+                    crc_temp = Convert.ToUInt16(((crc_temp - 32768) << 1) + nextBit);
+
+                    crc_temp = Convert.ToUInt16(crc_temp ^ vcode);
+
+                }
+
+                else
+                {
+
+                    crc_temp = Convert.ToUInt16((crc_temp << 1) + nextBit);
+
+                }
+
+            }
+
+            return crc_temp;
+
+        }
+
+    }
+}

@@ -1,0 +1,31 @@
+﻿<FCMP>
+	<server>
+		<ip1>192.168.1.7</ip1>
+		<port1>9003</port1>
+		<ip2>192.168.1.7</ip2>
+		<port2>9005</port2>
+	</server>
+	
+	<address>
+		<!--必须配置，线路号-->
+		<bureau_code>8</bureau_code>
+		<!--必须配置，单位类型：center，station, center:0x01, station:0x02-->
+		<unit_type>center</unit_type>
+		<!--必须配置，单位ID：调度台ID，站码，中心服务器的单位ID为0 -->
+		<unit_id>0</unit_id>
+		<!--必须配置，设备类型：svr，ddt，term，other, svr:0x01, ddr:0x02, term: 0x03, other: 0x04 -->
+		<dev_type>svr</dev_type>
+		<!--必须配置，设备ID -->
+		<dev_id>5</dev_id>	
+	</address>
+	
+	<in_condition>
+		<rec>
+			<protocol418_condition>
+				<type_func>0xff,0xff</type_func>
+			</protocol418_condition>
+		</rec>
+	</in_condition>
+	<config>
+	</config>
+</FCMP>

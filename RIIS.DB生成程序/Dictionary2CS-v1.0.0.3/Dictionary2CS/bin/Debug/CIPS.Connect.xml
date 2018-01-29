@@ -1,0 +1,1363 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CIPS.Connect</name>
+    </assembly>
+    <members>
+        <member name="T:CIPS.Connect.CarProfileInfo">
+            <summary>
+            计划子系统使用的类；
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CarProfileInfo.m_carProfile">
+            <summary>
+            现车切面
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CarProfileInfo.m_subCarProfile">
+            <summary>
+            备份现车切面
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CarProfileInfo.m_linesInYard">
+            <summary>
+            在场内的线
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CarProfileInfo.m_priorAssemArray">
+            <summary>
+            集结信息
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CarProfileInfo.m_allCuts">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CarProfileInfo.m_carRows">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CarProfileInfo.m_curCarRowsNum">
+            <summary>
+            现不使用
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CarProfileInfo.m_allCars">
+            <summary>
+            将内存现车集中管理
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CarProfileInfo.m_nCurCarsNum">
+            <summary>
+            指示内存现车使用的辆数
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CarProfileInfo.flag">
+            <summary>
+            如果是命令处理，flag = 0表示查询
+            flag = 1表示可以提交
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CarProfileInfo.CopyCarProfile(CIPS.Connect.CarProfile)">
+            <summary>
+            深度拷贝函数，中间没有指针相连
+            拷贝之前，本结构体先初始化。
+            </summary>
+            <param name="sourCarProfile">源切面</param>
+        </member>
+        <member name="M:CIPS.Connect.CarProfileInfo.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CarProfileInfo.GetOnePlanCar">
+            <summary>
+            获得一个供使用的现车记录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Connect.CarProfileInfo.StoreData">
+            <summary>
+            保存数据副本
+            只是保存现车数据
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CarProfileInfo.RestoreData">
+            <summary>
+            恢复场景现车
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CarProfileInfo.Reset">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CIPS.Connect.PlanLineIndexByYard">
+            <summary>
+            配合CarProfile使用的一个类
+            暂时没有使用
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLineIndexByYard.yards">
+            <summary>
+            场别
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLineIndexByYard.lines">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLineIndexByYard.m_cur">
+            <summary>
+            当前
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.PlanLineIndexByYard.#ctor(CIPS.Connect.CarProfile)">
+            <summary>
+            实例化后,必须首先设置yardIndex的信息.
+            </summary>
+            <param name="inProfile"></param>
+        </member>
+        <member name="T:CIPS.Connect.PlanLine">
+            <summary>
+            PlanLine 的摘要说明。
+            现车目录表：DT_PL_LINE
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.m_arrayNum">
+            <summary>
+            该线路是个循环队列startPos--endPos;
+            startPos是指下行端(成都北左边)，endPos是指上行端(成都北右边)
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.lineID">
+            <summary>
+            线路/机车
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine._cutID">
+            <summary>
+            标志勾，标志一条线的特征
+            因为实际线路经常变动，因此采用勾ID来标示一条线
+            到达场，使用接车，交流迁出，乱车迁出
+            出发场使用发车，编组场使用集结工步，其余未列举到的使用实际线路，该cutID=-1
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.region">
+            <summary>
+            该线所属的区域,该字段和上面的两个有重复,但考虑到经常使用,因此采用冗余        
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.remnLen">
+            <summary>
+            股道剩余测长
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.locked">
+            <summary>
+            股道锁闭
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.totalLen">
+            <summary>
+            累计换长
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.totalWeight">
+            <summary>
+            累计重量
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.curStationNum">
+            <summary>
+            当前小站数
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.curStationOrder">
+            <summary>
+            当前站序
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.curGroupID">
+            <summary>
+            当前组号
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.curGroCarNum">
+            <summary>
+            当前方向辆数
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.stopPosition">
+            <summary>
+            停车器/调机位置，相对位置
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.port">
+            <summary>
+            端口，控制送取车的方向
+            根据需要，可以随便赋值
+            如果等于下行端，则索引器是从最右边开始
+            port = 0(上行) 则 oneLine[0] == 该条线最左边的一辆车
+            port = 1  oneLine[0] == 该条线最右边的一辆车
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.endPos">
+            <summary>
+            尾
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.startPos">
+            <summary>
+            头
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.traNumLockedInfo">
+            <summary>
+            锁定车次信息
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.lineAim">
+            <summary>
+            当前集结的信息
+            和下一个集结，共两个元素
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanLine.listPlanCars">
+            <summary>
+            现车
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.PlanLine.#ctor">
+            <summary>
+            构造
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.PlanLine.InsertOneCar(CIPS.Connect.PlanCar,System.Int32)">
+            <summary>
+            插入一辆车
+            即只有修改勾才可以使用
+            只能在人工修改时候使用
+            </summary>
+            <param name="car"></param>
+            <param name="order"></param>
+        </member>
+        <member name="M:CIPS.Connect.PlanLine.DeleteOneCar(System.Int32)">
+            <summary>
+            删除一辆车
+            只能在人工修改的时候使用
+            即只有修改勾才可以使用
+            索引器函数可以和该函数等效使用
+            自动改动停车器位置
+            </summary>
+            <param name="order"></param>
+        </member>
+        <member name="M:CIPS.Connect.PlanLine.Reset">
+            <summary>
+            复位
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.PlanLine.Copy(CIPS.Connect.PlanLine)">
+            <summary>
+            复制
+            </summary>
+            <param name="line">源数据</param>
+        </member>
+        <member name="P:CIPS.Connect.PlanLine.cutID">
+            <summary>
+            该线的用途
+            </summary>
+        </member>
+        <member name="P:CIPS.Connect.PlanLine.totalCarNum">
+            <summary>
+            总辆数，该值不能设定
+            </summary>
+        </member>
+        <member name="P:CIPS.Connect.PlanLine.stopPos">
+            <summary>
+            停车器/调机位置，相对位置
+            0 ----  totalCarNum;
+            </summary>
+        </member>
+        <member name="P:CIPS.Connect.PlanLine.Item(System.Int32)">
+            <summary>
+            索引，实现头尾删除操作和头尾增加操作
+            在没有人工修改勾得情况下，只能使用该函数，而不能使用插入和删除函数
+            自动管理停车器的位置，认为放车不能越过停车器
+            </summary>
+        </member>
+        <member name="T:CIPS.Connect.TraNumInfo">
+            <summary>
+            毛玻璃显示需要使用
+            </summary>
+        </member>
+        <member name="T:CIPS.Connect.AssemInfo">
+            <summary>
+            集结信息，只有催泪在使用
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AssemInfo.assemCarNum">
+            <summary>
+            集结车次
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AssemInfo.assemCutID">
+            <summary>
+            集结ID
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.AssemInfo.Reset">
+            <summary>
+            复位
+            </summary>
+        </member>
+        <member name="T:CIPS.Connect.PlanCar">
+            <summary>
+            PlanCars 的摘要说明。
+            当前现车表：（从尾部开始按车辆顺序存放）DT_PL_CARS
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.PlanCar.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.CarID">
+            <summary>
+            现车记录健
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.carCode">
+            <summary>
+            车号
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.verNum">
+            <summary>
+            版本号
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.groID">
+            <summary>
+            作业组号
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.arrStation">
+            <summary>
+            到站
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.productName">
+            <summary>
+            品名
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.carEnumCode">
+            <summary>
+            车辆特征枚举码
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.carBitCode">
+            <summary>
+            车辆特征比特码
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.len">
+            <summary>
+            换长
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.weight">
+            <summary>
+            重量
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.enterCutID">
+            <summary>
+            进入工步
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.departCutID">
+            <summary>
+            离去工步
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.arrBurCo">
+            <summary>
+            到局
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.limitSpeed">
+            <summary>
+            限速
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.carType">
+            <summary>
+            车种
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.eCarType">
+            <summary>
+            车种类别
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.isReal">
+            <summary>
+            true 实际现车，false 计划现车
+            </summary>        
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.symWeigh">
+            <summary>
+            空重标记
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.oiltype">
+            <summary>
+            油种
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.cremark">
+            <summary>
+            记事栏
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanCar.consignee">
+            <summary>
+            收货人
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.PlanCar.copy(CIPS.Connect.PlanCar)">
+            <summary>
+            
+            </summary>
+            <param name="onePlanCar"></param>
+        </member>
+        <member name="T:CIPS.Connect.CarProfile">
+            <summary>
+            现车截面
+            在和调车部分传送的类；
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CarProfile.m_planLines">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CarProfile.m_total">
+            <summary>
+            总共有多大；
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CarProfile.m_cur">
+            <summary>
+            实际使用的planLines;
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CarProfile.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CarProfile.Copy(CIPS.Connect.CarProfile)">
+            <summary>
+            复制
+            </summary>
+            <param name="sourProfile"></param>
+        </member>
+        <member name="M:CIPS.Connect.CarProfile.reset">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CarProfile.GetPlanLineAccordToLineID(System.Decimal)">
+            <summary>
+            得到线路所对应的现车目录
+            </summary>
+            <param name="lineID">线路号</param>
+            <returns>现车目录</returns>
+        </member>
+        <member name="M:CIPS.Connect.CarProfile.GetPlanLineAccordToFlagCut(System.Decimal)">
+            <summary>
+            得到线路所对应的现车目录
+            </summary>
+            <param name="cutID">线路号</param>
+            <returns>现车目录</returns>
+        </member>
+        <member name="M:CIPS.Connect.CarProfile.GetPlanLineOrderAccordToLineID(System.Decimal)">
+            <summary>
+            得到线路所对应的现车目录的序号
+            </summary>
+            <param name="lineID">线路号</param>
+            <returns>现车目录</returns>
+        </member>
+        <member name="M:CIPS.Connect.CarProfile.GetOnePlanLineForCut(System.Int64,System.Int32)">
+            <summary>
+            为指定的工步号和线路号，选择一条线
+            </summary>
+            <param name="assemID"></param>
+            <param name="lineID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Connect.CarProfile.GetOnePlanLineOrderForCut(System.Int64,System.Int32)">
+            <summary>
+            为指定的工步号和线路号，选择一条线
+            </summary>
+            <param name="assemID"></param>
+            <param name="lineID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Connect.CarProfile.GetAllPlanLineOrderAccordToLineID(System.Decimal)">
+            <summary>
+            得到线路所对应的现车目录的序号
+            </summary>
+            <param name="lineID">线路号</param>
+            <returns>现车目录</returns>
+        </member>
+        <member name="P:CIPS.Connect.CarProfile.Item(System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CIPS.Connect.CutsInfo">
+            <summary>
+            人工调车向计划子系统回送的数据结构
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutsInfo.capacity">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutsInfo.count">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutsInfo.synthetize">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutsInfo.assemAlterList">
+            <summary>
+            线用途改变记录
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutsInfo.attachCars">
+            <summary>
+            勾计划回传得现车,可以只填车号和版本号
+            该数组的排序和调车端口相对应.
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CutsInfo.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CutsInfo.Reset">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CutsInfo.Copy(CIPS.Connect.CutsInfo)">
+            <summary>
+            
+            </summary>
+            <param name="existedCuts"></param>
+        </member>
+        <member name="P:CIPS.Connect.CutsInfo.Item(System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CIPS.Connect.AssemAlterInfo">
+            <summary>
+            线用途修改结构体
+            用途： a 需要指定某个集结结束
+                   b 变更某条线路上的集结对应的车次
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AssemAlterInfo.lineID">
+            <summary>
+            线路ID
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AssemAlterInfo.oldTraNum">
+            <summary>
+            线路ID上原有车次
+            当线路上有车次的时候，该值不能为长度为0的字符串。
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AssemAlterInfo.newTraNum">
+            <summary>
+            线路ID上需要跟换得新车次
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AssemAlterInfo.finished">
+            <summary>
+            原有车次是否结束
+            true 原有车次结束， false 原有车次未结束
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AssemAlterInfo.opOrder">
+            <summary>
+            操作序号，
+            0表示在解体之前动作
+            1表示在第一勾结束动作
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AssemAlterInfo.mainSub">
+            <summary>
+            0表示不是双线一列
+            1表示主集结
+            2表示辅助集结。
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.AssemAlterInfo.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="T:CIPS.Connect.SynthetizeInfo">
+            <summary>
+            解体/编组流程信息学
+            流程
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.trainNum">
+            <summary>
+            车次
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.flowID">
+            <summary>
+            流程健
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.flowType">
+            <summary>
+            流程类型
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.locoID">
+            <summary>
+            机车号
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.destLine">
+            <summary>
+            目的线 峰位
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.sourLine">
+            <summary>
+            源线
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.flowState">
+            <summary>
+            流程状态
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.momState">
+            <summary>
+            勾计划状态 E_MOM
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.workRange">
+            <summary>
+            工作区域,具体的场别，而不是上下行
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.splitTime">
+            <summary>
+            解体开始时间
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.splitEndTime">
+            <summary>
+            解体结束时间
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.onHumping">
+            <summary>
+            续溜标志
+            true: 续溜
+            false: 正常解体 
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.gangCo">
+            <summary>
+            班次
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.controllerName">
+            <summary>
+            编制人
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.SynthetizeInfo.printNo">
+            <summary>
+            打印序号
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.SynthetizeInfo.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.SynthetizeInfo.Reset">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.SynthetizeInfo.Copy(CIPS.Connect.SynthetizeInfo)">
+            <summary>
+            拷贝
+            </summary>
+            <param name="subSyn"></param>
+        </member>
+        <member name="T:CIPS.Connect.CutElement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.cutID">
+            <summary>
+            工步健
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.cutState">
+            <summary>
+            勾状态 //不可以同步到数据集
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.locoID">
+            <summary>
+            机车号
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.cutOrder">
+            <summary>
+            勾序
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.lineID">
+            <summary>
+            线路
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.attatchLineID">
+            <summary>
+            附加目的线路信息
+            该信息在勾计划中不使用。
+            作为导入和导出，以及和勾计划界面交互使用。
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.coupFlag">
+            <summary>
+            无 0， 获取(+) = 1  释放(-) = 2
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.cutType">
+            <summary>
+            工步类型  //溜放/连结/推峰/禁溜调车/迂回调车
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.carCount">
+            <summary>
+            辆数
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.assemID">
+            <summary>
+            该勾对应的集结/离去工步，若二者都有，则填入集结工步
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.htFlag">
+            <summary>
+            首尾标记 首/中间/尾/既是首也是尾
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.fLenOnLoco">
+            <summary>
+            在途焕长
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.fWeightOnLoco">
+            <summary>
+            在途重量
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.cumulate">
+            <summary>
+            累积辆数
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.narrate">
+            <summary>
+            记事
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.passStop">
+            <summary>
+            是否越过停车器
+            true 越过， false 不越过。
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CutElement.port">
+            <summary>
+            该工步操作线路的端口
+            与枚举值E_PORT_UP 含义一致
+            0: 上行段-右端  1：下行端-左端
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CutElement.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CutElement.Reset">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CutElement.Copy(CIPS.Connect.CutElement)">
+            <summary>
+            
+            </summary>
+            <param name="oneCut"></param>
+        </member>
+        <member name="T:CIPS.Connect.MassInfo">
+            <summary>
+            存放集结信息的类
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.MassInfo.curAssemPrior">
+            <summary>
+            当前集结
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.MassInfo._curWorkRange">
+            <summary>
+            当前工作区域　上行或者下行
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.MassInfo.#ctor">
+            <summary>
+            初始化MassInfo类
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.MassInfo.Reset">
+            <summary>
+            只是Reset当前的集结信息
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.MassInfo.GetOrderByAssemID(System.Int64)">
+            <summary>
+            根据集结ID，寻找相应的集结元素
+            </summary>
+            <param name="assemID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Connect.MassInfo.SetWorkRange(System.Int32)">
+            <summary>
+            设置工作区域
+            </summary>
+            <param name="workRange"></param>
+        </member>
+        <member name="M:CIPS.Connect.MassInfo.StoreCurAssemPrior">
+            <summary>
+            保存当前切面的集结信息
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.MassInfo.RestoreCurAssemPrior">
+            <summary>
+            恢复当前切面的集结信息
+            </summary>
+        </member>
+        <member name="P:CIPS.Connect.MassInfo.nCurPriorNum">
+            <summary>
+            当前集结的个数
+            </summary>
+        </member>
+        <member name="P:CIPS.Connect.MassInfo.Item(System.Int32)">
+            <summary>
+            当前的第i个集结
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
+        </member>
+        <member name="P:CIPS.Connect.MassInfo.curWorkRange">
+            <summary>
+            工作区域，用于查询和设置工作区域
+            </summary>
+        </member>
+        <member name="T:CIPS.Connect.ClassifiedPriorElement">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.planLineOrder">
+            <summary>
+            对应的现车目录表序号；
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.destined">
+            <summary>
+            这个集结是否被优化器预定
+            是:预定 否:未预定
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.onPly">
+            <summary>
+            当前是否使用
+            0:未使用 通常集结超过了上限
+            1:可以使用    
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.planTime">
+            <summary>
+            计划对应的到发时间
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.nType">
+            <summary>
+            集结对应的类型，用于内部排序   -----------------不需要
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.assemType">
+            <summary>
+            集结类型
+            其中交流和乱车在导出的时候，
+            即使是剩余集结 ，集结类型也是交流集结和乱车集结。
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.classID">
+            <summary>
+            编组序号
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.assemID">
+            <summary>
+            对应的集结ID
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.lineID">
+            <summary>
+            对应的线路
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.lenUp">
+            <summary>
+            额定换长上限
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.lenLow">
+            <summary>
+            额定换长下限
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.weightUp">
+            <summary>
+            额定重量上限
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.weightLow">
+            <summary>
+            额定重量下限
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.amountUp">
+            <summary>
+            额定数量上限
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.amountLow">
+            <summary>
+            额定数量下限
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.evaluatedCars">
+            <summary>
+            该列车估计辆数
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.plID">
+            <summary>
+            所属的计划号
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.subplID">
+            <summary>
+            备用的plID
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.prime">
+            <summary>
+            是主集结,还是辅助集结
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.E_SEQ_HT">
+            <summary>
+            头部倒占顺，还是尾部倒占顺
+            0 头部倒站顺
+            1 尾部倒站顺
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.carStre">
+            <summary>
+            从预处理过来的车流
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.traNum">
+            <summary>
+            车次 ---为了给勾计划界面使用
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.isLock">
+            <summary>
+            是否锁定　true 锁定　　false 未锁定
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.ClassifiedPriorElement.Finished">
+            <summary>
+            该集结是否结束。true 结束　false 未结束
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.ClassifiedPriorElement.Reset">
+            <summary>
+            将所有成员变量复位
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.ClassifiedPriorElement.#ctor">
+            <summary>
+            初始化编组信息
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.ClassifiedPriorElement.Copy(CIPS.Connect.ClassifiedPriorElement)">
+            <summary>
+            复制元素信息
+            </summary>
+            <param name="sour"></param>
+        </member>
+        <member name="T:CIPS.Connect.PlanHook">
+            <summary>
+            PlanHook 的摘要说明。
+            调车钩计划
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.PlanHook.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanHook.hookId">
+            <summary>
+            钩号
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanHook.fieldId">
+            <summary>
+            场号
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanHook.thighPath">
+            <summary>
+            股道
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanHook.swingHang">
+            <summary>
+            甩挂
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanHook.carAmount">
+            <summary>
+            车数
+            </summary>		
+        </member>
+        <member name="F:CIPS.Connect.PlanHook.headTail">
+            <summary>
+            头尾
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanHook.work">
+            <summary>
+            作业
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanHook.carId">
+            <summary>
+            车号
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.PlanHook.note">
+            <summary>
+            记事
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.AddedNarrate.#ctor(System.Data.DataTable,System.Data.DataTable,System.Data.DataTable)">
+            <summary>
+            传入注释所需要的表 dc_cc_cut_note 增加注释的表,如果这张表没有
+            dc_pl_classi 遍挂要求目录表 ,如果这张表不传进来，(如果为空)将无法判断满轴。
+            满线的判断这是局限于那些只有一个上限的遍挂要求 /// 后备不需要传这张表。 
+            dc_ra_line 线路代码表，如果不传进来，将忽略那些有线路要求的注释。
+            </summary>
+            <param name="dc_cc_cut_note"></param>
+        </member>
+        <member name="M:CIPS.Connect.AddedNarrate.AddRemark(CIPS.Connect.PlanLine,CIPS.Connect.PlanLine,CIPS.Connect.CutsInfo,System.Int32)">
+            <summary>
+            增加注释
+            移动现车之前
+            </summary>
+            <param name="locoLine"></param>
+            <param name="destLine"></param>
+            <param name="cuts"></param>
+            <param name="cutOrder"></param>
+            <param name="carCount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Connect.AddedNarrate.MeetSingleNarrateForCarProperty(CIPS.Connect.AddedNarrate.singleNarrate,CIPS.Connect.PlanLine,CIPS.Connect.PlanLine,CIPS.Connect.CutsInfo,System.Int32,System.Collections.Generic.List{CIPS.Connect.PlanCar},System.Int32@)">
+            <summary>
+            只能是结构体有的内容
+            </summary>
+            <param name="sNarrate"></param>
+            <param name="locoLine"></param>
+            <param name="destLine"></param>
+            <param name="cuts"></param>
+            <param name="cutOrder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Connect.AddedNarrate.maxthan(System.String,System.String)">
+            <summary>
+            sub>=other
+            </summary>
+            <param name="sub"></param>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CIPS.Connect.AddedNarrate.GetAllCarsFromSNarrate(CIPS.Connect.AddedNarrate.singleNarrate,CIPS.Connect.PlanLine,CIPS.Connect.PlanLine,CIPS.Connect.CutsInfo,System.Int32)">
+            <summary>
+            根据规则得到所需要的车辆
+            一机车为参照，靠近机车的为首，否则为尾
+            </summary>
+            <param name="sNarrate"></param>
+            <param name="locoLine"></param>
+            <param name="destLine"></param>
+            <param name="cuts"></param>
+            <param name="cutOrder"></param>
+            <returns></returns>
+        </member>
+        <member name="F:CIPS.Connect.AddedNarrate.singleNarrate.cutType">
+            <summary>
+            工步类型
+            -1,-2 执行前，执行后
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AddedNarrate.singleNarrate.inPost">
+            <summary>
+            首/尾/任意
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AddedNarrate.singleNarrate.symGetPut">
+            <summary>
+            获取和释放标志，如果是0，表示部分获取或者释放
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AddedNarrate.E_SYM_GETPUT.EMPTY">
+            <summary>
+            获取(+)或释放(-)!
+            /!
+            EMPTY = 0
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AddedNarrate.E_SYM_GETPUT.GET">
+            <summary>
+            获取(+)或释放(-)!
+            +!
+            GET = 1
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AddedNarrate.E_SYM_GETPUT.PUT">
+            <summary>
+            获取(+)或释放(-)!
+            -!
+            PUT = 2
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AddedNarrate.E_SYM_GETPUT.SLIP">
+            <summary>
+            获取(+)或释放(-)!
+            >!
+            SLIP = 3
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AddedNarrate.E_SYM_GETPUT.UPDATE">
+            <summary>
+            获取(+)或释放(-)!
+            @!
+            UPDATE = 4
+            </summary>
+        </member>
+        <member name="T:CIPS.Connect.AddedNarrate.ParticularType">
+            <summary>
+            增加注释所用到的枚举量
+            </summary>
+        </member>
+        <member name="T:CIPS.Connect.CheckSeparateRule">
+            <summary>
+            隔离规则检查
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CheckSeparateRule.#ctor(System.Data.DataTable,System.Data.DataTable)">
+            <summary>
+            隔离规则表，杂类代码表
+            </summary>
+            <param name="sep">隔离规则表</param>
+            <param name="mix">杂类代码表</param>
+        </member>
+        <member name="M:CIPS.Connect.CheckSeparateRule.CheckPlanLine(CIPS.Connect.PlanLine,System.Int32,System.Boolean)">
+            <summary>
+            有方向要求
+            如果不需要检查最后一勾，只是需要知道该条线是否符合隔离规则，
+            则lastCutNum = 1就可以了。
+            </summary>
+            <param name="oneLine">现车</param>
+            <param name="lastCutNum">需要隔离规则检查的车辆个数,通常等于最后一勾得辆数</param>
+            <param name="checkTail">是否需要检查尾,如果线上的车数不足15辆,则无论如何不检查尾</param>
+            <returns>返回隔离规则检查的结果,如果符合隔离规则,则返回空字符串</returns>
+        </member>
+        <member name="M:CIPS.Connect.CheckSeparateRule.CheckCloseCar(CIPS.Connect.PlanLine)">
+            <summary>
+            检查连续三辆车不能为关门。
+            </summary>
+            <param name="oneLine"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CIPS.Connect.CheckSeparateRule.SeparateInfo">
+            <summary>
+            隔离规则
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CheckSeparateRule.SeparateInfo.m_base">
+            <summary>
+            枚举值个数
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CheckSeparateRule.SeparateInfo.separateRows">
+            <summary>
+            分段 1：  机头 -- 枚举 -- 比特
+                 2：  机尾 -- 枚举 -- 比特
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CheckSeparateRule.SeparateInfo.vP">
+            <summary>
+            大小等于第一维的maxCars长度
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.CheckSeparateRule.SeparateInfo.vN">
+            <summary>
+            大小等于第二维的maxCars长度
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CheckSeparateRule.SeparateInfo.#ctor(System.Data.DataTable,System.Data.DataTable)">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.CheckSeparateRule.SeparateInfo.GetValueFromEF(System.Int32,System.Int64,System.Int32[],System.Int32@)">
+            <summary>
+            e小于0 表示是机车
+            </summary>
+            <param name="e">枚举特征</param>
+            <param name="b">比特位特征</param>
+            <param name="v">存放的数组</param>
+            <param name="count">实际的个数</param>
+        </member>
+        <member name="P:CIPS.Connect.CheckSeparateRule.SeparateInfo.Item(System.Decimal,System.Decimal,System.Decimal,System.Decimal,System.Int32)">
+            <summary>
+            [枚举特征码1,比特特征码1，枚举特征码2，比特特征码2,距离的辆数],前后次序不能颠倒,
+            
+            如果 枚举特征码1为-1，则表示机头,枚举特征码2为-1，表示列车尾部 
+            返回值表示是否符合编组的隔离要求  
+            </summary>
+        </member>
+        <member name="T:CIPS.Connect.LineInfo">
+            <summary>
+            反映线路状态的
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.LineInfo.nCarsNum">
+            <summary>
+            线路上的辆数
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.LineInfo.lineID">
+            <summary>
+            线路ID
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.LineInfo.startTime">
+            <summary>
+            占用的第一个工步的时间
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.LineInfo.startCut">
+            <summary>
+            占用的第一个工步
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.LineInfo.endTime">
+            <summary>
+            出清的最后一个工步时间
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.LineInfo.endCut">
+            <summary>
+            出清的最后一个工步
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.LineInfo.#ctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="T:CIPS.Connect.AllLinesInfo">
+            <summary>
+            所有线
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AllLinesInfo.curDt">
+            <summary>
+            时间
+            </summary>
+        </member>
+        <member name="F:CIPS.Connect.AllLinesInfo.flag">
+            <summary>
+            标志位，每次重置后，其值=0；
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.AllLinesInfo.#ctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:CIPS.Connect.AllLinesInfo.Reset">
+            <summary>
+            重置
+            </summary>
+        </member>
+        <member name="P:CIPS.Connect.AllLinesInfo.Item(System.Int32)">
+            <summary>
+            得到线路
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

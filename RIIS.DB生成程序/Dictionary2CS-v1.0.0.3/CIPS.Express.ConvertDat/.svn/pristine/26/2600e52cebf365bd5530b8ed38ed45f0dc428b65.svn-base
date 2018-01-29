@@ -1,0 +1,13 @@
+obj\Debug\ResolveAssemblyReference.cache
+bin\Debug\CIPS.Express.ConvertDat.dll
+bin\Debug\CIPS.Express.ConvertDat.pdb
+bin\Debug\CIPS.Connect.dll
+obj\Debug\CIPS.Express.ConvertDat.dll
+obj\Debug\CIPS.Express.ConvertDat.pdb
+bin\Debug\CIPS.DB.dll
+bin\Debug\CIPS.DB.xml
+bin\Debug\CIPS.Connect.xml
+..\CommDll\CIPS.Express.ConvertDat.dll.config
+..\CommDll\CIPS.Express.ConvertDat.dll
+..\CommDll\CIPS.Express.ConvertDat.pdb
+..\CommDll\CIPS.Express.ConvertDat.XML

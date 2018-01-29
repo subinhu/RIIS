@@ -1,0 +1,4 @@
+1、打开Dictionary2CS项目，点击“转杂类”。
+2、打开RIIS.DB项目，重新生成。
+3、到RIIS.DB\RIIS.DB\bin\Debug目录下将RIIS.DB.dll、RIIS.DB.pdb、RIIS.DB的XML文档考出进行引用。
+

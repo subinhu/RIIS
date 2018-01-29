@@ -1,0 +1,6 @@
+F:\test\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\RIIS.CarManager.dll
+F:\test\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\RIIS.CarManager.pdb
+F:\test\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.csprojResolveAssemblyReference.cache
+F:\test\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.csproj.CoreCompileInputs.cache
+F:\test\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.dll
+F:\test\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.pdb

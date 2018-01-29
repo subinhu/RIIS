@@ -1,0 +1,14 @@
+E:\test\NetRouterSender\NetRouterSender\bin\Debug\NetRouterSender.exe.config
+E:\test\NetRouterSender\NetRouterSender\bin\Debug\NetRouterSender.exe
+E:\test\NetRouterSender\NetRouterSender\bin\Debug\NetRouterSender.pdb
+E:\test\NetRouterSender\NetRouterSender\bin\Debug\NetRouterClient.dll
+E:\test\NetRouterSender\NetRouterSender\obj\Debug\NetRouterSender.csprojResolveAssemblyReference.cache
+E:\test\NetRouterSender\NetRouterSender\obj\Debug\NetRouterSender.exe
+E:\test\NetRouterSender\NetRouterSender\obj\Debug\NetRouterSender.pdb
+E:\成都封闭开发\程序\通信平台\测试程序\NetRouterSender\NetRouterSender\bin\Debug\NetRouterSender.exe.config
+E:\成都封闭开发\程序\通信平台\测试程序\NetRouterSender\NetRouterSender\obj\Debug\NetRouterSender.exe
+E:\成都封闭开发\程序\通信平台\测试程序\NetRouterSender\NetRouterSender\obj\Debug\NetRouterSender.pdb
+E:\成都封闭开发\程序\通信平台\测试程序\NetRouterSender\NetRouterSender\bin\Debug\NetRouterSender.exe
+E:\成都封闭开发\程序\通信平台\测试程序\NetRouterSender\NetRouterSender\bin\Debug\NetRouterSender.pdb
+E:\成都封闭开发\程序\通信平台\测试程序\NetRouterSender\NetRouterSender\bin\Debug\NetRouterClient.dll
+E:\成都封闭开发\程序\通信平台\测试程序\NetRouterSender\NetRouterSender\obj\Debug\NetRouterSender.csprojResolveAssemblyReference.cache

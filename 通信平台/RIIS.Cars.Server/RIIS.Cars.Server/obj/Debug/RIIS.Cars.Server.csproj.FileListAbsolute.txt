@@ -1,0 +1,11 @@
+F:\test\RIIS.Cars.Server\RIIS.Cars.Server\bin\Debug\RIIS.Cars.Server.exe.config
+F:\test\RIIS.Cars.Server\RIIS.Cars.Server\bin\Debug\RIIS.Cars.Server.exe
+F:\test\RIIS.Cars.Server\RIIS.Cars.Server\bin\Debug\RIIS.Cars.Server.pdb
+F:\test\RIIS.Cars.Server\RIIS.Cars.Server\bin\Debug\RIIS.CarManager.dll
+F:\test\RIIS.Cars.Server\RIIS.Cars.Server\bin\Debug\RIIS.CarManager.pdb
+F:\test\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.csprojResolveAssemblyReference.cache
+F:\test\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.Properties.Resources.resources
+F:\test\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.csproj.GenerateResource.Cache
+F:\test\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.csproj.CoreCompileInputs.cache
+F:\test\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.exe
+F:\test\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.pdb

@@ -1,0 +1,133 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.IO;
+using System.Data;
+
+namespace Dictionary2CS
+{
+    class MakeMixco
+    {
+        public static string BuildCS(string fname, DataTable dt)
+        {
+            FileStream fsFile = File.Create(fname);
+            StreamWriter csFile = new StreamWriter(fsFile, Encoding.Default);
+
+            DataRow[] mixRows;
+            mixRows = dt.Select("", "C_SEG_NA ASC,I_CO_VALUE");
+
+            char[] ch = { ' ', '\n', '\t', '\r' };
+            csFile.WriteLine("namespace CIPS.DB");
+            csFile.WriteLine("{");
+
+            int i = 0, j = 0, k = 0, m = 0;
+            bool isRepeat = false;
+            string strRecord = "\t\t//";
+            while (i < mixRows.Length)
+            {
+                j = i; k = 0;
+                while (j < mixRows.Length - 1)
+                {
+                    k++;
+                    if (mixRows[j]["C_SEG_NA"].ToString() != mixRows[j + 1]["C_SEG_NA"].ToString()) 
+                        break;
+                    j++;
+                }
+
+                if (k > 0)
+                {
+
+                    csFile.WriteLine("\t/// <summary>");
+                    csFile.WriteLine("\t/// " + mixRows[i]["C_CO_TYPE"].ToString().Trim(ch) + "!");
+                    csFile.WriteLine("\t/// " + mixRows[i]["C_REMARK"].ToString().Trim(ch) + "!");
+                    csFile.WriteLine("\t/// </summary>");
+                    csFile.WriteLine("\tpublic class " + mixRows[i]["C_SEG_NA"].ToString().ToUpper());
+                    csFile.WriteLine("\t{");
+
+                    for (k = i; k <= j; k++)
+                    {
+                                                {
+                            isRepeat = false;
+                            for (m = i; m < k; m++)
+                            {
+                                //								if(mixRows[m].IsI_CO_VALUENull() || mixRows[m].IsC_FORSH_SPELLNull())
+                                //									continue;
+                                if (mixRows[k]["C_FORSH_SPELL"].ToString() == mixRows[m]["C_FORSH_SPELL"].ToString())
+                                {
+                                    strRecord += "Row" + mixRows[m]["I_SEQ"].ToString() + " = Row" + mixRows[k]["I_SEQ"].ToString() + ",  ";
+
+                                    isRepeat = true;
+                                    break;
+                                }
+                            }
+
+                            if (!isRepeat)
+                            {
+                                csFile.WriteLine("\t\t/// <summary>");
+                                csFile.WriteLine("\t\t/// " + mixRows[k]["C_CO_TYPE"].ToString().Trim(ch) + "!");
+                                //if(!mixRows[k].IsC_CO_DESCNull())
+                                {
+                                    csFile.WriteLine("\t\t/// " + mixRows[k]["C_CO_DESC"].ToString().Trim(ch) + "!");
+                                }
+                                //							    else
+                                //								{
+                                //									csFile.WriteLine("\t\t/// 对不起，杂类代码表中没有对应的提示");
+                                //		                        }
+                                csFile.WriteLine("\t\t/// {0} = {1}", mixRows[k]["C_FORSH_SPELL"].ToString().ToUpper().Trim(ch), mixRows[k]["I_CO_VALUE"].ToString());
+
+                                csFile.WriteLine("\t\t/// </summary>");
+                                string vname = mixRows[k]["C_FORSH_SPELL"].ToString().ToUpper();
+                                vname = vname.Replace('/', '_');
+                                if (Convert.ToInt64(mixRows[k]["I_CO_VALUE"]) > Int32.MaxValue)
+                                    csFile.WriteLine("\t\tpublic const long {0} = {1};", vname, mixRows[k]["I_CO_VALUE"].ToString());
+                                else
+                                    csFile.WriteLine("\t\tpublic const int {0} = {1};", vname, mixRows[k]["I_CO_VALUE"].ToString());
+                            }
+                        }
+                    }//end for(k);
+
+                    csFile.WriteLine();
+                    csFile.WriteLine("\t};//end class" + mixRows[i]["C_SEG_NA"].ToString().ToUpper());
+                }
+
+                i = j + 1;
+            }
+            csFile.WriteLine();
+
+            //加上默认值注释
+
+            csFile.WriteLine("\t/// <summary>");
+            csFile.WriteLine("\t/// 默认值" + "!");
+            csFile.WriteLine("\t/// </summary>");
+            csFile.WriteLine("\tpublic class E_DEFAULT");
+            csFile.WriteLine("\t{");
+
+            csFile.WriteLine("\t\t/// <summary>");
+            csFile.WriteLine("\t\t/// 整型 枚举 比特位" + "!");
+            csFile.WriteLine("\t\t/// E_INT = 0");
+            csFile.WriteLine("\t\t/// </summary>");
+            csFile.WriteLine("\t\tpublic static int E_INT = 0;");
+
+            csFile.WriteLine("\t\t/// <summary>");
+            csFile.WriteLine("\t\t/// 字符型" + "!");
+            csFile.WriteLine("\t\t/// E_STR = \" \"");
+            csFile.WriteLine("\t\t/// </summary>");
+            csFile.WriteLine("\t\tpublic static string  E_STR = \" \";");
+
+            csFile.WriteLine("\t\t/// <summary>");
+            csFile.WriteLine("\t\t/// 日期型" + "!");
+            csFile.WriteLine("\t\t/// E_DATETIME = new DateTime(2000,1,1,0,0,0);");
+            csFile.WriteLine("\t\t/// </summary>");
+            csFile.WriteLine("\t\tpublic static System.DateTime E_DATETIME = new System.DateTime(1990,1,1,12,0,0);");
+
+            csFile.WriteLine("\t}//end class E_DEFAULT");
+            //完成加上默认值注释			
+
+            csFile.WriteLine(strRecord);
+            csFile.WriteLine("}//namespace");
+
+            csFile.Close();
+            return "DC_RA_MIXCO 完成";
+        }
+    }
+}

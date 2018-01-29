@@ -1,0 +1,11 @@
+D:\Work\成都封闭开发\程序\RIIS.DB生成程序\Dictionary2CS-v1.0.0.3\RIIS.DB\RIIS.DB\bin\Debug\RIIS.DB.dll
+D:\Work\成都封闭开发\程序\RIIS.DB生成程序\Dictionary2CS-v1.0.0.3\RIIS.DB\RIIS.DB\bin\Debug\RIIS.DB.pdb
+D:\Work\成都封闭开发\程序\RIIS.DB生成程序\Dictionary2CS-v1.0.0.3\RIIS.DB\RIIS.DB\obj\Debug\RIIS.DB.dll
+D:\Work\成都封闭开发\程序\RIIS.DB生成程序\Dictionary2CS-v1.0.0.3\RIIS.DB\RIIS.DB\obj\Debug\RIIS.DB.pdb
+D:\Work\成都封闭开发\程序\RIIS.DB生成程序\Dictionary2CS-v1.0.0.3\RIIS.DB\RIIS.DB\bin\Debug\RIIS.DB.XML
+E:\成都封闭开发\程序\RIIS.DB生成程序\Dictionary2CS-v1.0.0.3\RIIS.DB\RIIS.DB\bin\Debug\RIIS.DB.XML
+E:\成都封闭开发\程序\RIIS.DB生成程序\Dictionary2CS-v1.0.0.3\RIIS.DB\RIIS.DB\bin\Debug\RIIS.DB.dll
+E:\成都封闭开发\程序\RIIS.DB生成程序\Dictionary2CS-v1.0.0.3\RIIS.DB\RIIS.DB\bin\Debug\RIIS.DB.pdb
+E:\成都封闭开发\程序\RIIS.DB生成程序\Dictionary2CS-v1.0.0.3\RIIS.DB\RIIS.DB\obj\Debug\RIIS.DB.csprojResolveAssemblyReference.cache
+E:\成都封闭开发\程序\RIIS.DB生成程序\Dictionary2CS-v1.0.0.3\RIIS.DB\RIIS.DB\obj\Debug\RIIS.DB.dll
+E:\成都封闭开发\程序\RIIS.DB生成程序\Dictionary2CS-v1.0.0.3\RIIS.DB\RIIS.DB\obj\Debug\RIIS.DB.pdb
