@@ -1,0 +1,9 @@
+F:\Csharp\TransMsgByPkgs\SendMsgDemo\bin\Debug\SendMsgDemo.exe.config
+F:\Csharp\TransMsgByPkgs\SendMsgDemo\bin\Debug\SendMsgDemo.exe
+F:\Csharp\TransMsgByPkgs\SendMsgDemo\bin\Debug\SendMsgDemo.pdb
+F:\Csharp\TransMsgByPkgs\SendMsgDemo\bin\Debug\TransMsgByPkgs.dll
+F:\Csharp\TransMsgByPkgs\SendMsgDemo\bin\Debug\TransMsgByPkgs.pdb
+F:\Csharp\TransMsgByPkgs\SendMsgDemo\obj\Debug\SendMsgDemo.csprojResolveAssemblyReference.cache
+F:\Csharp\TransMsgByPkgs\SendMsgDemo\obj\Debug\SendMsgDemo.csproj.CoreCompileInputs.cache
+F:\Csharp\TransMsgByPkgs\SendMsgDemo\obj\Debug\SendMsgDemo.exe
+F:\Csharp\TransMsgByPkgs\SendMsgDemo\obj\Debug\SendMsgDemo.pdb

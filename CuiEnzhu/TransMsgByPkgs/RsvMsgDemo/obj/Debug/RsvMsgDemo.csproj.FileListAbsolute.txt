@@ -1,0 +1,9 @@
+F:\Csharp\TransMsgByPkgs\RsvMsgDemo\bin\Debug\RsvMsgDemo.exe.config
+F:\Csharp\TransMsgByPkgs\RsvMsgDemo\bin\Debug\RsvMsgDemo.exe
+F:\Csharp\TransMsgByPkgs\RsvMsgDemo\bin\Debug\RsvMsgDemo.pdb
+F:\Csharp\TransMsgByPkgs\RsvMsgDemo\bin\Debug\TransMsgByPkgs.dll
+F:\Csharp\TransMsgByPkgs\RsvMsgDemo\bin\Debug\TransMsgByPkgs.pdb
+F:\Csharp\TransMsgByPkgs\RsvMsgDemo\obj\Debug\RsvMsgDemo.csprojResolveAssemblyReference.cache
+F:\Csharp\TransMsgByPkgs\RsvMsgDemo\obj\Debug\RsvMsgDemo.csproj.CoreCompileInputs.cache
+F:\Csharp\TransMsgByPkgs\RsvMsgDemo\obj\Debug\RsvMsgDemo.exe
+F:\Csharp\TransMsgByPkgs\RsvMsgDemo\obj\Debug\RsvMsgDemo.pdb

@@ -1,0 +1,5 @@
+F:\Csharp\TransMsgByPkgs\TransMsgByPkgs\bin\Debug\TransMsgByPkgs.dll
+F:\Csharp\TransMsgByPkgs\TransMsgByPkgs\bin\Debug\TransMsgByPkgs.pdb
+F:\Csharp\TransMsgByPkgs\TransMsgByPkgs\obj\Debug\TransMsgByPkgsHelper.csproj.CoreCompileInputs.cache
+F:\Csharp\TransMsgByPkgs\TransMsgByPkgs\obj\Debug\TransMsgByPkgs.dll
+F:\Csharp\TransMsgByPkgs\TransMsgByPkgs\obj\Debug\TransMsgByPkgs.pdb
