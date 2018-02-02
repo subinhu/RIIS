@@ -8,5 +8,6 @@ namespace RIIS.CarManager
 {
     public class DataCast
     {
+        
     }
 }

@@ -10,6 +10,8 @@ namespace RIIS.CarManager
     {
         public Main_CarManager()
         {
+            
+            
             //初始化数据类，带有数据库同步队列
 
             //主队列，处理客户端命令

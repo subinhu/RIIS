@@ -20,3 +20,10 @@ D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RII
 D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.csproj.CoreCompileInputs.cache
 D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.dll
 D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\obj\Debug\RIIS.CarManager.pdb
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\RIIS.CarManager.dll.config
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\MySql.Data.dll
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\MySql.Data.Entity.EF5.dll
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\MySql.Data.Entity.EF6.dll
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\MySql.Fabric.Plugin.dll
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\MySql.Web.dll
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.CarManager\bin\Debug\RIIS.DbParameter.dll
