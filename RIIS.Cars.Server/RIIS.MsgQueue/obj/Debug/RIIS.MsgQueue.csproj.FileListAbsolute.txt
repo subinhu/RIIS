@@ -8,3 +8,8 @@ E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.MsgQueue\bin\Debug\RIIS.MsgQu
 E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.MsgQueue\obj\Debug\RIIS.MsgQueue.csproj.CoreCompileInputs.cache
 E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.MsgQueue\obj\Debug\RIIS.MsgQueue.dll
 E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.MsgQueue\obj\Debug\RIIS.MsgQueue.pdb
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.MsgQueue\bin\Debug\RIIS.MsgQueue.dll
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.MsgQueue\bin\Debug\RIIS.MsgQueue.pdb
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.MsgQueue\obj\Debug\RIIS.MsgQueue.csproj.CoreCompileInputs.cache
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.MsgQueue\obj\Debug\RIIS.MsgQueue.dll
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.MsgQueue\obj\Debug\RIIS.MsgQueue.pdb

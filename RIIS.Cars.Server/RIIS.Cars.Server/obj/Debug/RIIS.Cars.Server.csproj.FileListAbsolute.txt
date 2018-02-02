@@ -20,3 +20,15 @@ E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Ca
 E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.csproj.CoreCompileInputs.cache
 E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.exe
 E:\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.pdb
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\bin\Debug\RIIS.Cars.Server.exe.config
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.exe
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.pdb
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\bin\Debug\RIIS.Cars.Server.exe
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\bin\Debug\RIIS.Cars.Server.pdb
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\bin\Debug\RIIS.CarManager.dll
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\bin\Debug\RIIS.CarManager.pdb
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.csprojResolveAssemblyReference.cache
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.Form1.resources
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.Properties.Resources.resources
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.csproj.GenerateResource.Cache
+D:\Work\成都封闭开发\程序\RIIS.Cars.Server\RIIS.Cars.Server\obj\Debug\RIIS.Cars.Server.csproj.CoreCompileInputs.cache
