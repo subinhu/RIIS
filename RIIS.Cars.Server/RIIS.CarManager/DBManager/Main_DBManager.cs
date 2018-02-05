@@ -4,16 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using RIIS.DbParameter;
 
 namespace RIIS.CarManager
 {
     public class Main_DBManager
     {
-        public static DataSet DBSet;
+        public static DataSet DBSet = new DataSet();
         public const string QueueName = "数据处理队列"; 
         public Main_DBManager()
         {
             //加载数据库数据
+            
 
 
             RIIS.MsgQueue.MsgReceiver rcv = RIIS.MsgQueue.MsgQueue.RegisterReceiver(QueueName);   
@@ -49,12 +51,36 @@ namespace RIIS.CarManager
 
 
         /// <summary>
-        /// 从数据库加载数据到DBSet
+        /// 从数据库加载数据到DBSet,旧的DBSet数据将被删除
         /// </summary>
         /// <param name="tables">加载的表的名称列表</param>
-        public void LoadDataFromDB(List<string> tables)
+        public void LoadTablesFromDB(List<string> tables)
         {
+            if (tables == null || tables.Count <= 0)
+                return;
+            DBSet = DataAccessHelper.GetDataTables(tables);
+        }
 
+       
+        public void AddTablesFromDB(List<string> tables,bool bReload)
+        {
+            if (tables == null || tables.Count <= 0)
+                return;
+            DataTable dt;
+            foreach (string na in tables)
+            {
+                if (DBSet.Tables.Contains(na) && !bReload)
+                    continue;
+                dt = DataAccessHelper.GetDataTable(na);
+                if (dt == null)
+                    continue;
+                dt.TableName = na;
+                if (DBSet.Tables.Contains(na) && bReload)
+                {
+                    DBSet.Tables.Remove(na);
+                }
+                DBSet.Tables.Add(na);
+            }
         }
 
 

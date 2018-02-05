@@ -19,6 +19,26 @@ namespace RIIS.CarManager
             
         }
 
+        public static DataSet GetDataTables(List<string> tableNames)
+        {
+            try
+            {
+                if (tableNames == null || tableNames.Count == 0)
+                    return null;
+                DbWebSvc.DbWebSvcSoapClient dbsc = new DbWebSvc.DbWebSvcSoapClient();
+                DataSet ds = dbsc.GetDataTables(tableNames.ToArray());
+                if (ds == null || ds.Tables.Count == 0)
+                    return null;
+                else
+                    return ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
         public static DataTable GetDataTableFromSql(string strSql)
         {
             try
@@ -148,24 +168,5 @@ namespace RIIS.CarManager
             return read;
 
         }
-    }
-
-    //public class DbParam
-    //{
-    //    /// <summary>
-    //    /// 参数名前不加@
-    //    /// </summary>
-    //    public string paramName;
-    //    public object paramValue;
-    //    /// <summary>
-    //    /// OracleDbtype
-    //    /// </summary>
-    //    public DbWebSvc.MySqlDbType dbType;
-    //    public DbParam(string name, object v, DbWebSvc.MySqlDbType t)
-    //    {
-    //        this.paramName = name;
-    //        this.paramValue = v;
-    //        this.dbType = t;
-    //    }
-    //}
+    } 
 }
