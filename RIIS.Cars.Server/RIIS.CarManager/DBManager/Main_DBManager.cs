@@ -84,6 +84,11 @@ namespace RIIS.CarManager
         }
 
 
+        //DBSet中指定的数据表同步到数据库
+
+
+
+
 
         
 
