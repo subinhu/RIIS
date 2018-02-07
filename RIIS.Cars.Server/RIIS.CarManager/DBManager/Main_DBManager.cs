@@ -92,6 +92,7 @@ namespace RIIS.CarManager
 
             List<string> sql_list = new List<string>();
             int i, j, k, m;
+
             string value_string;
             string setsql;
             string DBPrimary;
@@ -122,32 +123,24 @@ namespace RIIS.CarManager
                             DBPrimary += PrimaryCols[0] + "=" + cdt.Rows[i][pname1, DataRowVersion.Original].ToString();
                         }
 
+
                         for (j = 1; j < PrimaryCols.Length; j++)
                         {
                             string pname2 = PrimaryCols[j].ToString();
-                            
-                            if ((cdt.Rows[i][pname2, DataRowVersion.Original].GetType()) == typeof(string) || (cdt.Rows[i][pname2, DataRowVersion.Original].GetType()) == typeof(DateTime))
+                            for (k = 0; k < cdt.Columns.Count; k++)
                             {
-                                DBPrimary += "and " + PrimaryCols[j] + "='" + cdt.Rows[i][pname2, DataRowVersion.Original].ToString() + "'";
+                                if (cdt.Columns[k].ColumnName == PrimaryCols[j].ToString())
+                                {
+                                    if ((cdt.Rows[i][pname2, DataRowVersion.Original].GetType()) == typeof(string) || (cdt.Rows[i][pname2, DataRowVersion.Original].GetType()) == typeof(DateTime))
+                                    {
+                                        DBPrimary += "and " + PrimaryCols[j] + "='" + cdt.Rows[i][pname2, DataRowVersion.Original].ToString() + "'";
+                                    }
+                                    else
+                                    {
+                                        DBPrimary += "and " + PrimaryCols[j] + "=" + cdt.Rows[i][pname2, DataRowVersion.Original].ToString();
+                                    }
+                                }
                             }
-                            else
-                            {
-                                DBPrimary += "and " + PrimaryCols[j] + "=" + cdt.Rows[i][pname2, DataRowVersion.Original].ToString();
-                            }
-                            //for (k = 0; k < cdt.Columns.Count; k++)
-                            //{
-                            //    if (cdt.Columns[k].ColumnName == PrimaryCols[j].ToString())
-                            //    {
-                            //        if ((cdt.Rows[i][pname2, DataRowVersion.Original].GetType()) == typeof(string) || (cdt.Rows[i][pname2, DataRowVersion.Original].GetType()) == typeof(DateTime))
-                            //        {
-                            //            DBPrimary += "and " + PrimaryCols[j] + "='" + cdt.Rows[i][pname2, DataRowVersion.Original].ToString() + "'";
-                            //        }
-                            //        else
-                            //        {
-                            //            DBPrimary += "and " + PrimaryCols[j] + "=" + cdt.Rows[i][pname2, DataRowVersion.Original].ToString();
-                            //        }
-                            //    }
-                            //}
                         }
                         DeleteSql = "delete from " + dt.ToString() + " where " + DBPrimary;
                         sql_list.Add(DeleteSql);
@@ -156,7 +149,7 @@ namespace RIIS.CarManager
                     {
                         string DBsql = "";
                         k = 0;
-               
+
                         {
                             string name0 = cdt.Columns[0].ToString();
                             if ((cdt.Rows[i][name0, DataRowVersion.Original].GetType()) == typeof(string) || (cdt.Rows[i][name0, DataRowVersion.Original].GetType()) == typeof(DateTime))
@@ -167,9 +160,9 @@ namespace RIIS.CarManager
                             else
                             {
                                 DBsql += name0 + "=" + cdt.Rows[i][name0, DataRowVersion.Original].ToString();
+
                             }
                         }
-
                         for (j = 1; j < cdt.Columns.Count; j++)
                         {
                             string name = cdt.Columns[j].ToString();
@@ -185,6 +178,7 @@ namespace RIIS.CarManager
                         DeleteSql = "delete from " + dt.ToString() + " where " + DBsql;
                         sql_list.Add(DeleteSql);
                     }
+
                 }
                 else if (cdt.Rows[i].RowState == DataRowState.Modified)
                 {
@@ -213,34 +207,24 @@ namespace RIIS.CarManager
                             {
                                 DBPrimary += PrimaryCols[0] + "=" + cdt.Rows[i][pname1, DataRowVersion.Original].ToString();
                             }
-
                             for (j = 1; j < PrimaryCols.Length; j++)
                             {
                                 string pname2 = PrimaryCols[j].ToString();
-
-                                if ((cdt.Rows[i][pname2, DataRowVersion.Original].GetType()) == typeof(string) || (cdt.Rows[i][pname2, DataRowVersion.Original].GetType()) == typeof(DateTime))
+                                for (k = 0; k < cdt.Columns.Count; k++)
                                 {
-                                    DBPrimary += "and " + PrimaryCols[j] + "='" + cdt.Rows[i][pname2, DataRowVersion.Original].ToString() + "'";
-                                }
-                                else
-                                {
-                                    DBPrimary += "and " + PrimaryCols[j] + "=" + cdt.Rows[i][pname2, DataRowVersion.Original].ToString();
-                                }
-                                //for (k = 0; k < cdt.Columns.Count; k++)
-                                //{
-                                //    if (cdt.Columns[k].ColumnName == PrimaryCols[j].ToString())
-                                //    {
+                                    if (cdt.Columns[k].ColumnName == PrimaryCols[j].ToString())
+                                    {
 
-                                //        if ((cdt.Rows[i][pname2, DataRowVersion.Original].GetType()) == typeof(string) || (cdt.Rows[i][pname2, DataRowVersion.Original].GetType()) == typeof(DateTime))
-                                //        {
-                                //            DBPrimary += "and " + PrimaryCols[j] + "='" + cdt.Rows[i][pname2, DataRowVersion.Original].ToString() + "'";
-                                //        }
-                                //        else
-                                //        {
-                                //            DBPrimary += "and " + PrimaryCols[j] + "=" + cdt.Rows[i][pname2, DataRowVersion.Original].ToString();
-                                //        }
-                                //    }
-                                //}
+                                        if ((cdt.Rows[i][pname2, DataRowVersion.Original].GetType()) == typeof(string) || (cdt.Rows[i][pname2, DataRowVersion.Original].GetType()) == typeof(DateTime))
+                                        {
+                                            DBPrimary += "and " + PrimaryCols[j] + "='" + cdt.Rows[i][pname2, DataRowVersion.Original].ToString() + "'";
+                                        }
+                                        else
+                                        {
+                                            DBPrimary += "and " + PrimaryCols[j] + "=" + cdt.Rows[i][pname2, DataRowVersion.Original].ToString();
+                                        }
+                                    }
+                                }
                             }
                             //遍历cdt的每一行，把这一行的数据写入数据库对应的行
                             for (m = 1; m < cdt.Columns.Count; m++)
@@ -262,7 +246,7 @@ namespace RIIS.CarManager
                     {
                         string DBsql = "";
                         k = 0;
-                       
+
                         {
                             string name0 = cdt.Columns[0].ToString();
                             if ((cdt.Rows[i][name0, DataRowVersion.Original].GetType()) == typeof(string) || (cdt.Rows[i][name0, DataRowVersion.Original].GetType()) == typeof(DateTime))
@@ -273,6 +257,7 @@ namespace RIIS.CarManager
                             {
                                 DBsql += name0 + "=" + cdt.Rows[i][name0, DataRowVersion.Original].ToString();
                             }
+
                         }
                         for (j = 1; j < cdt.Columns.Count; j++)
                         {
